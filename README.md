@@ -1,0 +1,2 @@
+# Dualiza
+Proyecto web Dualiza.
