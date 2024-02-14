@@ -1,8 +1,8 @@
-# React + Vite
+# Estructura de carpetas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **components**: Los distintos componentes reutilizables de la ui.
+- **features**: Las distintas funcionalidades de nuestra web. Noticias, autenticación, panel de administración...
+- **hooks**: Hooks globales reutilizables, como por ejemplo useLocalStorage, useOutsideClick...
+- **pages**: Componente que se pasará por el router y que, junto a otros componentes de features y components, forman una view.
+- **services**: conjunto de funciones que realiza una acción con una api externa: enviar mails, consultar información externa, usar orms...
+- **utils**: conjunto de variables y funciones globales para realizar X tarea: constantes, formateo de monedas, manipulación de fechas...
