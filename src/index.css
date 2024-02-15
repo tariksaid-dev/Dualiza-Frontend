@@ -53,7 +53,7 @@
     --ring: 20.5 90.2% 48.2%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -61,4 +61,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.fixed-header {
+  @apply fixed bottom-auto top-0;
+  @apply border-red-900 bg-slate-500 text-black;
 }

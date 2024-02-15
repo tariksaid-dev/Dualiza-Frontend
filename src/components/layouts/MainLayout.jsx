@@ -1,6 +1,6 @@
 function MainLayout({ children }) {
   return (
-    <div className="min-w-[100vw] min-h-[100vh] grid grid-rows-[1fr,40px]">
+    <div className="h-full bg-skin-dark-blue text-white text-base selection:bg-skin-orange-lanze selection:text-white">
       {children}
     </div>
   );
