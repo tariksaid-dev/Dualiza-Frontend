@@ -27,6 +27,11 @@ module.exports = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        skin: {
+          'orange-lanze': 'var(--color-orange-lanze)',
+          'orange-ieshlanz': 'var(--color-orange-ieshlanz)',
+          'dark-blue': 'var(--color-dark-blue)',
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
