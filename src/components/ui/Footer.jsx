@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 function DinamicHeader() {
   const logoDark = "Logo-negativo-(3).webp";
@@ -25,12 +26,12 @@ function DinamicHeader() {
   return (
     <header
       id="header"
-      className="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-red bg-slate-900"
+      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
       {/* hover? */}
       <a href="#" className="flex items-center gap-3">
         <img
-          className="h-12"
+          className="h-14"
           src={`images/LOGOS_PROYECTO/${logoDark}`}
           alt="Logo de una bombilla verde con una planta en su interior"
         />
@@ -46,6 +47,7 @@ function DinamicHeader() {
                   </a>
                 </li>
               ))}
+              <ThemeToggle />
             </ul>
           </nav>
 
