@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function DinamicHeader() {
   const logoDark = "Logo-negativo-(3).webp";
-  const logoWhite = "Logo-positivo-(1).webp";
+  // const logoWhite = "Logo-positivo-(1).webp";
 
   const sections = [
     { title: "Noticias", url: "#noticias" },
@@ -55,8 +55,8 @@ function DinamicHeader() {
             className="btn sm:hidden"
             aria-label="Navigation"
           >
+            <img src="test.svg" alt="Hamburguer menu" />
             {/* SVG con un menú HAMBURGUER para responsive */}
-            MENU
           </button>
           {/* cambiador de tema, componente */}
         </div>
