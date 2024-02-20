@@ -26,7 +26,7 @@ function DinamicHeader() {
   return (
     <header
       id="header"
-      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
       {/* hover? */}
       <a href="#" className="flex items-center gap-3">

@@ -9,7 +9,7 @@ function MainLayout({ children }) {
       <h2 className="text-muted-foreground">Hi!</h2>
       <Button className="bg-primary">Button</Button>
       {children}
-      <div className="min-h-[250vh]"></div>
+      {/* <div className="min-h-[250vh]"></div> */}
     </div>
   );
 }
