@@ -7,7 +7,6 @@
     --color-orange-lanze: #e75129;
     --color-orange-ieshlanz: #f28e63;
     --color-dark-blue: #0a0532;
-    --primary: #333;
 
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
@@ -53,7 +52,7 @@
     --ring: 20.5 90.2% 48.2%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -61,4 +60,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.fixed-header {
+  @apply fixed bottom-auto top-0;
+  @apply border-none
 }

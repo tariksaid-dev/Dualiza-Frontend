@@ -1,13 +1,14 @@
 import MainLayout from "./components/layouts/MainLayout";
+import DinamicHeader from "./components/ui/Footer";
+import { ThemeProvider } from "./context/DarkModeContext";
 
 function App() {
   return (
-    <MainLayout>
-      <h1 className="flex flex-1 items-center justify-center text-white bg-skin-dark-blue">
-        Hola mundo
-      </h1>
-      <div className="bg-slate-700 text-white">Hola footer</div>
-    </MainLayout>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <MainLayout>
+        <DinamicHeader></DinamicHeader>
+      </MainLayout>
+    </ThemeProvider>
   );
 }
 
