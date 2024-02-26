@@ -1,14 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout";
 import DinamicHeader from "./components/ui/Footer";
 import { ThemeProvider } from "./context/DarkModeContext";
 import RoutePage from "./pages/RoutePage";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <RoutePage></RoutePage>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           element: (
@@ -19,13 +21,9 @@ function App() {
           ),
           children: [
             {
-              path: "/admin",
+              path: "admin",
               element: <Admin></Admin>,
               children: [
-                {
-                  index: true,
-                  element: <Admin></Admin>,
-                },
                 {
                   path: "users",
                   element: <AdminUsers></AdminUsers>,
@@ -33,6 +31,10 @@ function App() {
                     {
                       path: ":id",
                       element: <AdminSingleUser></AdminSingleUser>,
+                    },
+                    {
+                      path: "new",
+                      element: <AdminNewUser></AdminNewUser>,
                     },
                   ],
                 },
@@ -69,11 +71,13 @@ function App() {
   ]);
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <MainLayout>
-        <DinamicHeader></DinamicHeader>
-      </MainLayout>
-    </ThemeProvider>
+    <RouterProvider router={router}>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <MainLayout>
+          <DinamicHeader></DinamicHeader>
+        </MainLayout>
+      </ThemeProvider>
+    </RouterProvider>
   );
 }
 
