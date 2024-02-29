@@ -32,7 +32,7 @@ function DinamicHeader() {
       <a href="#" className="flex items-center gap-3">
         <img
           className="h-14"
-          src={`images/LOGOS_PROYECTO/${logoDark}`}
+          src={`/images/LOGOS_PROYECTO/${logoDark}`}
           alt="Logo de una bombilla verde con una planta en su interior"
         />
       </a>
@@ -57,7 +57,7 @@ function DinamicHeader() {
             className="btn sm:hidden"
             aria-label="Navigation"
           >
-            <img src="test.svg" alt="Hamburguer menu" />
+            <img src="/test.svg" alt="Hamburguer menu" />
             {/* SVG con un menú HAMBURGUER para responsive */}
           </button>
           {/* cambiador de tema, componente */}
