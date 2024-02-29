@@ -1,7 +1,13 @@
+import AdminPanelLayout from "@/features/admin-panel/AdminPanelLayout";
+import { DataTableDemo } from "@/features/admin-panel/AdminUsers";
 import React from "react";
 
 const Admin = () => {
-  return <div className="">Admin</div>;
+  return (
+    <AdminPanelLayout>
+      <DataTableDemo />
+    </AdminPanelLayout>
+  );
 };
 
 export default Admin;

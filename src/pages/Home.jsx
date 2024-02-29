@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/context/DarkModeContext";
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-const RoutePage = () => {
+const Home = () => {
   return (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -17,4 +17,4 @@ const RoutePage = () => {
   );
 };
 
-export default RoutePage;
+export default Home;
