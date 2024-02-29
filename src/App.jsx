@@ -30,36 +30,26 @@ function App() {
             {
               path: "admin",
               element: <Admin></Admin>,
-              children: [
-                {
-                  index: true,
-                  element: <Admin></Admin>,
-                },
-                {
-                  path: "users",
-                  element: <AdminUsers></AdminUsers>,
-                  children: [
-                    {
-                      path: ":id",
-                      element: <AdminSingleUser></AdminSingleUser>,
-                    },
-                    {
-                      path: "new",
-                      element: <AdminNewUser></AdminNewUser>,
-                    },
-                  ],
-                },
-                {
-                  path: "news",
-                  element: <AdminNews></AdminNews>,
-                  children: [
-                    {
-                      path: ":id",
-                      element: <AdminSingleNew></AdminSingleNew>,
-                    },
-                  ],
-                },
-              ],
+            },
+            {
+              path: "admin/users",
+              element: <AdminUsers></AdminUsers>,
+            },
+            {
+              path: "admin/users/:id",
+              element: <AdminSingleUser></AdminSingleUser>,
+            },
+            {
+              path: "admin/users/new",
+              element: <AdminNewUser></AdminNewUser>,
+            },
+            {
+              path: "admin/news",
+              element: <AdminNews></AdminNews>,
+            },
+            {
+              path: "admin/news/:id",
+              element: <AdminSingleNew></AdminSingleNew>,
             },
           ],
         },
@@ -70,12 +60,10 @@ function App() {
         {
           path: "news",
           element: <News></News>,
-          children: [
-            {
-              path: ":id",
-              element: <SingleNew></SingleNew>,
-            },
-          ],
+        },
+        {
+          path: "news/:id",
+          element: <SingleNew></SingleNew>,
         },
       ],
     },
