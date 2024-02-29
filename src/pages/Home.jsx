@@ -8,9 +8,6 @@ const Home = () => {
   return (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <MainLayout>
-          <DinamicHeader></DinamicHeader>
-        </MainLayout>
         <Outlet></Outlet>
       </ThemeProvider>
     </>
