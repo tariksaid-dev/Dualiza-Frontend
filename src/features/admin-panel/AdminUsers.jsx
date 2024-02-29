@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  CaretSortIcon,
-  ChevronDownIcon,
-  DotsHorizontalIcon,
-} from "@radix-ui/react-icons";
+import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
   flexRender,
   getCoreRowModel,
@@ -14,14 +10,10 @@ import {
 } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -33,6 +25,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { toast } from "sonner";
 
 const data = [
   {
@@ -101,9 +94,8 @@ export const columns = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Acciones</DropdownMenuLabel>
-            <DropdownMenuSeparator />
             <DropdownMenuItem>Editar Usuario</DropdownMenuItem>
+            <DropdownMenuItem>Eliminar Usuario</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -138,7 +130,7 @@ export function DataTableDemo() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 justify-between">
         <Input
           placeholder="Buscar por nombre..."
           value={table.getColumn("nombre")?.getFilterValue() ?? ""}
@@ -147,6 +139,20 @@ export function DataTableDemo() {
           }
           className="max-w-sm"
         />
+        <Button
+          className="bg-primary"
+          onClick={() =>
+            toast("Usuario Añadido", {
+              description: "Sunday, December 03, 2023 at 9:00 AM",
+              action: {
+                label: "Cerrar",
+                onClick: () => console.log("Undo"),
+              },
+            })
+          }
+        >
+          Añadir usuario
+        </Button>
       </div>
       <div className="rounded-md border mb-10">
         <Table>

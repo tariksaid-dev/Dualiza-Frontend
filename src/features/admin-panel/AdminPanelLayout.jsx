@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "sonner";
 
 const AdminPanelLayout = ({ children }) => {
   return (
@@ -7,6 +8,7 @@ const AdminPanelLayout = ({ children }) => {
         Administración de Usuarios
       </h1>
       {children}
+      <Toaster toastOptions={"toast"} />
     </div>
   );
 };
