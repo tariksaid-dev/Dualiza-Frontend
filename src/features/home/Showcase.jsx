@@ -5,13 +5,15 @@ import ShowCaseCard from "./ShowCaseCard";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getNews } from "@/services/apiNews";
+import { useNews } from "../news/useNews";
+import Spinner from "@/components/ui/Spinner";
+import { Link } from "react-router-dom";
 
 const Showcase = () => {
-  const [news, setNews] = useState([]);
+
+  const { isLoading, error, news } = useNews();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-
-  // console.log(noticia1.map((site) => site));
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
@@ -24,28 +26,26 @@ const Showcase = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      const newsData = await getNews();
-      setNews(newsData);
-    };
-
-    fetchNews();
-  }, []);
 
 
   return (
     <ContentSection title="Noticias" id="showcase">
       <div className="max-w-6xl space-y-2">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {news.slice(0, isMobile ? 3 : 9).map((site) => (
-            <ShowCaseCard key={site.title} site={site} />
-          ))}
+          {
+            isLoading && <Spinner />
+          }
+          {
+            news && news.filter((n, index) => isMobile ? index < 3 : index < 9).map((n) => (
+            <ShowCaseCard key={n.id} site={n} />
+          ))
+          }
+          
         </div>
         <p className="text-right text-sm">
-          <a className="text-primary" href="/news" target="_blank" rel="noreferer">
+          <Link to={'/news'} className="text-primary" href="/news" target="_blank" rel="noreferer">
             ...and more &rarr;
-          </a>
+          </Link>
         </p>
       </div>
     </ContentSection>
