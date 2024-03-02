@@ -1,69 +1,109 @@
-// NewsContainer.js
 import React, { useEffect, useState } from "react";
 import MainNews from "./MainNews";
 import SideNews from "./SideNews";
 import NewsSection from "./NewsSection";
-import { getNews } from "@/services/apiNews";
-
-
-
-
+import { useNews } from "./useNews";
+import Spinner from "@/components/ui/Spinner";
 
 const NewsContainer = () => {
 
   const newsData2 = [
-    // Datos para MainNews y SideNews
     {
-      category: "Breaking News",
+      id: 1,
       title: "Alumnos del IES ALbaytar colaboran para evaluar la eficiencias energética en centros",
-      imageUrl: "/images/reunion-hlanz.webp",
+      created_at: "2022-10-01",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
     },
     {
-      category: "Technology",
+      id: 2,
       title: "Exploring the Impact of Quantum Computing on Modern Technology",
-      imageUrl: "/images/reunion-hlanz.webp",
-    },
-    // Más datos para NewsSection
-    {
-      category: "Health",
-      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
-      imageUrl: "/images/reunion-hlanz.webp",
+      created_at: "2022-10-02",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
     },
     {
-      category: "Health",
+      id: 3,
       title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
-      imageUrl: "/images/reunion-hlanz.webp",
+      created_at: "2022-10-03",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
     },
     {
-      category: "Health",
+      id: 4,
       title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
-      imageUrl: "/images/reunion-hlanz.webp",
+      created_at: "2022-10-04",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
     },
     {
-      category: "Health",
+      id: 5,
       title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
-      imageUrl: "/images/reunion-hlanz.webp",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      created_at: "2022-10-05",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
     },
-    // Agrega más datos de noticias aquí según sea necesarioºº
+    {
+      id: 6,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
+    {
+      id: 7,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
+    {
+      id: 8,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
+    {
+      id: 9,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
+    {
+      id: 10,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
+    {
+      id: 11,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
+    {
+      id: 12,
+      title: "The Role of AI in Personalized Medicine: Revolutionizing Healthcare",
+      created_at: "2022-10-06",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "milei.jpg",
+    },
   ];
 
-  const [news, setNews] = useState([])
+  
+  const { isLoading, error, news } = useNews();
+  
+  if(isLoading) return <Spinner></Spinner>
+  
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      const data = await getNews();
-      setNews(data);
-    }
-    
-    fetchNews();
-    
-  }, [])
-  
-  
-  const mainNews = news.filter((item, index) => index === 0);
-  const sideNews = news.filter((item, index) => index > 0 && index < 3);
-  const otherNews = news.filter((item, index) => index >= 3);
+  const sortedNews = [...newsData2].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  const mainNews = sortedNews[0] ? [sortedNews[0]] : [];
+  const sideNews = sortedNews.slice(1, 3);
+  const otherNews = sortedNews.slice(3);
 
   return (
     
@@ -80,7 +120,7 @@ const NewsContainer = () => {
           
           <div className="md:col-span-1 flex flex-col gap-2">
             {sideNews.map((item, index) => (
-              <SideNews key={index} title={item.title} imageUrl={item.image} />
+              <SideNews key={index} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
             ))}
           </div>
         </div>
