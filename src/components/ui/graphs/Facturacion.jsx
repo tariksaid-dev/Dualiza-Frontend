@@ -78,5 +78,9 @@ const data = {
 };
 
 export default function Facturacion() {
-  return <Bar options={options} data={data} />;
+  return (
+    // <div className="w-96">
+      <Bar options={options} data={data} />
+    // </div>
+  )
 }

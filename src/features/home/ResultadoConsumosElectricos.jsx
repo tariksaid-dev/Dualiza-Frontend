@@ -1,3 +1,5 @@
+import Consumo from '@/components/ui/graphs/Consumo'
+import Facturacion from '@/components/ui/graphs/Facturacion'
 import React from 'react'
 
 const ResultadoConsumosElectricos = () => {
@@ -10,7 +12,7 @@ const ResultadoConsumosElectricos = () => {
             Los principales focos de consumo eléctrico están presentes en receptores como ordenadores, monitores, altavoces, impresoras, proyectores, equipos de iluminación, equipos de climatización y ventilación colectiva, split y radiadores eléctricos, principalmente.
           </p>
           <div className="aspect-auto w-full overflow-hidden rounded-lg flex justify-center items-center">
-            <img src="images/consumohlanz.webp" alt="" />
+            <Consumo/>
           </div>
 
         </div>
@@ -19,8 +21,8 @@ const ResultadoConsumosElectricos = () => {
             El consumo medio mensual se estima en  <span className='font-semibold text-orange-500'>11.123,75 kWh</span>, el coste medio mensual en <span className='font-semibold text-orange-500'>1.728,369 €</span>  y la ratio económica del precio de la energía, teniendo en cuenta los datos anteriores, sería de  <span className='font-semibold text-orange-500'>0,1553 €/kWh.</span>
           </p>
 
-          <div className="aspect-auto w-full overflow-hidden rounded-lg flex justify-center items-center m-2 md:mb-20">
-            <img src="images/facturacionhlanz.webp" alt="" />
+          <div className="aspect-auto w-1/2 overflow-hidden rounded-lg flex justify-center items-center m-2 md:mb-20">
+            <Facturacion/>
           </div>
 
         </div>
