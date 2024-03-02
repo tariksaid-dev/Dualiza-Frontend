@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Outlet></Outlet>
-        <DinamicHeader />
+        {/* <DinamicHeader />
         <Splash />
         <Proyecto />
         <section>
@@ -29,7 +29,7 @@ const Home = () => {
         <MejoraTuCentro />
         <Showcase />
         <Contacto2 />
-        <FooterEmpresas />
+        <FooterEmpresas /> */}
       </ThemeProvider>
     </>
   );

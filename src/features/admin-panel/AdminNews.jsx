@@ -113,11 +113,12 @@ const AdminNews = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center">Noticias</h1>
-      <div className="grid grid-cols-4 p-16 gap-4 ">
+    <div className="">
+      <hr />
+      <h1 className="text-3xl font-bold text-center m-8">Noticias</h1>
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4 mb-8 ">
         {noticiasPaginadas.map((noticia) => (
-          <div key={noticia.id} className="border p-4 flex flex-col">
+          <div key={noticia.id} className="border p-4 flex flex-col rounded-md">
             <img
               src="https://marketplace.canva.com/EAFrDm3ydqw/1/0/1600w/canva-presentaci%C3%B3n-noticias-telediario-corporativo-azul-rojo-Vh4S5Wt7FD4.jpg"
               alt={noticia.titulo}
