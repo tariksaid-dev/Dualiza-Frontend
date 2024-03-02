@@ -1,6 +1,6 @@
 // Showcase.jsx
 import React from "react";
-import noticia1 from '../../content/noticia1'
+import noticia1 from '../../content/noticia1.json';
 
 
 
@@ -28,7 +28,7 @@ const Showcase = () => {
         <ContentSection title="Noticias" id="showcase">
             <div className="max-w-6xl space-y-2">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {noticia1.slice(0, isMobile ? 3 : 12).map((site) => (
+                    {noticia1.slice(0, isMobile ? 3 : 9).map((site) => (
                         <ShowCaseCard key={site.title} site={site} />
                     ))}
                 </div>
