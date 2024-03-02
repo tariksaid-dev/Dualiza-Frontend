@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import supabase, { supabaseKey, supabaseUrl } from "./supabase";
+import supabase, { secretKey, supabaseKey, supabaseUrl } from "./supabase";
 
 export async function signup({ fullName, rol, email, password }) {
   const { data, error } = await supabase.auth.signUp({
@@ -41,12 +41,12 @@ export async function getCurrentUser() {
 }
 
 export async function getAllUsers() {
-  const supabaseAdmin = createClient(supabaseUrl, supabaseKey, {
+  const supabaseAdmin = createClient(supabaseUrl, secretKey, {
     auth: {
       autoRefreshToken: false,
-      persistSession: false
-    }
-  })
+      persistSession: false,
+    },
+  });
 
   const {
     data: { users },
