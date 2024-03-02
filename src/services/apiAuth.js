@@ -1,13 +1,13 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-export async function signup({ fullName, email, password }) {
+export async function signup({ fullName, rol, email, password }) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
         fullName,
-        avatar: "",
+        rol,
       },
     },
   });
@@ -39,8 +39,19 @@ export async function getCurrentUser() {
   return data?.user;
 }
 
+export async function getAllUsers() {
+  const {
+    data: { users },
+    error,
+  } = await supabase.auth.admin.listUsers();
+
+  if (error) throw new Error(error.message);
+
+  return users;
+}
+
 export async function logout() {
-  const {error} = await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
   if (error) throw new Error(error.message);
 }
 
