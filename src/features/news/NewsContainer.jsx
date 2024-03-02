@@ -107,7 +107,7 @@ const NewsContainer = () => {
 
   return (
     
-    <section className=" m-auto w-5/6 py-6 md:py-12 xl:py-16">
+    <section className=" m-auto h-full w-5/6 py-6 md:py-12 xl:py-16">
       <h1 className="text-center text-5xl font-bold p-4 mb-10">NOTICIAS DUALIZA</h1>
       <div className="container px-4 md:px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
@@ -118,7 +118,7 @@ const NewsContainer = () => {
             ))}
           </div>
           
-          <div className="md:col-span-1 flex flex-col gap-2">
+          <div className="col-span-1 flex lg:flex-col gap-2">
             {sideNews.map((item, index) => (
               <SideNews key={index} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
             ))}

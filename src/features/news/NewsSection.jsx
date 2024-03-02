@@ -8,7 +8,7 @@ const NewsSection = ({ news }) => {
         <div key={index} className="bg-gray-100 rounded-xl overflow-hidden">
           <img
             alt="Image"
-            className="object-cover w-full h-72 md:h-56 lg:h-72"
+            className="object-contain w-full h-72 md:h-56 lg:h-72"
             src={`${supabaseUrl}/storage/v1/object/public/news/${item.image}`}
           />
           <div className="p-4">
