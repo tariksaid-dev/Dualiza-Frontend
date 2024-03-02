@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { login } from '@/services/apiAuth';
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from './useLogin';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate();
+  const { login, isLoading, error } = useLogin();
+
 
   const handleUsernameChange = (e) => {
     setEmail(e.target.value);
@@ -24,10 +26,8 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data, error } = await login({ email, password });
-      if (error) throw new Error(error.message);
-      navigate('/admin');
-      return data;
+      await login({ email, password })
+
     } catch (error) {
       console.error(error);
       setLoginError(error.message);
@@ -54,6 +54,7 @@ const LoginForm = () => {
                     placeholder="Enter email"
                     value={email}
                     onChange={handleUsernameChange}
+                    autoComplete='email'
                   />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
 
@@ -69,12 +70,13 @@ const LoginForm = () => {
                 <div className="relative flex items-center">
                   <input
                     name="password"
-                     type={passwordVisible ? "text" : "password"}
+                    type={passwordVisible ? "text" : "password"}
                     required
                     className="w-full text-black text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
                     placeholder="Enter password"
                     value={password}
                     onChange={handlePasswordChange}
+                    autoComplete='current-password'
                   />
                   <svg onClick={togglePasswordVisibility} xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
                     <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
@@ -88,9 +90,9 @@ const LoginForm = () => {
                 </button>
               </div>
             </form>
-            {loginError && <div className="flex justify-center items-center mt-4  w-full text-white">
-              <p className='text-red-500 font-bold'>{loginError}</p>
-              </div>}
+            {error && <div className="flex justify-center items-center mt-4  w-full text-white">
+              <p className='text-red-500 font-bold'>{error.message}</p>
+            </div>}
           </div>
           <div className="md:h-full max-md:mt-10 bg-[#000842] rounded-xl lg:p-12 p-8">
             <img src="images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Negre.webp" className="w-full h-full object-contain" alt="login-image" />
