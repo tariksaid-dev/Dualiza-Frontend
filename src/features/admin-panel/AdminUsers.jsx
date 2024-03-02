@@ -130,6 +130,7 @@ export function DataTableDemo() {
 
   return (
     <div className="w-full">
+      <h1 className="text-3xl font-bold text-center">Usuarios</h1>
       <div className="flex items-center py-4 justify-between">
         <Input
           placeholder="Buscar por nombre..."

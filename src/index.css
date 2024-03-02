@@ -64,5 +64,9 @@
 
 .fixed-header {
   @apply fixed bottom-auto top-0;
-  @apply border-none
+  @apply border-none;
+}
+
+.btn-hidden {
+  @apply invisible;
 }
