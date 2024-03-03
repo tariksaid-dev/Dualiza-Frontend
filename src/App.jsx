@@ -10,6 +10,8 @@ import News from "./pages/News";
 import ErrorPage from "./pages/ErrorPage";
 import NewsDetails from "./pages/NewsDetails";
 
+import {  ThemeProvider } from "@/context/DarkModeContext";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -20,26 +22,28 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="admin"
-            element={
-              <ProtectedRoute redirectPath="login">
-                <Admin />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route index element={<Home />} />
-          <Route path="news" element={<News />} />
-          <Route path="news/:id" element={<NewsDetails />} />
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="admin"
+              element={
+                <ProtectedRoute redirectPath="login">
+                  <Admin />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route index element={<Home />} />
+            <Route path="news" element={<News />} />
+            <Route path="news/:id" element={<NewsDetails />} />
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

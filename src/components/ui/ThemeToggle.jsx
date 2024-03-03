@@ -13,7 +13,7 @@ export function ThemeToggle() {
       setTheme("light");
     } else {
       setTheme("dark");
-    }
+    } 
   }
 
   return (
