@@ -11,7 +11,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const CenterNews = ({ news, centro }) => {
   return (
-    <>
+    <div>
       <h2 className="text-4xl mb-4">{centro}</h2>
       <Separator className=" rounded bg-primary h-[2px] mb-4" />
       <Carousel
@@ -34,7 +34,7 @@ const CenterNews = ({ news, centro }) => {
               <div className="p-1 max-w-xl">
                 <NewsSection
                   id={item.id}
-                  created_at={item.created_at}
+                  created_at={item.created_at.split("T")[0]}
                   title={item.title}
                   imageUrl={item.image}
                   content={item.content}
@@ -46,7 +46,7 @@ const CenterNews = ({ news, centro }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-    </>
+    </div>
   );
 };
 
