@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import CustomButton from './CustomButton'
 import { ThemeProviderContext } from '@/context/DarkModeContext'
-import { getTextColorTitle } from '@/utils/themeHelpers'
+import { getBgButtonCards, getTextCards, getTextColorTitle } from '@/utils/themeHelpers'
 
 const MejoraTuCentro = () => {
     const { theme } = useContext(ThemeProviderContext)
@@ -19,9 +19,9 @@ const MejoraTuCentro = () => {
                         </p>
                     </div>
                     <div className="grid max-w-sm gap-4 mx-auto lg:max-w-none lg:grid-cols-3">
-                        <div className="border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
-                            <div className="space-y-2">
-                                <h3 className="text-xl font-bold">Guía de buenas prácticas</h3>
+                        <div className={`border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10 ${getTextCards(theme)}`}>
+                            <div className={"space-y-2"}>
+                                <h3 className={`text-xl font-bold `}>Guía de buenas prácticas</h3>
                                 <p className="text-sm text-gray-500 dark:text-gray-200">
                                     Descarga la guía para implementar buenas prácticas en tu centro.
                                 </p>
@@ -36,10 +36,10 @@ const MejoraTuCentro = () => {
                                     }}
                                     width={300}
                                 />
-                                <CustomButton text="Descargar" />
+                                <CustomButton  text="Descargar" />
                             </div>
                         </div>
-                        <div className="border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
+                        <div className={`border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10 ${getTextCards(theme)}`}>
                             <div className="space-y-2">
                                 <h3 className="text-xl font-bold">Documentos de interés</h3>
                                 <p className="text-sm text-gray-500 dark:text-gray-200">
@@ -59,7 +59,7 @@ const MejoraTuCentro = () => {
                                 <CustomButton className={'w-20'} onClick={handleClickVisit} text="Visitar" />
                             </div>
                         </div>
-                        <div className="border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
+                        <div className={`border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10 ${getTextCards(theme)}`}>
                             <div className="space-y-2">
                                 <h3 className="text-xl font-bold">Enlaces</h3>
                                 <p className="text-sm text-gray-500 dark:text-gray-200">Accede a recursos educativos en línea.</p>
