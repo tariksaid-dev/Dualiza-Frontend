@@ -19,7 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { signup } from "@/services/apiAuth";
+import { useSignup } from "./useSignup";
 
 export function DialogDemo() {
   const [nombre, setNombre] = useState("");
@@ -27,11 +27,10 @@ export function DialogDemo() {
   const [password, setPassword] = useState("");
   const [rol, setRol] = useState("");
 
+  const { signup, isLoading } = useSignup();
+
   const handleGuardar = () => {
-    const insert = async () => {
-      await signup({ nombre, rol, email, password });
-    };
-    insert();
+    signup({ nombre, rol, email, password });
     console.log("Usuario guardado");
   };
 

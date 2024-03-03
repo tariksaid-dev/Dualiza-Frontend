@@ -100,12 +100,12 @@ export function DataTableDemo() {
         const id = filterUser(email);
 
         const { deleteUser } = useDeleteUser(); 
-        const { updateUserRol } = useUpdateUserRol();
+        const { updateUser } = useUpdateUserRol();
 
         let rol = row.getValue("role");
 
         const onSave = async () => {
-          updateUserRol({ rol });
+          updateUser({ rol });
           console.log("Rol actualizado");
         }; 
 
@@ -184,14 +184,11 @@ export function DataTableDemo() {
     },
   });
 
-  const { getAllUsers } = useGetAllUsers();
+  const { users:userData } = useGetAllUsers();
   useEffect(() => {
-    const fetchData = () => {
-      const usersFetch = getAllUsers();
-      setUsers(usersFetch);
-    };
-    fetchData();
-  }, []); 
+    setUsers(userData);
+    console.log(userData);
+  }, [userData]); 
   
   return (
     users ? (<div className="w-full ">
