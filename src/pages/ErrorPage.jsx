@@ -1,7 +1,8 @@
+import FullPage from "@/components/ui/FullPage";
 import React from "react";
 
-const ErrorPage = () => {
-  return <div>ErrorPage</div>;
-};
+function ErrorPage() {
+  return <FullPage>Error 404</FullPage>;
+}
 
 export default ErrorPage;

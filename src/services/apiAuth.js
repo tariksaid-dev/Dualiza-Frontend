@@ -1,5 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
-import supabase, { supabaseKey, supabaseUrl } from "./supabase";
+import supabase, { supabaseAdmin } from "./supabase";
 
 export async function signup({ fullName, rol, email, password }) {
   const { data, error } = await supabase.auth.signUp({
@@ -41,13 +40,6 @@ export async function getCurrentUser() {
 }
 
 export async function getAllUsers() {
-  const supabaseAdmin = createClient(supabaseUrl, supabaseKey, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
-    }
-  })
-
   const {
     data: { users },
     error,
@@ -63,4 +55,21 @@ export async function logout() {
   if (error) throw new Error(error.message);
 }
 
-// export async function updateCurrentUser
+export async function updateUserRol({ id, newRole }) {
+  const { data, error } = await supabaseAdmin.auth.admin.updateUserById(
+    id,
+    {user_metadata: {role: newRole}}
+  );
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
+
+export async function deleteUser({ id }) {
+  const { data, error } = await supabaseAdmin.auth.admin.deleteUser(id);
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}

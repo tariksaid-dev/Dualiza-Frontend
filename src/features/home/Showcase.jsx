@@ -43,7 +43,7 @@ const Showcase = () => {
           
         </div>
         <p className="text-right text-sm">
-          <Link to={'/news'} className="text-primary" href="/news" target="_blank" rel="noreferer">
+          <Link to={'/news'} className="text-secondary-foreground dark:text-primary " href="/news" target="_blank" rel="noreferer">
             ...and more &rarr;
           </Link>
         </p>

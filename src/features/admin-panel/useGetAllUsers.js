@@ -1,13 +1,15 @@
-import { useMutation } from "@tanstack/react-query";
-import { getAllUsers as getAllUsersApi } from "../../services/apiAuth";
+import { getAllUsers as getAllUsersApi } from "@/services/apiAuth";
+import { useQuery } from "@tanstack/react-query";
 
 export function useGetAllUsers() {
-  const { mutate: getAllUsers, isLoading } = useMutation({
-    mutationFn: getAllUsersApi,
-    onSuccess: () =>
-      console.log("Todos los usuarios se muestran correctamente"),
-    onError: (err) => console.error(err.message),
+  const {
+    isLoading,
+    data: users,
+    error,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: getAllUsersApi,
   });
 
-  return { getAllUsers, isLoading };
+  return { isLoading, users, error };
 }
