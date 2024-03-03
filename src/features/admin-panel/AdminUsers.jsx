@@ -54,14 +54,19 @@ export function DataTableDemo() {
   const [rowSelection, setRowSelection] = useState({});
   const [users, setUsers] = useState([]);
 
-  const filterUser = (email) => {
+  const findUserIdByEmail = (email) => {
     const filtered = users.filter((user) => user.email === email);
     return filtered[0].id;
   };
 
+  const findUserRolByEmail = (email) => {
+    const filtered = users.filter((user) => user.email === email);
+    return filtered[0].user_metadata.rol;
+  };
+
   const columns = [
     {
-      accessorKey: "nombre",
+      accessorKey: "email",
       // Aqui en header es donde cambia el nombre de la columna
       header: ({ column }) => {
         return (
@@ -69,27 +74,20 @@ export function DataTableDemo() {
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Nombre
+            Email
             <CaretSortIcon className="ml-2 h-4 w-4" />
           </Button>
         );
       },
       cell: ({ row }) => (
-        <div className="capitalize">{row.getValue("email")}</div>
-      ),
-    },
-    {
-      accessorKey: "email",
-      header: "Email",
-      cell: ({ row }) => (
-        <div className="lowercase">{row.getValue("email")}</div>
+        <div className="">{row.getValue("email")}</div>
       ),
     },
     {
       accessorKey: "role",
       header: () => <div className="text-right">Rol</div>,
       cell: ({ row }) => (
-        <div className="text-right font-medium">{row.getValue("role")}</div>
+        <div className="text-right font-medium">{findUserRolByEmail(row.getValue("email")) ?? "Sin rol" }</div>
       ),
     },
     {
@@ -97,7 +95,7 @@ export function DataTableDemo() {
       enableHiding: false,
       cell: ({ row }) => {
         const email = row.getValue("email");
-        const id = filterUser(email);
+        const id = findUserIdByEmail(email);
 
         const { deleteUser } = useDeleteUser(); 
         const { updateUser } = useUpdateUserRol();
@@ -105,7 +103,7 @@ export function DataTableDemo() {
         let rol = row.getValue("role");
 
         const onSave = async () => {
-          updateUser({ rol });
+          updateUser({ id,rol });
           console.log("Rol actualizado");
         }; 
 
@@ -142,7 +140,7 @@ export function DataTableDemo() {
                   </Label>
                   <Select onValueChange={(e) => (rol = e)}>
                     <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder={rol} />
+                      <SelectValue placeholder={findUserRolByEmail(email)} />
                     </SelectTrigger>
                     <SelectContent defaultValue={rol}>
                       <SelectGroup>
@@ -195,10 +193,10 @@ export function DataTableDemo() {
     <h1 className="text-3xl font-bold text-center">Usuarios</h1>
     <div className="flex items-center py-4 justify-between">
       <Input
-        placeholder="Buscar por nombre..."
-        value={table.getColumn("nombre")?.getFilterValue() ?? ""}
+        placeholder="Buscar por email..."
+        value={table.getColumn("email")?.getFilterValue() ?? ""}
         onChange={(event) =>
-          table.getColumn("nombre")?.setFilterValue(event.target.value)
+          table.getColumn("email")?.setFilterValue(event.target.value)
         }
         className="max-w-sm"
       />

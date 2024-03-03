@@ -8,6 +8,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useDeleteNew } from "./useDeleteNew";
 
 const noticias = [
   {
@@ -85,8 +86,9 @@ const noticiasPorPagina = 4;
 
 const AdminNews = () => {
   const [paginaActual, setPaginaActual] = useState(1);
-
   const totalPaginas = Math.ceil(noticias.length / noticiasPorPagina);
+
+  const { deleteNew } = useDeleteNew();
 
   const handlePaginaAnterior = () => {
     if (paginaActual > 1) {
@@ -104,8 +106,9 @@ const AdminNews = () => {
   const endIndex = startIndex + noticiasPorPagina;
   const noticiasPaginadas = noticias.slice(startIndex, endIndex);
 
-  const handleDelete = () => {
-    console.log("Eliminar noticia");
+  const handleDelete = (id) => {
+    deleteNew(id);
+    console.log("Noticia eliminada correctamente");
   };
 
   const handleEditar = () => {
@@ -138,7 +141,7 @@ const AdminNews = () => {
                 Editar
               </button>
               <button
-                onClick={handleDelete}
+                onClick={() => deleteNew(noticia.id)}
                 className="bg-destructive p-2 rounded-md"
               >
                 Eliminar
