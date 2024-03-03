@@ -21,7 +21,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -44,7 +43,9 @@ import {
 } from "@/components/ui/table";
 import { DialogDemo } from "./AdminAddUserModal";
 import Spinner from "@/components/ui/Spinner";
-import { getAllUsers, updateUserRol } from "@/services/apiAuth";
+import { useDeleteUser } from "./useDeleteUser";
+import { useGetAllUsers } from "./useGetAllUsers";
+import { useUpdateUserRol } from "./useUpdateUserRol";
 
 export function DataTableDemo() {
   const [sorting, setSorting] = useState([]);
@@ -52,6 +53,11 @@ export function DataTableDemo() {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [users, setUsers] = useState([]);
+
+  const filterUser = (email) => {
+    const filtered = users.filter((user) => user.email === email);
+    return filtered[0].id;
+  };
 
   const columns = [
     {
@@ -90,14 +96,23 @@ export function DataTableDemo() {
       id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
-        
+        const email = row.getValue("email");
+        const id = filterUser(email);
+
+        const { deleteUser } = useDeleteUser(); 
+        const { updateUserRol } = useUpdateUserRol();
+
         let rol = row.getValue("role");
 
         const onSave = async () => {
-          console.log(rol);
-          await updateUserRol({ rol });
+          updateUserRol({ rol });
           console.log("Rol actualizado");
         }; 
+
+        const onDelete = () => {
+          deleteUser({ id });
+          console.log("Usuario eliminado");
+        };
 
         return (
           <Dialog>
@@ -112,7 +127,7 @@ export function DataTableDemo() {
                 <DialogTrigger asChild>
                   <DropdownMenuItem>Editar Usuario</DropdownMenuItem>
                 </DialogTrigger>
-                <DropdownMenuItem>Eliminar Usuario</DropdownMenuItem>
+                <DropdownMenuItem onClick={onDelete}>Eliminar Usuario</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -169,9 +184,10 @@ export function DataTableDemo() {
     },
   });
 
+  const { getAllUsers } = useGetAllUsers();
   useEffect(() => {
-    const fetchData = async () => {
-      const usersFetch = await getAllUsers();
+    const fetchData = () => {
+      const usersFetch = getAllUsers();
       setUsers(usersFetch);
     };
     fetchData();
