@@ -26,15 +26,23 @@ export function DialogDemo() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [open, setOpen] = useState(false);
 
   const { signup, isLoading } = useSignup();
 
   const handleGuardar = () => {
     signup({ nombre, role, email, password });
+    try {
+      setTimeout(() => {
+        setOpen(false);
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="bg-primary">Añadir usuario</Button>
       </DialogTrigger>
