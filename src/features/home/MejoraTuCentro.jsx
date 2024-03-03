@@ -2,21 +2,24 @@ import React from 'react'
 import CustomButton from './CustomButton'
 
 const MejoraTuCentro = () => {
+    const handleClickVisit = () => {
+        window.open("https://www.ieshlanz.es/documentos/", "_blank")
+    }
     return (
         <section className="w-full py-12 md:py-24 lg:py-32 max-w-7xl mx-auto">
             <div className="container px-4 md:px-6">
                 <div className="space-y-8 text-center">
                     <div className="space-y-2">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Mejora tu centro</h2>
-                        <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-skin-orange-lanze">Mejora tu centro</h2>
+                        <p className=" text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-200 text-pretty ">
                             Accede a los recursos que te ayudarán a mejorar la calidad de tu centro educativo.
                         </p>
                     </div>
                     <div className="grid max-w-sm gap-4 mx-auto lg:max-w-none lg:grid-cols-3">
-                        <div className="border p-4 rounded-lg border-[#1d1b33] transition-colors hover:bg-[#1d1b33] hover:bg-opacity-10">
+                        <div className="border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
                             <div className="space-y-2">
                                 <h3 className="text-xl font-bold">Guía de buenas prácticas</h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400">
+                                <p className="text-sm text-gray-500 dark:text-gray-200">
                                     Descarga la guía para implementar buenas prácticas en tu centro.
                                 </p>
                                 <img
@@ -33,10 +36,10 @@ const MejoraTuCentro = () => {
                                 <CustomButton text="Descargar" />
                             </div>
                         </div>
-                        <div className="border p-4 rounded-lg border-[#1d1b33] transition-colors hover:bg-[#1d1b33] hover:bg-opacity-10">
+                        <div className="border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
                             <div className="space-y-2">
                                 <h3 className="text-xl font-bold">Documentos de interés</h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400">
+                                <p className="text-sm text-gray-500 dark:text-gray-200">
                                     Encuentra documentos útiles para la gestión escolar.
                                 </p>
                                 <img
@@ -50,13 +53,13 @@ const MejoraTuCentro = () => {
                                     }}
                                     width={200}
                                 />
-                                <CustomButton text="Descargar" />
+                                <CustomButton className={'w-20'} onClick={handleClickVisit} text="Visitar" />
                             </div>
                         </div>
-                        <div className="border p-4 rounded-lg border-[#1d1b33] transition-colors hover:bg-[#1d1b33] hover:bg-opacity-10">
+                        <div className="border p-4 rounded-lg border-muted-foreground transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
                             <div className="space-y-2">
                                 <h3 className="text-xl font-bold">Enlaces</h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400">Accede a recursos educativos en línea.</p>
+                                <p className="text-sm text-gray-500 dark:text-gray-200">Accede a recursos educativos en línea.</p>
                                 <img
                                     alt="Enlaces"
                                     className="mx-auto my-4"
@@ -68,7 +71,7 @@ const MejoraTuCentro = () => {
                                     }}
                                     width={200}
                                 />
-                                <CustomButton text="Descargar" />
+                                <CustomButton className={'w-20'} onClick={handleClickVisit} text="Visitar" />
                             </div>
                         </div>
                     </div>

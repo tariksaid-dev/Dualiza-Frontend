@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CustomButton = ({ text, onClick, className = '', ...props }) => {
+const CustomButton = ({ text, onClick, className, ...props }) => {
     return (
         <button 
-            className={`bg-orange-500 p-2 rounded-md hover:bg-orange-600 ${className}`} 
+            className={`bg-skin-orange-lanze p-2 rounded-md hover:bg-skin-orange-ieshlanz ${className}`} 
             onClick={onClick} 
             {...props}
         >
