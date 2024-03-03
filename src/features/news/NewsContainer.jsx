@@ -4,6 +4,13 @@ import SideNews from "./SideNews";
 import NewsSection from "./NewsSection";
 import { useNews } from "./useNews";
 import Spinner from "@/components/ui/Spinner";
+import { Separator } from "@radix-ui/react-dropdown-menu";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay"
+import HlanzNews from "./HlanzNews";
+import VirgenNews from "./VirgenNews";
+import AlbaytarNews from "./AlbaytarNews";
+
 
 const NewsContainer = () => {
 
@@ -96,24 +103,30 @@ const NewsContainer = () => {
 
   
   const { isLoading, error, news } = useNews();
+  console.log(news);
   
   if(isLoading) return <Spinner></Spinner>
   
 
   const sortedNews = [...newsData2].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-  const mainNews = sortedNews[0] ? [sortedNews[0]] : [];
+
+  const mainNew = sortedNews[0] ? [sortedNews[0]] : [];
   const sideNews = sortedNews.slice(1, 3);
-  const otherNews = sortedNews.slice(3);
+  const otherNews = sortedNews.slice(3, 6);
+
+  const hlanzNews = sortedNews.filter(item => item.categoria === "HLANZ");
+  const virgenNews = sortedNews.filter(item => item.categoria === "VIRGENG");
+  const albaytarNews = sortedNews.filter(item => item.categoria === "ALBAYTAR");
 
   return (
     
-    <section className=" m-auto h-full w-5/6 py-6 md:py-12 xl:py-16">
+    <section className="m-auto h-full w-5/6 py-6 md:py-12 xl:py-16">
       <h1 className="text-center text-5xl font-bold p-4 mb-10">NOTICIAS DUALIZA</h1>
       <div className="container px-4 md:px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
 
           <div className="grid sm:row-span-2 md:col-span-2 gap-4">
-            {mainNews.map((item, index) => (
+            {mainNew.map((item, index) => (
               <MainNews key={index} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
             ))}
           </div>
@@ -124,7 +137,46 @@ const NewsContainer = () => {
             ))}
           </div>
         </div>
-        <NewsSection news={otherNews} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+          {otherNews.map((item, index) => (
+            <NewsSection key={index} content={item.content} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+          ))}
+        </div>
+        
+        <div className="flex flex-col gap-10">
+
+          <HlanzNews news={sortedNews}/>
+
+          <VirgenNews news={sortedNews}/>
+
+          <AlbaytarNews news={sortedNews}/>
+
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+
+            plugins={[
+              Autoplay({
+                delay: 5000,
+              }),
+            ]}
+          >
+            <CarouselContent>
+              {otherNews.map((item, index) => (
+                <>
+            <CarouselItem className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <NewsSection key={index} content={item.content} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+            </CarouselItem>
+                </>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
+        </div>
       </div>
     </section>
   );
