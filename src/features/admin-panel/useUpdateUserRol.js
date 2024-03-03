@@ -8,7 +8,6 @@ export function useUpdateUserRol() {
     mutationFn: ({id, rol}) => updateUserRol(id, rol),
     onSuccess: () => {
       console.log("User role successfully pudated");
-      // check cache
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
     onError: (err) => console.error(err.message),
