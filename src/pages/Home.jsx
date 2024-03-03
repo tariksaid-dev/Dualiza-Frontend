@@ -21,11 +21,9 @@ const Home = () => {
         {/* <DinamicHeader />
         <Splash />
         <Proyecto />
-        <section>
-          <ResultadoInstalacionFotovoltaica />
-          <ResultadoConsumosElectricos />
-          <ResultadoInstalacionClimatizacion />
-        </section>
+        <ResultadoInstalacionFotovoltaica />
+        <ResultadoConsumosElectricos />
+        <ResultadoInstalacionClimatizacion />
         <MejoraTuCentro />
         <Showcase />
         <Contacto2 />

@@ -9,7 +9,7 @@ const ShowCaseCard = ({ site }) => {
         <img
           className="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
           src={`${supabaseUrl}/storage/v1/object/public/news/${site.image}`}
-          widths={100}
+          widths={[300, 600, 900, 1200, 1500, 2000]}
           alt={`A screenshot of ${site.url}`}
         />
         <figcaption className="absolute inset-0">
