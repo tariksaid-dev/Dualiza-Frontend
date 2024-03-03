@@ -44,7 +44,7 @@ export function DialogDemo() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-primary">Añadir usuario</Button>
+        <Button>Añadir usuario</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

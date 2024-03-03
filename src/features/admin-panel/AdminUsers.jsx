@@ -124,7 +124,7 @@ export function DataTableDemo() {
         };
 
         return (
-          <Dialog open={open} onOpenChange={setOpen} >
+          <Dialog  open={open} onOpenChange={setOpen} >
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-8 w-8 p-0">
@@ -141,10 +141,10 @@ export function DataTableDemo() {
             </DropdownMenu>
 
             <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
+              <DialogHeader >
                 <DialogTitle>Editar Usuario</DialogTitle>
               </DialogHeader>
-               <div className="grid gap-4 py-4">
+               <div className="grid gap-4 py-4 ">
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="rol" className="text-right">
                     Rol
