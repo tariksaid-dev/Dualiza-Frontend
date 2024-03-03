@@ -7,8 +7,8 @@ const Contacto2 = () => {
     return (
         <section className="flex flex-col items-center justify-center h-screen max-w-7xl mx-auto">
 
-            <h1 className={`text-6xl font-bold text-center ${getTextColorTitle(theme)}`}>Contacto</h1>
-            <h2 className="text-xl mt-4 text-center">Deja tu mensaje aquí</h2>
+            <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-center ${getTextColorTitle(theme)}`}>Contacto</h1>
+            <h2 className=" md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4 text-center">Deja tu mensaje aquí</h2>
 
             <div className="w-full max-w-xl space-y-4 lg:w-1/2 lg:pr-6 xl:pr-0 border border-skin-dark-blue shadow-2xl rounded-lg m-4">
 
