@@ -1,11 +1,27 @@
-import { Navigate, Outlet } from "react-router-dom";
+import FullPage from "@/components/ui/FullPage";
+import Spinner from "@/components/ui/Spinner";
+import { useUser } from "@/features/login-form/useUser";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProtectedRoute = ({ isActive, redirectPath }) => {
-  if (!isActive) {
-    return <Navigate to={redirectPath} replace></Navigate>;
-  }
+function ProtectedRoute({ children }) {
+  const navigate = useNavigate();
 
-  return <Outlet />;
-};
+  const { isLoading, userRole } = useUser();
+
+  useEffect(() => {
+    console.log(userRole)
+    if (userRole !== "authenticated" && !isLoading) navigate("/login");
+  }, [navigate, isLoading, userRole]);
+
+  if (isLoading)
+    return (
+      <FullPage>
+        <Spinner />
+      </FullPage>
+    );
+
+  if (userRole) return children;
+}
 
 export default ProtectedRoute;

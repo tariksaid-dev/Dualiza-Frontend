@@ -1,4 +1,4 @@
-import { getAllUsers as getAllUsersApi } from "../../services/apiAuth";
+import { getAllUsers as getAllUsersApi } from "@/services/apiAuth";
 import { useQuery } from "@tanstack/react-query";
 
 export function useGetAllUsers() {

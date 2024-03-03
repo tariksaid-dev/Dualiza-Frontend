@@ -5,11 +5,11 @@ export function useUpdateUserRol() {
   const queryClient = useQueryClient();
 
   const { mutate: updateUser, isLoading: isUpdating } = useMutation({
-    mutationFn: updateUserRol,
-    onSuccess: ({ user }) => {
+    mutationFn: ({id, rol}) => updateUserRol(id, rol),
+    onSuccess: () => {
       console.log("User role successfully pudated");
       // check cache
-      queryClient.setQueryData(["user"], user);
+      queryClient.invalidateQueries({ queryKey: ["users"] });
     },
     onError: (err) => console.error(err.message),
   });
