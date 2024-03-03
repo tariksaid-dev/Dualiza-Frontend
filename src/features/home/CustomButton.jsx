@@ -1,10 +1,13 @@
-import React from 'react';
+import { ThemeProviderContext } from '@/context/DarkModeContext';
+import { getBgButtonCards } from '@/utils/themeHelpers';
+import React, { useContext } from 'react';
 
-const CustomButton = ({ text, onClick, className = '', ...props }) => {
+const CustomButton = ({ text, onClick, className, ...props }) => {
+    const { theme } = useContext(ThemeProviderContext);
     return (
-        <button 
-            className={`bg-orange-500 p-2 rounded-md hover:bg-orange-600 ${className}`} 
-            onClick={onClick} 
+        <button
+            className={` p-2 rounded-md ${getBgButtonCards(theme)} ${className}`}
+            onClick={onClick}
             {...props}
         >
             {text}
