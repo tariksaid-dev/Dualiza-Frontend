@@ -1,7 +1,8 @@
+import NewsContainer from "@/features/news/NewsContainer";
 import React from "react";
 
 const News = () => {
-  return <div>News</div>;
+  return <NewsContainer/>;
 };
 
 export default News;
