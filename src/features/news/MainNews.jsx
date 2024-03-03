@@ -1,9 +1,10 @@
 import { supabaseUrl } from "@/services/supabase";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const MainNews = ({ created_at, title, imageUrl }) => {
+const MainNews = ({ id, created_at, title, imageUrl }) => {
   return (
-    <div className="aspect-[16/9] rounded-xl overflow-hidden relative">
+    <Link to={`${id}`} className="aspect-[16/9] rounded-xl overflow-hidden relative">
       <img
         alt="Image"
         className="object-cover w-full h-full"
@@ -17,7 +18,7 @@ const MainNews = ({ created_at, title, imageUrl }) => {
         <div className="text-sm font-semibold text-gray-50 mb-1">{created_at}</div>
         <h2 className="text-3xl font-bold tracking-tighter text-gray-100/90">{title}</h2>
       </div>
-    </div>
+    </Link>
   );
 };
 

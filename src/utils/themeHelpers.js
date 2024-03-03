@@ -43,3 +43,9 @@ export const getTextCards = (theme) => {
 export const getBgButtonCards = (theme) => {
   return theme === "light" ? "bg-secondary-foreground text-white" : "bg-skin-orange-lanze text-white hover:bg-skin-orange-ieshlanz";
 };
+
+export const getNewsCard = (theme) => {
+  return theme === "light"
+  ? "bg-slate-200"
+  : "bg-card";
+}

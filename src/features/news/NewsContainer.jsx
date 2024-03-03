@@ -113,6 +113,8 @@ const NewsContainer = () => {
   const virgenNews = sortedNews.filter(item => item.categoria === "VIRGENG");
   const albaytarNews = sortedNews.filter(item => item.categoria === "ALBAYTAR");
 
+  sideNews.map((item) => {console.log(item);})
+
   return (
     
     <section className="m-auto h-full w-5/6 py-6 md:py-12 xl:py-16">
@@ -121,20 +123,20 @@ const NewsContainer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20 justify-center">
 
           <div className="grid sm:row-span-2 md:col-span-2 gap-4">
-            {mainNew.map((item, index) => (
-              <MainNews key={index} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+            {mainNew.map((item) => (
+              <MainNews key={item.id} id={item.id} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
             ))}
           </div>
           
           <div className="lg:col-span-1 flex md:col-span-2 lg:flex-col gap-2">
-            {sideNews.map((item, index) => (
-              <SideNews key={index} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
-            ))}
+            {sideNews.map((item) => (
+              <SideNews key={item.id} id={item.id} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+            )) }
           </div>
         </div>
         <div className="gap-[1.2rem] grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mb-10">
-          {otherNews.map((item, index) => (
-            <NewsSection key={index} content={item.content} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+          {otherNews.map((item) => (
+            <NewsSection key={item.id} id={item.id} content={item.content} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
           ))}
         </div>
         
