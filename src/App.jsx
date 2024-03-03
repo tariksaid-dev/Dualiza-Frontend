@@ -8,6 +8,7 @@ import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import News from "./pages/News";
 import ErrorPage from "./pages/ErrorPage";
+import NewsDetails from "./pages/NewsDetails";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,7 +34,7 @@ function App() {
           ></Route>
           <Route index element={<Home />} />
           <Route path="news" element={<News />} />
-          <Route path="news/:id" element={<News />} />
+          <Route path="news/:id" element={<NewsDetails />} />
           <Route path="login" element={<Login />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

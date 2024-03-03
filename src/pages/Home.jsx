@@ -1,5 +1,5 @@
 import MainLayout from "@/components/layouts/MainLayout";
-import DinamicHeader from "@/components/ui/Footer";
+import DinamicHeader from "@/components/ui/DinamicHeader";
 import { ThemeProvider } from "@/context/DarkModeContext";
 import Contacto2 from "@/features/home/Contacto2";
 import FooterEmpresas from "@/features/home/FooterEmpresas";

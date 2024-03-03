@@ -7,7 +7,8 @@ export function useUpdateUserRol() {
   const { mutate: updateUser, isLoading: isUpdating } = useMutation({
     mutationFn: ({ id, newRole }) => updateUserRol({ id, newRole }),
     onSuccess: () => {
-      console.log("User role successfully updated");
+      console.log("User role successfully pudated");
+      queryClient.invalidateQueries({ queryKey: ["users"] });
     },
     onError: (err) => console.error(err.message),
   });
