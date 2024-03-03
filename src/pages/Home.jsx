@@ -1,4 +1,3 @@
-import MainLayout from "@/components/layouts/MainLayout";
 import DinamicHeader from "@/components/ui/DinamicHeader";
 import { ThemeProvider } from "@/context/DarkModeContext";
 import Contacto2 from "@/features/home/Contacto2";

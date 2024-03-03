@@ -15,14 +15,9 @@ function Splash() {
       <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40">
       </div>
       <div className="relative grid h-full place-items-center sm:grid-cols-2">
-        <h2
-          className="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end"
-        >
-    
+        <h2 className="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end">
           <img className='md:size-64 text-white size-56' src={logoImagePath} alt="logo" />
-          <div
-            className="gradient-text text-center font-extrabold tracking-tighter text-8xl"
-          >
+          <div className="gradient-text text-center font-extrabold tracking-tighter text-8xl">
             <p className='gradient-text text-7xl md:text-8xl'> Dualiza
               <br /> proyecto
               <br /> Eco-Friendly!</p>

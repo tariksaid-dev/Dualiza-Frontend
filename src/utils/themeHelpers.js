@@ -51,3 +51,6 @@ export const getBgLoginForm = (theme) => {
 export const getBannerLoginForm = (theme) => {
   return theme === "light" ? "bg-[#71727e]" : "bg-skin-dark-blue";
 }
+export const getNewsCard = (theme) => {
+  return theme === "light" ? "border-secondary-foreground" : "border-skin-dark-blue";
+}
