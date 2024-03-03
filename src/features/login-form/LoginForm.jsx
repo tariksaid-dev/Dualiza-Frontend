@@ -13,8 +13,8 @@ const LoginForm = () => {
   const { login, isLoading, error } = useLogin();
 
   const logoImagePath = theme === 'dark'
-  ? "images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Negre.webp"
-  : "images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Blanc.webp";
+    ? "images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Negre.webp"
+    : "images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Blanc.webp";
 
   const handleUsernameChange = (e) => {
     setEmail(e.target.value);
@@ -28,15 +28,12 @@ const LoginForm = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      await login({ email, password })
-   
+      login( email, password )
     } catch (error) {
       console.error(error);
-  
-
     }
   };
 
@@ -101,7 +98,7 @@ const LoginForm = () => {
             {error && <div className="flex justify-center items-center mt-4  w-full text-white">
               <p className='text-red-500 font-bold'>{error.message}</p>
             </div>}
-         
+
           </div>
           <div className={`md:h-full max-md:mt-10 ${getBannerLoginForm(theme)} rounded-xl lg:p-12 p-8`}>
             <img src={logoImagePath} className="w-full h-full object-contain" alt="login-image" />
