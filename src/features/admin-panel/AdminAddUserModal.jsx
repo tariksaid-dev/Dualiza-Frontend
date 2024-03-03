@@ -25,12 +25,12 @@ export function DialogDemo() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rol, setRol] = useState("");
+  const [role, setRole] = useState("");
 
   const { signup, isLoading } = useSignup();
 
   const handleGuardar = () => {
-    signup({ nombre, rol, email, password });
+    signup({ nombre, role, email, password });
   };
 
   return (
@@ -75,10 +75,10 @@ export function DialogDemo() {
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="rol" className="text-right">
+            <Label htmlFor="role" className="text-right">
               Rol
             </Label>
-            <Select onValueChange={(e) => setRol(e)}>
+            <Select onValueChange={(e) => setRole(e)}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Elige un rol" />
               </SelectTrigger>

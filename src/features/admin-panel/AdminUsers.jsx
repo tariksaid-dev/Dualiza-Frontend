@@ -61,7 +61,7 @@ export function DataTableDemo() {
 
   const findUserRolByEmail = (email) => {
     const filtered = userData.filter((user) => user.email === email);
-    return filtered[0].user_metadata.rol;
+    return filtered[0].user_metadata.role;
   };
 
   const columns = [
@@ -95,6 +95,7 @@ export function DataTableDemo() {
       enableHiding: false,
       cell: ({ row }) => {
         const email = row.getValue("email");
+        const id = findUserIdByEmail(email);
 
         const { deleteUser } = useDeleteUser(); 
         const { updateUser } = useUpdateUserRol();
@@ -102,7 +103,7 @@ export function DataTableDemo() {
         let rol = row.getValue("role");
 
         const onSave = () => {
-          const id = findUserIdByEmail(email); // Obtener el ID
+          // const id2 = findUserIdByEmail(email); // Obtener el ID
           const newRole = rol; // Obtener el nuevo rol
           updateUser({ id, newRole }); // Llamar a updateUser con id y newRole
           console.log("Rol actualizado");
