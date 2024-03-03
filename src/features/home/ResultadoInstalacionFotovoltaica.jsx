@@ -1,11 +1,14 @@
-import React from 'react'
+import { ThemeProviderContext } from '@/context/DarkModeContext'
+import { getTextColorTitle } from '@/utils/themeHelpers'
+import React, { useContext } from 'react'
 
 const ResultadoInstalacionFotovoltaica = () => {
+  const { theme } = useContext(ThemeProviderContext)
   return (
     <div className="w-full flex items-center justify-center py-12 md:py-24 lg:py-32 h-screen  ">
       <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
         <div className="space-y-3 flex flex-col justify-center items-center gap-2 py-4">
-          <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-balance text-skin-orange-lanze">
+          <h3 className={`text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-balance ${getTextColorTitle(theme)}`}>
             Planta fotovoltaica educativa "Albaytar" 1.380Wp.
           </h3>
           <p className="md:text-xl/relaxed dark:text-gray-200 text-sm ">

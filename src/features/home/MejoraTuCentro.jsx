@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomButton from './CustomButton'
+import { ThemeProviderContext } from '@/context/DarkModeContext'
+import { getTextColorTitle } from '@/utils/themeHelpers'
 
 const MejoraTuCentro = () => {
+    const { theme } = useContext(ThemeProviderContext)
     const handleClickVisit = () => {
         window.open("https://www.ieshlanz.es/documentos/", "_blank")
     }
@@ -10,7 +13,7 @@ const MejoraTuCentro = () => {
             <div className="container px-4 md:px-6">
                 <div className="space-y-8 text-center">
                     <div className="space-y-2">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-skin-orange-lanze">Mejora tu centro</h2>
+                        <h2 className={`text-3xl font-bold tracking-tighter sm:text-5xl ${getTextColorTitle(theme)}`}>Mejora tu centro</h2>
                         <p className=" text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-200 text-pretty ">
                             Accede a los recursos que te ayudarán a mejorar la calidad de tu centro educativo.
                         </p>
