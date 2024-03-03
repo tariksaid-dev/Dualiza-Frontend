@@ -3,14 +3,13 @@ import React from "react";
 
 const NewsSection = ({ created_at, title, imageUrl, content }) => {
   return (
-    <div className="bg-gray-100 rounded-xl overflow-hidden w-full max-w-xl !important">
-
+    <div className="bg-gray-100 rounded-xl overflow-hidden max-w-96">
       <img
         alt="Image"
         className="object-contain w-full h-72 md:h-56 lg:h-72"
         src={`${supabaseUrl}/storage/v1/object/public/news/${imageUrl}`}
       />
-      <div className="p-4">
+      <div className="p-4 max-h-52 min-h-52">
         <div className="text-sm font-semibold text-slate-400 mb-1">
           {created_at}
         </div>
