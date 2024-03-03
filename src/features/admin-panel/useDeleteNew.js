@@ -7,7 +7,7 @@ export function useDeleteNew() {
   const { isLoading: isDeleting, mutate: deleteNew } = useMutation({
     mutationFn: deleteNewApi,
     onSuccess: () => {
-      console.log("Noticia eliminada correctamente");
+      console.log("New successfully deleted");
       queryClient.invalidateQueries({
         queryKey: ["news"],
       });
