@@ -46,7 +46,7 @@ const options = {
 };
 
 const Consumo = () => (
-  <div>
+  <div className="w-96">
     <Pie data={data} options={options} />
   </div>
 );
