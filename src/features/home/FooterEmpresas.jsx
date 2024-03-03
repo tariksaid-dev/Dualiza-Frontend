@@ -32,7 +32,7 @@ const FooterEmpresas = () => {
                         <a className="text-sm hover:underline" href="#">
                             Terms of Service
                         </a>
-                        <p className="text-sm"><span className='font-bold'>Creators:</span> <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/PepeRivera04">Pepe Rivera</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/NuMeRo-999">Pedro Vilchez</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/tariksaid-dev">Tarik Said</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/RogerCiv">Roger Civantos</a></p>
+                        <p className="text-sm"><span className='font-bold'>Creators:</span> <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze  ' href="https://github.com/PepeRivera04">Pepe Rivera</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/NuMeRo-999">Pedro Vilchez</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/tariksaid-dev">Tarik Said</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/RogerCiv">Roger Civantos</a></p>
                     </div>
                 </div>
             </div>

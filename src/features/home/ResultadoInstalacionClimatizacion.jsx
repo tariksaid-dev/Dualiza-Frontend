@@ -6,12 +6,12 @@ const ResultadoInstalacionClimatizacion = () => {
     <div className="container grid gap-6 px-4 md:px-6 items-center space-y-0.5">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <h2 className="text-3xl text-balance font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900 dark:text-gray-50">
+          <h2 className="text-3xl text-balance text-center font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900 dark:text-gray-50 md:text-start">
             Instalaciones de
             <br />
-            climatización{"\n                      "}
+            climatización{"\n"}
           </h2>
-          <p className="max-w-[900px] text-gray-500 md:text-lg/relaxed dark:text-gray-400 text-pretty">
+          <p className="max-w-[900px] text-gray-500 md:text-lg/relaxed dark:text-gray-200 text-pretty">
             Garantizamos el confort en los centros educativos con sistemas de climatización eficientes que crean
             entornos de aprendizaje óptimos. Nuestros sistemas están diseñados para mantener una temperatura ideal en
             todas las estaciones, asegurando un ambiente propicio para el estudio y la concentración de los
