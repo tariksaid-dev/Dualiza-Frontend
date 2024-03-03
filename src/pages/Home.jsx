@@ -27,6 +27,7 @@ const Home = () => {
         <MejoraTuCentro />
         <Showcase />
         <Contacto2 />
+    
         <FooterEmpresas />
       </ThemeProvider>
     </>

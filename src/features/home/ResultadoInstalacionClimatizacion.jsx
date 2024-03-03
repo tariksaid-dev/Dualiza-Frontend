@@ -21,7 +21,7 @@ const ResultadoInstalacionClimatizacion = () => {
         <div className="relative group overflow-hidden rounded-xl shadow-lg">
           <img
             alt="Image"
-            className="object-cover w-full h-64 md:h-auto"
+            className="object-cover w-full h-72 md:h-auto  hover:transform hover:scale-110 transition-transform duration-1000 ease-in-out group-hover:filter group-hover:brightness-125"
             height="400"
             src="images/climatizacion.webp"
             style={{
