@@ -66,7 +66,7 @@ export async function updateUserRol({ rol }) {
 }
 
 export async function deleteUser({ id }) {
-  const { data, error } = await supabase.auth.admin.deleteUser(id);
+  const { data, error } = await supabaseAdmin.auth.admin.deleteUser(id);
 
   if (error) throw new Error(error.message);
 
