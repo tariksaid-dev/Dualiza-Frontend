@@ -16,17 +16,7 @@ const NewContent = ({ NewId }) => {
   const filteredNews = news.find((item) => item.id === 4); //NewId
   const { id, created_at, title, content, image } = filteredNews;
 
-  const contenido = `En respuesta a la creciente preocupación por la sostenibilidad ambiental y el impacto del cambio climático, varios centros educativos han lanzado iniciativas para reducir su consumo eléctrico y fomentar prácticas más sostenibles en sus instalaciones.
-
-  El Colegio Green Valley, ubicado en el corazón de la ciudad, ha sido pionero en esta iniciativa al implementar un plan integral para optimizar el uso de la energía eléctrica. Entre las medidas adoptadas se incluyen la instalación de paneles solares en los tejados de los edificios principales, la sustitución de equipos obsoletos por electrodomésticos y dispositivos más eficientes, y la introducción de campañas de concienciación para estudiantes y personal sobre el uso responsable de la energía.
-  
-  El director del colegio, el Sr. Martínez, destacó la importancia de estas acciones no solo en términos de reducción de costos a largo plazo, sino también en la enseñanza de valores de responsabilidad ambiental a las generaciones futuras. "Nuestro objetivo es no solo reducir nuestra huella de carbono, sino también educar a nuestros estudiantes sobre la importancia de cuidar el medio ambiente y adoptar hábitos sostenibles en sus vidas diarias", comentó el Sr. Martínez.
-  
-  Además del Colegio Green Valley, otras instituciones educativas en la región también están siguiendo su ejemplo. La Escuela Primaria Sunshine ha implementado un programa de apagado automático de luces y equipos electrónicos fuera del horario escolar, mientras que el Instituto High Peak ha introducido una política de reciclaje de papel y cartón en todas las aulas y oficinas administrativas.
-  
-  Estas iniciativas no solo están contribuyendo a la reducción del consumo eléctrico y la conservación de recursos naturales, sino que también están inspirando a otras comunidades educativas a seguir su ejemplo en la lucha contra el cambio climático y la promoción de un futuro más sostenible para todos.`;
-
-  const contentParagraphs = contenido.split("\n").map((line, index) => (
+  const contentParagraphs = content.split("\n").map((line, index) => (
     <p
       className="leading-7 text-xl font-semibold text-gray-700 dark:text-gray-300"
       key={index}
