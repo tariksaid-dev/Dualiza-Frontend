@@ -53,8 +53,6 @@ export async function getAllUsers() {
     error,
   } = await supabaseAdmin.auth.admin.listUsers();
 
-  console.log(users);
-
   if (error) throw new Error(error.message);
 
   return users;

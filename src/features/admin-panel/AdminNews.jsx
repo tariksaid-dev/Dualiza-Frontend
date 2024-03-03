@@ -116,7 +116,7 @@ const AdminNews = () => {
     <div className="">
       <hr />
       <h1 className="text-3xl font-bold text-center m-8">Noticias</h1>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4 mb-8 ">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mb-8 ">
         {noticiasPaginadas.map((noticia) => (
           <div key={noticia.id} className="border p-4 flex flex-col rounded-md">
             <img
@@ -133,13 +133,13 @@ const AdminNews = () => {
             <div className="flex justify-around mt-4">
               <button
                 onClick={handleEditar}
-                className="p-2 bg-blue-600 rounded-md"
+                className="bg-primary p-2 rounded-md"
               >
                 Editar
               </button>
               <button
                 onClick={handleDelete}
-                className="p-2 bg-red-600 rounded-md"
+                className="bg-destructive p-2 rounded-md"
               >
                 Eliminar
               </button>

@@ -19,16 +19,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { signup } from "@/services/apiAuth";
 
 export function DialogDemo() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [rol, setRol] = useState("");
 
   const handleGuardar = () => {
-    console.log("Nombre:", nombre);
-    console.log("Email:", email);
-    console.log("Rol:", rol);
+    const insert = async () => {
+      await signup({ nombre, rol, email, password });
+    };
+    insert();
+    console.log("Usuario guardado");
   };
 
   return (
@@ -59,6 +63,17 @@ export function DialogDemo() {
               id="username"
               className="col-span-3"
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="password" className="text-right">
+              Password
+            </Label>
+            <Input
+              id="password"
+              type="password"
+              className="col-span-3"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">

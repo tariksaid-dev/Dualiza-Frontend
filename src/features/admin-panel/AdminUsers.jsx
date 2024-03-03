@@ -43,8 +43,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DialogDemo } from "./AdminAddUserModal";
-import { useGetAllUsers } from "./useGetAllUsers";
 import Spinner from "@/components/ui/Spinner";
+import { getAllUsers } from "@/services/apiAuth";
 
 export function DataTableDemo() {
   const [sorting, setSorting] = useState([]);
@@ -52,9 +52,6 @@ export function DataTableDemo() {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [users, setUsers] = useState([]);
-
-  const { getAllUsers, isLoading } = useGetAllUsers();
-  
 
   const columns = [
     {
@@ -161,7 +158,7 @@ export function DataTableDemo() {
                 </div>
               </div>
               <DialogFooter>
-                <Button type="button" onClick={() => console.log(obj)}>
+                <Button type="button" onClick={() => onSave()}>
                   Guardar
                 </Button>
               </DialogFooter>
@@ -173,7 +170,7 @@ export function DataTableDemo() {
   ];
 
   const table = useReactTable({
-    users,
+    data:users,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -192,12 +189,13 @@ export function DataTableDemo() {
   });
 
   useEffect(() => {
-    const usersGet = getAllUsers();
-    setUsers(usersGet);
-    console.log(users);
-    // console.log(usersGet);
-  }, []);
-
+    const fetchData = async () => {
+      const usersFetch = await getAllUsers();
+      setUsers(usersFetch);
+    };
+    fetchData();
+  }, []); 
+  
   return (
     users ? (<div className="w-full ">
     <h1 className="text-3xl font-bold text-center">Usuarios</h1>
