@@ -1,4 +1,4 @@
-import supabase, { supabaseUrl } from "./supabase";
+import supabase, { supabaseAdmin, supabaseUrl } from "./supabase";
 
 const imageUrl =
   "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/"; // milei.jpg
@@ -47,7 +47,10 @@ export async function createNew(noticia) {
 }
 
 export async function deleteNew(id) {
-  const { data, error } = await supabase.from("news").delete().eq("id", id);
+  const { data, error } = await supabaseAdmin
+    .from("news")
+    .delete()
+    .eq("id", id);
 
   if (error) {
     console.error(error);
