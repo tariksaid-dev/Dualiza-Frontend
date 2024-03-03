@@ -54,6 +54,8 @@ export function DataTableDemo() {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
 
+  const [open, setOpen] = useState(false);
+
   const findUserIdByEmail = (email) => {
     const filtered = userData.filter((user) => user.email === email);
     return filtered[0].id;
@@ -103,9 +105,15 @@ export function DataTableDemo() {
         let rol = row.getValue("role");
 
         const onSave = () => {
-          // const id2 = findUserIdByEmail(email); // Obtener el ID
-          const newRole = rol; // Obtener el nuevo rol
-          updateUser({ id, newRole }); // Llamar a updateUser con id y newRole
+          const newRole = rol;
+          updateUser({ id, newRole });
+          try {
+            setTimeout(() => {
+              setOpen(false);
+            }, 1000);
+          } catch (error) {
+            console.log(error);
+          }
           console.log("Rol actualizado");
         }; 
         
@@ -116,7 +124,7 @@ export function DataTableDemo() {
         };
 
         return (
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen} >
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-8 w-8 p-0">
@@ -136,7 +144,7 @@ export function DataTableDemo() {
               <DialogHeader>
                 <DialogTitle>Editar Usuario</DialogTitle>
               </DialogHeader>
-              <div className="grid gap-4 py-4">
+               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="rol" className="text-right">
                     Rol
