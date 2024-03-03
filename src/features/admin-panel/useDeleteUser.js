@@ -7,7 +7,7 @@ export function useDeleteUser() {
   const { mutate: deleteUser, isLoading: isDeleteing } = useMutation({
     mutationFn: deleteUserApi,
     onSuccess: () => {
-      console.log("User role updated");
+      console.log("User successfully deleted");
     },
     onError: (err) => console.error(err.message),
   });
