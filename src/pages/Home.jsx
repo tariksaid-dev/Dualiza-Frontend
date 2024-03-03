@@ -1,4 +1,3 @@
-import MainLayout from "@/components/layouts/MainLayout";
 import DinamicHeader from "@/components/ui/DinamicHeader";
 import { ThemeProvider } from "@/context/DarkModeContext";
 import Contacto2 from "@/features/home/Contacto2";
@@ -15,19 +14,21 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Outlet></Outlet>
-      <DinamicHeader />
-      <Splash />
-      <Proyecto />
-      <ResultadoInstalacionFotovoltaica />
-      <ResultadoConsumosElectricos />
-      <ResultadoInstalacionClimatizacion />
-      <MejoraTuCentro />
-      <Showcase />
-      <Contacto2 />
-      <FooterEmpresas />
-    </ThemeProvider>
+    <>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <Outlet></Outlet>
+        <DinamicHeader />
+        <Splash />
+        <Proyecto />
+        <ResultadoInstalacionFotovoltaica />
+        <ResultadoConsumosElectricos />
+        <ResultadoInstalacionClimatizacion />
+        <MejoraTuCentro />
+        <Showcase />
+        <Contacto2 />
+        <FooterEmpresas />
+      </ThemeProvider>
+    </>
   );
 };
 

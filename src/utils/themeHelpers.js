@@ -41,11 +41,16 @@ export const getTextCards = (theme) => {
 };
 
 export const getBgButtonCards = (theme) => {
-  return theme === "light" ? "bg-secondary-foreground text-white" : "bg-skin-orange-lanze text-white hover:bg-skin-orange-ieshlanz";
+  return theme === "light" ? "bg-secondary-foreground text-white hover:bg-black hover:opacity-80" : "bg-skin-orange-lanze text-white hover:bg-skin-orange-ieshlanz";
 };
 
+export const getBgLoginForm = (theme) => {
+  return theme === "light" ? "" : "border-skin-dark-blue";
+}
+//bg-[#71727e]
+export const getBannerLoginForm = (theme) => {
+  return theme === "light" ? "bg-[#71727e]" : "bg-skin-dark-blue";
+}
 export const getNewsCard = (theme) => {
-  return theme === "light"
-  ? "bg-slate-200"
-  : "bg-card";
+  return theme === "light" ? "border-secondary-foreground" : "border-skin-dark-blue";
 }

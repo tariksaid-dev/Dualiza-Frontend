@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import { login } from '@/services/apiAuth';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react'
 import { useLogin } from './useLogin';
 
+import { ThemeProviderContext } from '@/context/DarkModeContext';
+import { getBannerLoginForm, getBgButtonCards, getBgLoginForm, getTextColorTitle } from '@/utils/themeHelpers';
+
 const LoginForm = () => {
+  const { theme } = useContext(ThemeProviderContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { login, isLoading, error } = useLogin();
 
+  const logoImagePath = theme === 'light'
+    ? "images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Negre.webp"
+    : "images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Blanc.webp";
 
   const handleUsernameChange = (e) => {
     setEmail(e.target.value);
@@ -26,25 +30,25 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login({ email, password })
-
+      await login( email, password )
+   
     } catch (error) {
       console.error(error);
-      setLoginError(error.message);
-
     }
   };
+
+
   return (
     <div className="font-[sans-serif] ">
       <div className="min-h-screen flex flex-col items-center justify-center">
         <div className="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
-          <div className="md:max-w-md w-full sm:px-6 py-4">
+          <div className={`md:max-w-md w-full p-4  py-4 border border-border bg-primary-foreground`}>
             <form onSubmit={handleSubmit}>
               <div className="mb-12">
-                <h3 className="text-3xl font-extrabold ">Sign in</h3>
+                <h3 className="text-3xl font-extrabold text-primary">Sign in</h3>
               </div>
               <div>
-                <label className="text-xs block mb-2">Email</label>
+                <label className="text-xs block mb-2 text-foreground">Email</label>
                 <div className="relative flex items-center">
                   <input
                     name="email"
@@ -66,7 +70,7 @@ const LoginForm = () => {
                 </div>
               </div>
               <div className="mt-8">
-                <label className="text-xs block mb-2">Password</label>
+                <label className="text-xs block mb-2 text-foreground">Password</label>
                 <div className="relative flex items-center">
                   <input
                     name="password"
@@ -85,7 +89,7 @@ const LoginForm = () => {
               </div>
 
               <div className="mt-12">
-                <button type="submit" className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-orange-600 hover:bg-orange-700 focus:outline-none">
+                <button type="submit" className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-primary focus:outline-none">
                   Login
                 </button>
               </div>
@@ -93,9 +97,10 @@ const LoginForm = () => {
             {error && <div className="flex justify-center items-center mt-4  w-full text-white">
               <p className='text-red-500 font-bold'>{error.message}</p>
             </div>}
+
           </div>
-          <div className="md:h-full max-md:mt-10 bg-[#000842] rounded-xl lg:p-12 p-8">
-            <img src="images/CaixaBank_Dualiza/CaixaBank-Dualiza-Logo-Horitzontal-RGB-Fons-Negre.webp" className="w-full h-full object-contain" alt="login-image" />
+          <div className={`md:h-full max-md:mt-10 bg-secondary-foreground rounded-xl lg:p-12 p-8`}>
+            <img src={logoImagePath} className="w-full h-full object-contain" alt="login-image" />
           </div>
         </div>
       </div>

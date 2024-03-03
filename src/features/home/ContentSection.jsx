@@ -1,14 +1,12 @@
-import { ThemeProviderContext } from '@/context/DarkModeContext';
-import { getTextColorTitle } from '@/utils/themeHelpers';
-import React, { useContext } from 'react'
+import React from 'react'
 
 const ContentSection = ({ id, title, children }) => {
-    const { theme } = useContext(ThemeProviderContext);
+
     return (
         <section id={id} className="flex  flex-col items-center gap-6 space-y-8 h-screen  justify-center py-5 p-5 max-w-7xl mx-auto">
             <div className="flex flex-col items-center gap-4">
 
-                <h2 className={`gradient-text text-center font-extrabold tracking-tight text-6xl ${getTextColorTitle(theme)}`}>
+                <h2 className="gradient-text text-center font-extrabold tracking-tight  text-3xl sm:text-4xl md:text-6xl text-primary">
                     {title}
                 </h2>
             </div>

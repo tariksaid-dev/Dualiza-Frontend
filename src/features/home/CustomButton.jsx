@@ -1,12 +1,11 @@
-import { ThemeProviderContext } from '@/context/DarkModeContext';
-import { getBgButtonCards } from '@/utils/themeHelpers';
-import React, { useContext } from 'react';
+
+import React from 'react';
 
 const CustomButton = ({ text, onClick, className, ...props }) => {
-    const { theme } = useContext(ThemeProviderContext);
+   
     return (
         <button
-            className={` p-2 rounded-md ${getBgButtonCards(theme)} ${className}`}
+            className={` p-2 rounded-md bg-primary text-popover-foreground ${className}`}
             onClick={onClick}
             {...props}
         >
