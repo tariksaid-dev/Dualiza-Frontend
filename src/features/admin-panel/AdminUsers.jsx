@@ -44,7 +44,7 @@ import {
 } from "@/components/ui/table";
 import { DialogDemo } from "./AdminAddUserModal";
 import Spinner from "@/components/ui/Spinner";
-import { getAllUsers } from "@/services/apiAuth";
+import { getAllUsers, updateUserRol } from "@/services/apiAuth";
 
 export function DataTableDemo() {
   const [sorting, setSorting] = useState([]);
@@ -90,11 +90,14 @@ export function DataTableDemo() {
       id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
-        const obj = {
-          nombre: row.getValue("nombre"),
-          email: row.getValue("email"),
-          rol: row.getValue("role"),
-        };
+        
+        let rol = row.getValue("role");
+
+        const onSave = async () => {
+          console.log(rol);
+          await updateUserRol({ rol });
+          console.log("Rol actualizado");
+        }; 
 
         return (
           <Dialog>
@@ -119,36 +122,14 @@ export function DataTableDemo() {
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">
-                    Nombre
-                  </Label>
-                  <Input
-                    id="name"
-                    className="col-span-3"
-                    defaultValue={obj.nombre}
-                    onChange={(e) => (obj.nombre = e.target.value)}
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="username" className="text-right">
-                    Email
-                  </Label>
-                  <Input
-                    id="username"
-                    className="col-span-3"
-                    defaultValue={obj.email}
-                    onChange={(e) => (obj.email = e.target.value)}
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="rol" className="text-right">
                     Rol
                   </Label>
-                  <Select onValueChange={(e) => (obj.rol = e)}>
+                  <Select onValueChange={(e) => (rol = e)}>
                     <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder={obj.rol} />
+                      <SelectValue placeholder={rol} />
                     </SelectTrigger>
-                    <SelectContent defaultValue={obj.rol}>
+                    <SelectContent defaultValue={rol}>
                       <SelectGroup>
                         <SelectItem value="admin">Admin</SelectItem>
                         <SelectItem value="poster">Poster</SelectItem>
