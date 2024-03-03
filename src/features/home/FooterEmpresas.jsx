@@ -3,15 +3,15 @@ import React from 'react'
 
 const FooterEmpresas = () => {
     return (
-        <footer className="bg-[#0a192f] text-white p-10 h-full py-10 w-full">
+        <footer className="bg-skin-dark-blue text-white p-10 h-full py-10 w-full">
             <div className=" mx-auto">
-                <div className="flex flex-col md:grid md:grid-cols-2 gap-10">
+                <div className="flex flex-col lg:grid md:grid-cols-2 gap-10">
                     <div className='col-span-1'>
                         <h2 className='text-center text-3xl'>Institutos Participantes</h2>
-                        <div className=' flex flex-col gap-2 md:flex-row  justify-center items-center py-8'>
-                            <img className='size-40' src="images/IES_H_LANZ/hlanz-logo.svg" width={200} alt="" />
-                            <img className='size-46' src="images/IES_ALBAYTAR/albaytar-logo.webp" alt="" />
-                            <img src="images/CIFP_VIRGEN_DE_GRACIA/VIRGEN-DE-GRACIA.webp" width={200} alt="" />
+                        <div className=' flex flex-col gap-8 md:flex-row  justify-center items-center py-8'>
+                            <img className='size-32' src="images/IES_H_LANZ/hlanz-logo.svg" alt="" />
+                            <img className='w-48' src="images/IES_ALBAYTAR/albaytar-logo.webp" alt="" />
+                            <img className='w-48' src="images/CIFP_VIRGEN_DE_GRACIA/VIRGEN-DE-GRACIA.webp" alt="" />
                         </div>
                     </div>
                     <div className='col-span-1'>
@@ -32,7 +32,7 @@ const FooterEmpresas = () => {
                         <a className="text-sm hover:underline" href="#">
                             Terms of Service
                         </a>
-                        <p className="text-sm">Creators: Pepe Rivera, Pedro Vilchez, Tarik Said, Roger Civantos</p>
+                        <p className="text-sm"><span className='font-bold'>Creators:</span> <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/PepeRivera04">Pepe Rivera</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/NuMeRo-999">Pedro Vilchez</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/tariksaid-dev">Tarik Said</a>, <a className='hover:underline underline-offset-4 decoration-skin-orange-lanze' href="https://github.com/RogerCiv">Roger Civantos</a></p>
                     </div>
                 </div>
             </div>

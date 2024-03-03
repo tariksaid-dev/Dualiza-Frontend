@@ -8,7 +8,7 @@ const MejoraTuCentro = () => {
                 <div className="space-y-8 text-center">
                     <div className="space-y-2">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Mejora tu centro</h2>
-                        <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                        <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 text-pretty ">
                             Accede a los recursos que te ayudarán a mejorar la calidad de tu centro educativo.
                         </p>
                     </div>

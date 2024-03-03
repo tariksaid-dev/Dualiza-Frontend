@@ -2,7 +2,7 @@ import React from 'react'
 
 const ResultadoInstalacionClimatizacion = () => {
   return (
-    <section className="w-full py-6 md:py-12 lg:py-16 bg-gray-100 dark:bg-[#1d1b33]">
+    <section className="w-full py-6 md:py-12 lg:py-16 bg-gray-100 dark:bg-skin-dark-blue">
     <div className="container grid gap-6 px-4 md:px-6 items-center space-y-0.5">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
