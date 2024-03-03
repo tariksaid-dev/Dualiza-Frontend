@@ -48,19 +48,19 @@ import { useGetAllUsers } from "./useGetAllUsers";
 import { useUpdateUserRol } from "./useUpdateUserRol";
 
 export function DataTableDemo() {
+  const { users:userData,isLoading } = useGetAllUsers();
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
-  const [users, setUsers] = useState([]);
 
   const findUserIdByEmail = (email) => {
-    const filtered = users.filter((user) => user.email === email);
+    const filtered = userData.filter((user) => user.email === email);
     return filtered[0].id;
   };
 
   const findUserRolByEmail = (email) => {
-    const filtered = users.filter((user) => user.email === email);
+    const filtered = userData.filter((user) => user.email === email);
     return filtered[0].user_metadata.rol;
   };
 
@@ -95,17 +95,19 @@ export function DataTableDemo() {
       enableHiding: false,
       cell: ({ row }) => {
         const email = row.getValue("email");
-        const id = findUserIdByEmail(email);
 
         const { deleteUser } = useDeleteUser(); 
         const { updateUser } = useUpdateUserRol();
 
         let rol = row.getValue("role");
 
-        const onSave = async () => {
-          updateUser({ id,rol });
+        const onSave = () => {
+          const id = findUserIdByEmail(email); // Obtener el ID
+          const newRole = rol; // Obtener el nuevo rol
+          updateUser({ id, newRole }); // Llamar a updateUser con id y newRole
           console.log("Rol actualizado");
         }; 
+        
 
         const onDelete = () => {
           deleteUser({ id });
@@ -164,7 +166,7 @@ export function DataTableDemo() {
   ];
 
   const table = useReactTable({
-    data:users,
+    data:userData,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -181,15 +183,9 @@ export function DataTableDemo() {
       rowSelection,
     },
   });
-
-  const { users:userData } = useGetAllUsers();
-  useEffect(() => {
-    setUsers(userData);
-    console.log(userData);
-  }, [userData]); 
   
   return (
-    users ? (<div className="w-full ">
+    !isLoading ? (<div className="w-full ">
     <h1 className="text-3xl font-bold text-center">Usuarios</h1>
     <div className="flex items-center py-4 justify-between">
       <Input
@@ -223,7 +219,7 @@ export function DataTableDemo() {
           ))}
         </TableHeader>
         <TableBody>
-          {users?.length ? (
+          {userData?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}

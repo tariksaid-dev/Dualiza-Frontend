@@ -56,10 +56,10 @@ export async function logout() {
 }
 
 export async function updateUserRol({ id, newRole }) {
-  const { data, error } = await supabaseAdmin.auth.admin.updateUserById(
-    id,
-    {user_metadata: {role: newRole}}
-  );
+  console.log(newRole, id);
+  const { data, error } = await supabaseAdmin.auth.admin.updateUserById(id, {
+    user_metadata: { role: newRole },
+  });
 
   if (error) throw new Error(error.message);
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { supabaseUrl } from "@/services/supabase";
 import {
   Pagination,
   PaginationContent,
@@ -16,12 +17,20 @@ const noticiasPorPagina = 4;
 
 const AdminNews = () => {
   const [paginaActual, setPaginaActual] = useState(1);
-  const [noticias, setNoticias] = useState([]);
-  const { news } = useNews();
-
-  const totalPaginas = Math.ceil(news?.length / noticiasPorPagina);
-
+  const { news, isLoading } = useNews();
   const { deleteNew } = useDeleteNew();
+
+  if (isLoading) return <Spinner></Spinner>;
+
+  const sortedNews = [...news].sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
+  const totalPaginas = Math.ceil(sortedNews.length / noticiasPorPagina);
+
+  const startIndex = (paginaActual - 1) * noticiasPorPagina;
+  const endIndex = startIndex + noticiasPorPagina;
+  const noticiasPaginadas = sortedNews.slice(startIndex, endIndex);
 
   const handlePaginaAnterior = () => {
     if (paginaActual > 1) {
@@ -35,10 +44,6 @@ const AdminNews = () => {
     }
   };
 
-  const startIndex = (paginaActual - 1) * noticiasPorPagina;
-  const endIndex = startIndex + noticiasPorPagina;
-  const noticiasPaginadas = news.slice(startIndex, endIndex);
-
   const handleDelete = (id) => {
     deleteNew(id);
     console.log("Noticia eliminada correctamente");
@@ -48,10 +53,6 @@ const AdminNews = () => {
     console.log("Editar noticia");
   };
 
-  useEffect(() => {
-    setNoticias(news);
-  }, [news]);
-
   return (
     <div className="">
       <hr />
@@ -60,15 +61,13 @@ const AdminNews = () => {
         {noticiasPaginadas.map((noticia) => (
           <div key={noticia.id} className="border p-4 flex flex-col rounded-md">
             <img
-              src="https://marketplace.canva.com/EAFrDm3ydqw/1/0/1600w/canva-presentaci%C3%B3n-noticias-telediario-corporativo-azul-rojo-Vh4S5Wt7FD4.jpg"
+              src={`${supabaseUrl}/storage/v1/object/public/news/${noticia.image}`}
               alt={noticia.titulo}
               className="w-full h-40 object-cover"
             />
             <div className="flex-grow">
               <h2 className="text-xl font-bold mt-4">{noticia.titulo}</h2>
-              <p className="mt-2">
-                {noticia.descripcion.substring(0, 50) + "..."}
-              </p>
+              <p className="mt-2">{noticia.content.substring(0, 50) + "..."}</p>
             </div>
             <div className="flex justify-around mt-4">
               <button

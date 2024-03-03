@@ -31,7 +31,6 @@ export function DialogDemo() {
 
   const handleGuardar = () => {
     signup({ nombre, rol, email, password });
-    console.log("Usuario guardado");
   };
 
   return (
