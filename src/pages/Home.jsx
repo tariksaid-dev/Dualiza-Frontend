@@ -15,21 +15,19 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   return (
-    <>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Outlet></Outlet>
-        <DinamicHeader />
-        <Splash />
-        <Proyecto />
-        <ResultadoInstalacionFotovoltaica />
-        <ResultadoConsumosElectricos />
-        <ResultadoInstalacionClimatizacion />
-        <MejoraTuCentro />
-        <Showcase />
-        <Contacto2 />
-        <FooterEmpresas />
-      </ThemeProvider>
-    </>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Outlet></Outlet>
+      <DinamicHeader />
+      <Splash />
+      <Proyecto />
+      <ResultadoInstalacionFotovoltaica />
+      <ResultadoConsumosElectricos />
+      <ResultadoInstalacionClimatizacion />
+      <MejoraTuCentro />
+      <Showcase />
+      <Contacto2 />
+      <FooterEmpresas />
+    </ThemeProvider>
   );
 };
 
