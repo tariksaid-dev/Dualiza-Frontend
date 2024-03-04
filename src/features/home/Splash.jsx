@@ -11,7 +11,7 @@ function Splash() {
     ? "images/LOGOS_PROYECTO/Logo-negativo-(3).webp"
     : "images/LOGOS_PROYECTO/Logo-positivo-(1).webp";
   return (
-    <section className="relative h-full  max-w-7xl mx-auto ">
+    <section className="relative h-screen max-w-7xl mx-auto ">
       <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40">
       </div>
       <div className="relative grid h-full place-items-center sm:grid-cols-2">
