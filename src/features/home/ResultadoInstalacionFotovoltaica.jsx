@@ -3,7 +3,7 @@ import React from 'react'
 const ResultadoInstalacionFotovoltaica = () => {
 
   return (
-    <div className="w-full flex items-center justify-center py-12 md:py-24 lg:py-32 h-screen  ">
+    <div className="w-full flex items-center justify-center py-12 md:py-24 lg:py-32 h-full  ">
       <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
         <div className="space-y-3 flex flex-col justify-center items-center gap-2 py-4">
           <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl text-balance text-primary">
