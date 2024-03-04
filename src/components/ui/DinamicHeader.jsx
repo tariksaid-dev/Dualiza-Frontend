@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function DinamicHeader() {
   const sections = [
-    { title: "Noticias", url: "news", isRedirect: true },
+    { title: "Noticias", url: "news" },
     // { title: "Login", url: "login" },
   ];
 
@@ -28,7 +28,6 @@ function DinamicHeader() {
       id="header"
       className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
-      {/* hover? */}
       <Link to="/" className="flex items-center gap-4 ">
         <BombillaLibro width="52" height="52" />
         <LetrasBombilla width="120" height="52" />
@@ -37,21 +36,13 @@ function DinamicHeader() {
         <div className="flex items-center gap-6">
           <nav className="hidden sm:block">
             <ul className="flex items-center gap-6">
-              {sections.map(({ title, url, isRedirect }) => {
-                isRedirect ? (
-                  <li key={title}>
-                    <Link to={url} className="text-sm">
-                      {title}
-                    </Link>
-                  </li>
-                ) : (
-                  <li key={title}>
-                    <a href={url} className="text-sm">
-                      {title}
-                    </a>
-                  </li>
-                );
-              })}
+              {sections.map(({ title, url }) => (
+                <li key={title}>
+                  <Link to={url} className="text-sm">
+                    {title}
+                  </Link>
+                </li>
+              ))}
               <ThemeToggle />
             </ul>
           </nav>
