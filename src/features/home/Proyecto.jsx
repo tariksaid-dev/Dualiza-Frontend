@@ -6,7 +6,7 @@ const Proyecto = () => {
   const { theme } = useContext(ThemeProviderContext)
 
   return (
-    <section id='proyecto' className='h-screen relative flex flex-col items-center pt-16 justify-center max-w-7xl mx-auto'>
+    <section id='proyecto' className='h-full relative flex flex-col items-center pt-16justify-center max-w-7xl mx-auto'>
       <div className="flex flex-col items-center space-y-2 p-12 m-10 ">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">Proyecto</h1>
         <p className="text-pretty text-xs sm:text-base">Espacio para la descripción del proyecto y sus objetivos.</p>
