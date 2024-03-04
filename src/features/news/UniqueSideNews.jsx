@@ -8,12 +8,12 @@ const UniqueSideNews = ({ item }) => {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tight line-clamp-3">{title}</h2>
               <p className="text-gray-500 dark:text-gray-400">Creado el {created_at.split("T")[0]}</p>
-              <p className="line-clamp-3">
+              <p className="line-clamp-3 text-sm text-muted-foreground">
                 {content.slice(0, 100)}...
               </p>
             </div>
             
-            <Link to={`${id}`} className="hidden md:flex items-start space-y-2" href="#">
+            <Link to={`/news/${id}`} className="hidden md:flex items-start space-y-2" replace>
               <img
                 alt="Image"
                 className="aspect-[16/9] overflow-hidden rounded-lg object-cover"

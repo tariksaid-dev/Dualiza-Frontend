@@ -46,6 +46,20 @@ export async function createNew(noticia) {
   return data;
 }
 
+export async function editNew(id, noticia) {
+  const { data, error } = await supabase
+    .from("news")
+    .update({ ...noticia })
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("News could not be edited");
+  }
+
+  return data;
+}
+
 export async function deleteNew(id) {
   const { data, error } = await supabaseAdmin
     .from("news")
