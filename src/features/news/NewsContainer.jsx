@@ -5,6 +5,9 @@ import NewsSection from "./NewsSection";
 import { useNews } from "./useNews";
 import Spinner from "@/components/ui/Spinner";
 import CenterNews from "./CenterNews";
+import StaticHeader from "@/components/ui/StaticHeader";
+import BombillaLibro from "@/components/icons/BombillaLibro";
+import LetrasBombilla from "@/components/icons/LetrasBombilla";
 
 
 const NewsContainer = () => {
@@ -25,9 +28,12 @@ const NewsContainer = () => {
   const albaytarNews = sortedNews.filter(item => item.category === "albaytar");
 
   return (
-    
+    <>
+    <StaticHeader/>
     <section className="m-auto h-full w-5/6 py-6 md:py-12 xl:py-16">
       <div className="flex justify-center">
+        <BombillaLibro height={80} width={80} />
+        <LetrasBombilla height={80} width={80}/>
         <h1 className="text-center text-5xl font-bold p-4 mb-10">NOTICIAS DUALIZA</h1>
       </div>
       <div className="container px-4 md:px-6">
@@ -62,6 +68,8 @@ const NewsContainer = () => {
         </div>
       </div>
     </section>
+    </>
+
   );
 };
 
