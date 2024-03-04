@@ -1,3 +1,4 @@
+import StaticHeader from "@/components/ui/StaticHeader";
 import { ThemeProvider } from "@/context/DarkModeContext";
 import AdminNews from "@/features/admin-panel/AdminNews";
 import AdminPanelLayout from "@/features/admin-panel/AdminPanelLayout";
@@ -7,6 +8,7 @@ import React from "react";
 const Admin = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <StaticHeader></StaticHeader>
       <AdminPanelLayout>
         <DataTableDemo />
         <AdminNews></AdminNews>
