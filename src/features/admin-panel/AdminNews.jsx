@@ -12,6 +12,7 @@ import {
 import { useDeleteNew } from "./useDeleteNew";
 import { useNews } from "../news/useNews";
 import Spinner from "@/components/ui/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const noticiasPorPagina = 4;
 
@@ -19,6 +20,8 @@ const AdminNews = () => {
   const [paginaActual, setPaginaActual] = useState(1);
   const { news, isLoading } = useNews();
   const { deleteNew } = useDeleteNew();
+
+  const navigate = useNavigate();
 
   if (isLoading) return <Spinner></Spinner>;
 
@@ -50,6 +53,7 @@ const AdminNews = () => {
   };
 
   const handleEditar = (id) => {
+    navigate(`/admin/edit/${id}`);
     console.log("Editar noticia : " + id);
   };
 
@@ -61,7 +65,7 @@ const AdminNews = () => {
         {noticiasPaginadas.map((noticia) => (
           <div key={noticia.id} className="border p-4 flex flex-col rounded-md">
             <img
-               src={noticia.image}
+              src={noticia.image}
               alt={noticia.titulo}
               className="w-full h-40 object-cover"
             />

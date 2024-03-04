@@ -12,6 +12,7 @@ import NewsDetails from "./pages/NewsDetails";
 
 import { ThemeProvider } from "@/context/DarkModeContext";
 import CreateNew from "./features/admin-panel/CreateNew";
+import EditNew from "./features/admin-panel/EditNew";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,7 +42,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="admin" element={<Admin />} />
             <Route path="admin/createNew" element={<CreateNew />} />
-            <Route path="admin/edit/:NewId" element={<CreateNew />} />
+            <Route path="admin/edit/:NewId" element={<EditNew />} />
             <Route path="news" element={<News />} />
             <Route path="news/:NewId" element={<NewsDetails />} />
             <Route path="login" element={<Login />} />

@@ -1,25 +1,26 @@
 import StaticHeader from "@/components/ui/StaticHeader";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
-import { useCreateNew } from "../news/useCreateNew";
+import { useEditNew } from "./useEditNew";
+import { useParams } from "react-router-dom";
+import { useNews } from "../news/useNews";
 
-const CreateNew = () => {
-  const [image, setImage] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [category, setCategory] = useState(null);
+const EditNew = () => {
+  const noticiaConcreta = news.find((noticia) => noticia.id === NewId);
+  const [image, setImage] = useState(noticiaConcreta.image);
+  const [title, setTitle] = useState(noticiaConcreta.title);
+  const [content, setContent] = useState(noticiaConcreta.content);
+  const [category, setCategory] = useState(noticiaConcreta.category);
 
-  const { createNew } = useCreateNew();
+  const { news } = useNews();
+  const { editNew } = useEditNew();
+  const { NewId } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const imagen = image.name;
-
-    createNew({ image, title, content, category });
-    console.log("Noticia Añadida correctamente");
+    editNew(NewId, { image, title, content, category });
+    console.log("Noticia Editada correctamente");
     console.log({ image, title, content, category });
-
     setImage("");
     setTitle("");
     setContent("");
@@ -34,8 +35,15 @@ const CreateNew = () => {
         className="max-w-md mx-auto mt-20 text-card-foreground bg-card border  p-10 rounded-lg"
       >
         <h1 className="text-2xl text-card-foreground text-center">
-          Crear una nueva noticia
+          Editar noticia
         </h1>
+
+        <img
+          src={noticiaConcreta.image}
+          alt="imagen de la noticia"
+          className="w-32"
+        />
+
         <div className="mb-4">
           <label htmlFor="titulo" className="block">
             Título:
@@ -45,7 +53,7 @@ const CreateNew = () => {
             id="message"
             placeholder="Escribe un titulo..."
             onChange={(e) => setTitle(e.target.value)}
-            value={title}
+            value={noticiaConcreta.title}
           />
         </div>
         <div className="mb-4">
@@ -60,7 +68,7 @@ const CreateNew = () => {
             aria-describedby=":r3j:-form-item-description"
             aria-invalid="false"
             onChange={(e) => setContent(e.target.value)}
-            value={content}
+            value={noticiaConcreta.content}
           ></textarea>
         </div>
         {/* <div className="mb-4">
@@ -99,4 +107,4 @@ const CreateNew = () => {
   );
 };
 
-export default CreateNew;
+export default EditNew;
