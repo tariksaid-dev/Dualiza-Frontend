@@ -6,8 +6,6 @@ import Spinner from "@/components/ui/Spinner";
 const NewContent = ({ NewId }) => {
   const { isLoading, error, news } = useNews();
 
-  console.log(NewId)
-
   if (isLoading) return <Spinner></Spinner>;
 
   const sortedNews = [...news].sort(
