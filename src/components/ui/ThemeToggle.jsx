@@ -1,4 +1,5 @@
-import { Moon, Sun } from "lucide-react";
+import Sun from "@/components/icons/Sun";
+import Moon from "@/components/icons/Moon";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +13,7 @@ export function ThemeToggle() {
       setTheme("light");
     } else {
       setTheme("dark");
-    }
+    } 
   }
 
   return (

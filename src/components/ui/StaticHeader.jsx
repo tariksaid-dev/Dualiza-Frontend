@@ -1,32 +1,20 @@
-import { useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 
-function DinamicHeader() {
+function StaticHeader({ sections = [] }) {
+  // TODO
   const logoDark = "Logo-negativo-(3).webp";
   // const logoWhite = "Logo-positivo-(1).webp";
 
-  const sections = [
-    { title: "Noticias", url: "news" },
-    { title: "Login", url: "login" },
-  ];
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const page = document.documentElement;
-      const header = document.querySelector("#header");
-
-      const d = page.clientHeight - page.scrollTop - header.offsetHeight;
-      header.classList.toggle("fixed-header", d < 0);
-    });
-    return () => {
-      window.removeEventListener("scroll", () => {});
-    };
-  }, []);
+  // EJEMPLO DE PROP QUE SE LE TIENE QUE PASAR
+  // const sections = [
+  //   { title: "Noticias", url: "#noticias" },
+  //   { title: "Login", url: "#login" },
+  // ];
 
   return (
     <header
       id="header"
-      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed-header"
     >
       {/* hover? */}
       <a href="#" className="flex items-center gap-3">
@@ -68,4 +56,4 @@ function DinamicHeader() {
   );
 }
 
-export default DinamicHeader;
+export default StaticHeader;
