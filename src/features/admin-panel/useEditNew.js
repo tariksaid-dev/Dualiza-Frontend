@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { editNew as editNewApi } from "@/services/apiNews";
-import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 export function useEditNew() {
   const queryClient = useQueryClient();
@@ -8,13 +8,10 @@ export function useEditNew() {
   const { mutate: editNew, isLoading: isEditing } = useMutation({
     mutationFn: ({ id, noticia }) => editNewApi(id, noticia),
     onSuccess: () => {
-      <Toaster>Success</Toaster>;
+      toast.success("Noticia editada correctamente");
       queryClient.invalidateQueries({ queryKey: ["news"] });
     },
-    onError: (err) => {
-      console.error(err.message);
-      <Toaster>Invalid</Toaster>;
-    },
+    onError: (err) => console.error(err.message),
   });
 
   return { editNew, isEditing };
