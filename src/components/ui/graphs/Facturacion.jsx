@@ -54,6 +54,7 @@ const kWhData = [
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top",
@@ -79,8 +80,8 @@ const data = {
 
 export default function Facturacion() {
   return (
-    // <div className="w-96">
+    <div className="relative w-full md:h-72 lg:h-96 xl:h-[420px] py-10">
       <Bar options={options} data={data} />
-    // </div>
+    </div>
   )
 }
