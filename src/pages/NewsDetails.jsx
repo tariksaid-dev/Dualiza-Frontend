@@ -3,11 +3,11 @@ import NewContent from "@/features/news/NewContent"
 
 const NewsDetails = () => {
 
-  const {id} = useParams()
+  const {NewId} = useParams()
 
   return (
     <div>
-      <NewContent NewId={id}/>
+      <NewContent NewId={NewId}/>
     </div>
 
   )

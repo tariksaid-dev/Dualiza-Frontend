@@ -6,8 +6,8 @@ function DinamicHeader() {
   // const logoWhite = "Logo-positivo-(1).webp";
 
   const sections = [
-    { title: "Noticias", url: "#noticias" },
-    { title: "Login", url: "#login" },
+    { title: "Noticias", url: "news" },
+    { title: "Login", url: "login" },
   ];
 
   useEffect(() => {
