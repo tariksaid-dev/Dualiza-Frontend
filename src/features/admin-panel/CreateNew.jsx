@@ -16,9 +16,9 @@ const CrearNoticiaFormulario = () => {
     e.preventDefault();
     const imagen = image.name;
 
-    createNew({ image: imagen, title, content, category });
+    createNew({ image, title, content, category });
     console.log("Noticia Añadida correctamente");
-    console.log({ image: imagen, title, content, category });
+    console.log({ image, title, content, category });
 
     setImage("");
     setTitle("");
