@@ -28,7 +28,7 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
-            <Route
+            {/* <Route
               path="admin"
               element={
                 <ProtectedRoute redirectPath="login">
@@ -37,8 +37,11 @@ function App() {
               }
             >
               <Route path="admin/createNew" element={<CreateNew />} />
-            </Route>
+            </Route> */}
             <Route index element={<Home />} />
+            <Route path="admin" element={<Admin />} />
+            <Route path="admin/createNew" element={<CreateNew />} />
+            <Route path="admin/edit/:NewId" element={<CreateNew />} />
             <Route path="news" element={<News />} />
             <Route path="news/:NewId" element={<NewsDetails />} />
             <Route path="login" element={<Login />} />

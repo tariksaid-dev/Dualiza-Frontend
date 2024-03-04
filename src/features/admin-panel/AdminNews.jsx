@@ -49,8 +49,8 @@ const AdminNews = () => {
     console.log("Noticia eliminada correctamente");
   };
 
-  const handleEditar = () => {
-    console.log("Editar noticia");
+  const handleEditar = (id) => {
+    console.log("Editar noticia : " + id);
   };
 
   return (
@@ -71,7 +71,7 @@ const AdminNews = () => {
             </div>
             <div className="flex justify-around mt-4">
               <button
-                onClick={handleEditar}
+                onClick={() => handleEditar(noticia.id)}
                 className="bg-primary p-2 rounded-md"
               >
                 Editar
