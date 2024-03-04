@@ -10,7 +10,8 @@ import News from "./pages/News";
 import ErrorPage from "./pages/ErrorPage";
 import NewsDetails from "./pages/NewsDetails";
 
-import {  ThemeProvider } from "@/context/DarkModeContext";
+import { ThemeProvider } from "@/context/DarkModeContext";
+import { Toaster } from "./components/ui/sonner";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,6 +43,7 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
+        <Toaster />
       </QueryClientProvider>
     </ThemeProvider>
   );

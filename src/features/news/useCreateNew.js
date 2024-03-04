@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNew as createNewApi } from "@/services/apiNews";
+import { toast } from "sonner";
 
 export function useCreateNew() {
   const queryClient = useQueryClient();
@@ -7,7 +8,7 @@ export function useCreateNew() {
   const { mutate: createNew, isLoading: isCreating } = useMutation({
     mutationFn: createNewApi,
     onSuccess: () => {
-      console.log("Nueva noticia creada correctamente");
+      toast.success("Noticia correcta");
       queryClient.invalidateQueries({ queryKey: ["news"] });
     },
     onError: (err) => console.error(err.message),
