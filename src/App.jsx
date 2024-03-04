@@ -37,7 +37,7 @@ function App() {
             ></Route>
             <Route index element={<Home />} />
             <Route path="news" element={<News />} />
-            <Route path="news/:id" element={<NewsDetails />} />
+            <Route path="news/:NewId" element={<NewsDetails />} />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
