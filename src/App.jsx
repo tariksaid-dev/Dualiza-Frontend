@@ -43,7 +43,13 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
-        <Toaster />
+        <Toaster
+          richColors={true}
+          closeButton={true}
+          // icons={{
+          //   success: <></>
+          // }}
+        />
       </QueryClientProvider>
     </ThemeProvider>
   );
