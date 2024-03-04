@@ -3,7 +3,7 @@ import React from 'react';
 const Contacto2 = () => {
 
   return (
-    <section className="flex flex-col items-center justify-center h-screen max-w-7xl mx-auto">
+    <section className="flex flex-col items-center justify-center h-full p-10 max-w-7xl mx-auto">
 
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-center text-primary">Contacto</h1>
       <h2 className=" md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mt-4 text-center text-foreground">Deja tu mensaje aquí</h2>

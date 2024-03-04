@@ -5,7 +5,7 @@ import Facturacion from '@/components/ui/graphs/Facturacion'
 const ResultadoConsumosElectricos = () => {
 
   return (
-    <div className="w-full flex flex-col items-center justify-center h-screen   mb-20 md:mb-0">
+    <div className="w-full flex flex-col items-center justify-center h-full   mb-20 md:mb-0">
       <div className="container grid items-center justify-center gap2 px-4 text-center md:px-6 lg:gap-10">
         <div className="flex flex-col gap-10 items-center justify-center py-8 md:py-0">
           <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl text-primary">Consumos eléctricos</h3>
