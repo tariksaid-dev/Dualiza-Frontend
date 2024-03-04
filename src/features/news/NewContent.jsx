@@ -6,22 +6,15 @@ import Spinner from "@/components/ui/Spinner";
 const NewContent = ({ NewId }) => {
   const { isLoading, error, news } = useNews();
 
-  console.log(NewId)
-
   if (isLoading) return <Spinner></Spinner>;
 
   const sortedNews = [...news].sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
 
-  console.log(sortedNews)
-  
   const sideNews = sortedNews.filter((item) => item.id !== parseInt(NewId)).slice(0, 3);
-  sortedNews.map((item) => console.log(item.id))
-  console.log(NewId)
   
   const filteredNews = sortedNews.find((item) => item.id === parseInt(NewId))
-  console.log(filteredNews)
 
   const { id, created_at, title, content, image } = filteredNews;
 
