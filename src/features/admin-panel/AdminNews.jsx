@@ -61,7 +61,7 @@ const AdminNews = () => {
         {noticiasPaginadas.map((noticia) => (
           <div key={noticia.id} className="border p-4 flex flex-col rounded-md">
             <img
-              src={`${supabaseUrl}/storage/v1/object/public/news/${noticia.image}`}
+              src={noticia.image}
               alt={noticia.titulo}
               className="w-full h-40 object-cover"
             />
