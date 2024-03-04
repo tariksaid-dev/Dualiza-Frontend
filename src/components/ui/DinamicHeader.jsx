@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import BombillaLibro from "../icons/BombillaLibro";
+import LetrasBombilla from "../icons/LetrasBombilla";
+import { Link } from "react-router-dom";
 
 function DinamicHeader() {
-  const logoDark = "Logo-negativo-(3).webp";
-  // const logoWhite = "Logo-positivo-(1).webp";
-
   const sections = [
     { title: "Noticias", url: "news" },
-    { title: "Login", url: "login" },
+    // { title: "Login", url: "login" },
   ];
 
   useEffect(() => {
@@ -28,23 +28,19 @@ function DinamicHeader() {
       id="header"
       className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
-      {/* hover? */}
-      <a href="#" className="flex items-center gap-3">
-        <img
-          className="h-14"
-          src={`/images/LOGOS_PROYECTO/${logoDark}`}
-          alt="Logo de una bombilla verde con una planta en su interior"
-        />
-      </a>
+      <Link to="/" className="flex items-center gap-4 ">
+        <BombillaLibro width="52" height="52" />
+        <LetrasBombilla width="120" height="52" />
+      </Link>
       <div>
         <div className="flex items-center gap-6">
           <nav className="hidden sm:block">
             <ul className="flex items-center gap-6">
               {sections.map(({ title, url }) => (
                 <li key={title}>
-                  <a href={url} className="text-sm">
+                  <Link to={url} className="text-sm">
                     {title}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <ThemeToggle />
