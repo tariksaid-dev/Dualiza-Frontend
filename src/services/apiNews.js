@@ -47,6 +47,7 @@ export async function createNew(noticia) {
 }
 
 export async function editNew(id, noticia) {
+  console.log(id, noticia);
   const { data, error } = await supabase
     .from("news")
     .update({ ...noticia })

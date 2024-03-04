@@ -10,6 +10,7 @@ export function useEditNew() {
     onSuccess: () => {
       toast.success("Noticia editada correctamente");
       queryClient.invalidateQueries({ queryKey: ["news"] });
+      console.log("traza");
     },
     onError: (err) => console.error(err.message),
   });

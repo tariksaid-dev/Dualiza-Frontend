@@ -3,24 +3,72 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { useEditNew } from "./useEditNew";
 import { useParams } from "react-router-dom";
-import { useNews } from "../news/useNews";
 
 const EditNew = () => {
-  const noticiaConcreta = news.find((noticia) => noticia.id === NewId);
+  const news = [
+    {
+      id: 4,
+      created_at: "2024-03-03T18:34:08.347995+00:00",
+      title: "Titulo test 3",
+      content: "Contenido test 3",
+      image: "milei.jpg",
+      category: "virgen",
+    },
+    {
+      id: 5,
+      created_at: "2024-03-03T18:34:30.769989+00:00",
+      title: "Titulo test 4",
+      content: "Contenido test 4",
+      image: "milei.jpg",
+      category: "hlanz",
+    },
+    {
+      id: 18,
+      created_at: "2024-03-04T21:00:14.979142+00:00",
+      title: "asdf",
+      content: "asdf",
+      image:
+        "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/0.19511579584583494-20212251522_1.jpg",
+      category: null,
+    },
+    {
+      id: 19,
+      created_at: "2024-03-04T21:00:41.051573+00:00",
+      title: "qqqqqqqqqq",
+      content: "qqqqqqqqqqq",
+      image:
+        "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/0.03148123246255663-20212251522_1.jpg",
+      category: null,
+    },
+    {
+      id: 20,
+      created_at: "2024-03-04T21:26:51.906078+00:00",
+      title: "test",
+      content: "test",
+      image:
+        "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/0.019048630215854123-hJGNHPXo_400x400.jpg",
+      category: null,
+    },
+  ];
+  const { NewId } = useParams();
+  const noticiaConcreta = news.find((noticia) => {
+    return noticia.id + "" === NewId;
+  });
+
   const [image, setImage] = useState(noticiaConcreta.image);
   const [title, setTitle] = useState(noticiaConcreta.title);
   const [content, setContent] = useState(noticiaConcreta.content);
   const [category, setCategory] = useState(noticiaConcreta.category);
 
-  const { news } = useNews();
   const { editNew } = useEditNew();
-  const { NewId } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editNew(NewId, { image, title, content, category });
+    // console.log({ image, title, content, category });
+    const obj = { image, title, content, category };
+    editNew({ id: +NewId, noticia: obj });
     console.log("Noticia Editada correctamente");
-    console.log({ image, title, content, category });
+    // console.log({ image, title, content, category });
     setImage("");
     setTitle("");
     setContent("");
@@ -31,7 +79,7 @@ const EditNew = () => {
     <>
       <StaticHeader></StaticHeader>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e)}
         className="max-w-md mx-auto mt-20 text-card-foreground bg-card border  p-10 rounded-lg"
       >
         <h1 className="text-2xl text-card-foreground text-center">
@@ -53,7 +101,7 @@ const EditNew = () => {
             id="message"
             placeholder="Escribe un titulo..."
             onChange={(e) => setTitle(e.target.value)}
-            value={noticiaConcreta.title}
+            value={title}
           />
         </div>
         <div className="mb-4">
@@ -68,7 +116,7 @@ const EditNew = () => {
             aria-describedby=":r3j:-form-item-description"
             aria-invalid="false"
             onChange={(e) => setContent(e.target.value)}
-            value={noticiaConcreta.content}
+            value={content}
           ></textarea>
         </div>
         {/* <div className="mb-4">
@@ -101,7 +149,7 @@ const EditNew = () => {
             className="mt-1 p-2 border rounded w-full"
           />
         </div>
-        <Button type="submit">Crear noticia</Button>
+        <Button type="submit">Editar noticia</Button>
       </form>
     </>
   );
