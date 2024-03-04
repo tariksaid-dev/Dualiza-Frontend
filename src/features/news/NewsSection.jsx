@@ -10,9 +10,7 @@ const NewsSection = ({ id, created_at, title, imageUrl, content }) => {
   return (
     <Link to={`${id}`}>
       <div
-        className={`rounded-xl overflow-hidden max-w-96 border ${getNewsCard(
-          theme
-        )}`}
+        className='rounded-xl overflow-hidden max-w-96 border'
       >
         <img
           alt="Image"
@@ -26,7 +24,7 @@ const NewsSection = ({ id, created_at, title, imageUrl, content }) => {
             {created_at}
           </div>
           <h2 className="text-lg font-bold  mb-2">{title}</h2>
-          <p className="text-sm ">{content.slice(0, 100)}...</p>
+          <p className="text-sm text-muted-foreground">{content.slice(0, 100)}...</p>
         </div>
       </div>
     </Link>
