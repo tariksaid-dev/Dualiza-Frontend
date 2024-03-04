@@ -2,7 +2,7 @@ import { ThemeProviderContext } from "@/context/DarkModeContext";
 import { getSvgColor } from "@/utils/themeHelpers";
 import { useContext } from "react";
 
-const BombillaLibro = ( {height, width} ) => {
+const BombillaLibro = ( {height = '100', width = '100'} ) => {
 
   const { theme } = useContext(ThemeProviderContext);
 
