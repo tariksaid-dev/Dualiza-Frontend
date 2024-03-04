@@ -1,8 +1,5 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-const imageUrl =
-  "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/"; // milei.jpg
-
 export async function getNews() {
   const { data, error } = await supabase.from("news").select("*");
 
