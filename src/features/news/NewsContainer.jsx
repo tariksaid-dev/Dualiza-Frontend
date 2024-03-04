@@ -33,7 +33,6 @@ const NewsContainer = () => {
     <section className="m-auto h-full w-5/6 py-6 md:py-12 xl:py-16">
       <div className="flex justify-center">
         <BombillaLibro height={80} width={80} />
-        <LetrasBombilla height={80} width={80}/>
         <h1 className="text-center text-5xl font-bold p-4 mb-10">NOTICIAS DUALIZA</h1>
       </div>
       <div className="container px-4 md:px-6">
