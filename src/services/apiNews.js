@@ -44,11 +44,11 @@ export async function createNew(noticia) {
 }
 
 export async function editNew(id, noticia) {
-  console.log(id, noticia);
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from("news")
     .update({ ...noticia })
-    .eq("id", id);
+    .eq("id", id)
+    .select();
 
   if (error) {
     console.error(error);

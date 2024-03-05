@@ -6,7 +6,7 @@ export function useUpdateUserRol() {
   const queryClient = useQueryClient();
 
   const { mutate: updateUser, isLoading: isUpdating } = useMutation({
-    mutationFn: ({ id, rol }) => updateUserRol(id, rol),
+    mutationFn: ({ id, userRole: rol }) => updateUserRol({ id, rol }),
     onSuccess: () => {
       toast.success("Rol actualizado correctamente");
       queryClient.invalidateQueries({ queryKey: ["users"] });
