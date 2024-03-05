@@ -21,7 +21,7 @@ function Home() {
         <Showcase />
         <ResultadoConsumosElectricos />
         <ResultadoInstalacionClimatizacion />
-        
+        <Contacto2 />
       </div>
     </HomeLayout>
   );
