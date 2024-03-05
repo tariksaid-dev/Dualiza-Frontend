@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteUser as deleteUserApi } from "@/services/apiAuth";
+import { toast } from "sonner";
 
 export function useDeleteUser() {
   const queryClient = useQueryClient();
@@ -7,7 +8,7 @@ export function useDeleteUser() {
   const { mutate: deleteUser, isLoading: isDeleteing } = useMutation({
     mutationFn: deleteUserApi,
     onSuccess: () => {
-      console.log("User successfully deleted");
+      toast.success("Usuario borrado correctamente");
       queryClient.invalidateQueries({
         queryKey: ["users"],
       });

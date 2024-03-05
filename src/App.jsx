@@ -11,6 +11,7 @@ import ErrorPage from "./pages/ErrorPage";
 import NewsDetails from "./pages/NewsDetails";
 
 import { ThemeProvider } from "@/context/DarkModeContext";
+import { Toaster } from "./components/ui/sonner";
 import CreateNew from "./features/admin-panel/CreateNew";
 import EditNew from "./features/admin-panel/EditNew";
 
@@ -49,6 +50,13 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
+        <Toaster
+          richColors={true}
+          closeButton={true}
+          // icons={{
+          //   success: <></>
+          // }}
+        />
       </QueryClientProvider>
     </ThemeProvider>
   );
