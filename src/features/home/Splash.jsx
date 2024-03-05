@@ -1,17 +1,16 @@
 import React, { useContext } from 'react'
-
 import { ThemeProviderContext } from '@/context/DarkModeContext';
-const widths = [450, 800];
-const sizes = "(min-width: 640px) 42vw, 67vw";
+
 function Splash() {
   const { theme } = useContext(ThemeProviderContext);
-
 
   const logoImagePath = theme === 'dark'
     ? "images/LOGOS_PROYECTO/Logo-negativo-(3).webp"
     : "images/LOGOS_PROYECTO/Logo-positivo-(1).webp";
   return (
-    // <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+    // <section className="relative h-screen  mx-auto pb-10">
+    //   <div className="absolute top-0 z-[-2] h-screen w-screen gradient-bg"></div>
+    //   <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40"></div>
 
     <section className="relative h-screen w-full mx-auto pb-10" style={{background: "radial-gradient(circle closest--var(bg-background) 0%, --var(bg-primary) 100%)"}}>
       <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40 ">

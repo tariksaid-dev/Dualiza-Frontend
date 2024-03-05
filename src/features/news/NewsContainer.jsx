@@ -37,22 +37,40 @@ const NewsContainer = () => {
       </div>
       <div className="container px-4 md:px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20 justify-center">
-
           <div className="grid sm:row-span-2 md:col-span-2 gap-4">
             {mainNew.map((item) => (
-              <MainNews key={item.id} id={item.id} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+              <MainNews
+                key={item.id}
+                id={item.id}
+                created_at={item.created_at.split("T")[0]}
+                title={item.title}
+                imageUrl={item.image}
+              />
             ))}
           </div>
-          
+
           <div className="lg:col-span-1 flex md:col-span-2 lg:flex-col gap-2">
             {sideNews.map((item) => (
-              <SideNews key={item.id} id={item.id} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
-            )) }
+              <SideNews
+                key={item.id}
+                id={item.id}
+                created_at={item.created_at.split("T")[0]}
+                title={item.title}
+                imageUrl={item.image}
+              />
+            ))}
           </div>
         </div>
         <div className="gap-[1.2rem] grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] mb-10">
           {otherNews.map((item) => (
-            <NewsSection key={item.id} id={item.id} content={item.content} created_at={item.created_at.split("T")[0]} title={item.title} imageUrl={item.image} />
+            <NewsSection
+              key={item.id}
+              id={item.id}
+              content={item.content}
+              created_at={item.created_at.split("T")[0]}
+              title={item.title}
+              imageUrl={item.image}
+            />
           ))}
         </div>
         
