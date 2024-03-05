@@ -12,6 +12,8 @@ import NewsDetails from "./pages/NewsDetails";
 
 import { ThemeProvider } from "@/context/DarkModeContext";
 import { Toaster } from "./components/ui/sonner";
+import CreateNew from "./features/admin-panel/CreateNew";
+import EditNew from "./features/admin-panel/EditNew";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,7 +38,17 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
+            <Route
+              path="admin/createNew"
+              element={
+                <ProtectedRoute redirectPath="login">
+                  <CreateNew />
+                </ProtectedRoute>
+              }
+            ></Route>
             <Route index element={<Home />} />
+            {/* <Route path="admin/createNew" element={<CreateNew />} /> */}
+            <Route path="admin/edit/:NewId" element={<EditNew />} />
             <Route path="news" element={<News />} />
             <Route path="news/:NewId" element={<NewsDetails />} />
             <Route path="login" element={<Login />} />

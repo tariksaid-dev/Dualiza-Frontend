@@ -1,13 +1,13 @@
 import supabase, { supabaseAdmin } from "./supabase";
 
-export async function signup({ fullName, rol, email, password }) {
+export async function signup({ fullName, role, email, password }) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
         fullName,
-        rol,
+        role,
       },
     },
   });
@@ -55,13 +55,17 @@ export async function logout() {
   if (error) throw new Error(error.message);
 }
 
-export async function updateUserRol({ id, newRole }) {
-  const { data, error } = await supabaseAdmin.auth.admin.updateUserById(
-    id,
-    {user_metadata: {role: newRole}}
-  );
+export async function updateUserRol({ id, rol }) {
+  console.log(id, rol);
+  const { data, error } = await supabaseAdmin.auth.admin.updateUserById(id, {
+    user_metadata: { role: rol },
+  });
 
-  if (error) throw new Error(error.message);
+  console.log(data);
+  if (error) {
+    console.error(error);
+    throw new Error("User role could not be updated");
+  }
 
   return data;
 }

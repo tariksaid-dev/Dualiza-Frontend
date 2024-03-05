@@ -3,9 +3,9 @@ import { Toaster } from "sonner";
 
 const AdminPanelLayout = ({ children }) => {
   return (
-    <div className="w-2/4 m-auto">
-      <h1 className="text-2xl text-center m-10 font-bold">
-        Administración de Usuarios
+    <div className="mx-4 md:mx-48 lg:mx-56 xl:mx-80 2xl:mx-96">
+      <h1 className="text-2xl text-center m-20 font-bold">
+        ADMINSITRACIÓN DUALIZA
       </h1>
       {children}
       <Toaster toastOptions={"toast"} />
