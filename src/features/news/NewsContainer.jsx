@@ -74,13 +74,14 @@ const NewsContainer = () => {
           ))}
         </div>
         
+        
         <div className="flex flex-col gap-12">
 
-          <CenterNews centro={'IES Hermenegildo Lanz'} news={hlanzNews}/>
+          {hlanzNews ? '' : <CenterNews centro={'IES Hermenegildo Lanz'} news={hlanzNews}/>}
 
-          <CenterNews centro={'IES Virgen de Gracia'} news={virgenNews}/>
+          { virgenNews ? '' : <CenterNews centro={'IES Virgen de Gracia'} news={virgenNews}/>}
 
-          <CenterNews centro={'IES Albaytar'} news={albaytarNews}/>
+          { albaytarNews ? '' : <CenterNews centro={'IES Albaytar'} news={albaytarNews}/>}
 
         </div>
       </div>
