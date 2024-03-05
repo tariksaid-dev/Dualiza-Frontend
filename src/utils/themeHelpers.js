@@ -12,8 +12,8 @@ export const getTextColorSpan = (theme) => {
 
 export const getLogoHlanz = (theme) => {
   return theme === "light"
-    ? "public/images/IES_H_LANZ/logo-hlanz-claro.svg"
-    : "public/images/IES_H_LANZ/logo-hlanz-oscuro.svg";
+    ? "images/IES_H_LANZ/logo-hlanz-oscuro.svg"
+    : "images/IES_H_LANZ/logo-hlanz-claro.svg";
 };
 
 export const getLogoVirgenGracia = (theme) => {
