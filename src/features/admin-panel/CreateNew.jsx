@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
 import { useCreateNew } from "../news/useCreateNew";
+import { useNavigate } from "react-router-dom";
 
 const CreateNew = () => {
   const [image, setImage] = useState("");
@@ -11,6 +12,8 @@ const CreateNew = () => {
   const [category, setCategory] = useState(null);
 
   const { createNew } = useCreateNew();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +26,8 @@ const CreateNew = () => {
     setTitle("");
     setContent("");
     setCategory("");
+
+    navigate("/admin");
   };
 
   return (
@@ -30,9 +35,9 @@ const CreateNew = () => {
       <StaticHeader></StaticHeader>
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto mt-20 text-card-foreground bg-card border  p-10 rounded-lg"
+        className="max-w-2xl mx-auto mt-20 text-card-foreground font-bold bg-card border p-10 rounded-lg shadow-2xl shadow-primary "
       >
-        <h1 className="text-2xl text-card-foreground text-center">
+        <h1 className="text-2xl text-card-foreground text-center font-bold mb-8">
           Crear una nueva noticia
         </h1>
         <div className="mb-4">
@@ -52,7 +57,7 @@ const CreateNew = () => {
             Contenido:
           </label>
           <textarea
-            className="flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+            className="flex min-h-[240px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none"
             placeholder="Escribe el contenido de la noticia..."
             name="bio"
             id=":r3j:-form-item"

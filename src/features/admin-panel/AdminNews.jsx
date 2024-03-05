@@ -13,6 +13,7 @@ import { useDeleteNew } from "./useDeleteNew";
 import { useNews } from "../news/useNews";
 import Spinner from "@/components/ui/Spinner";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const noticiasPorPagina = 4;
 
@@ -57,10 +58,17 @@ const AdminNews = () => {
     console.log("Editar noticia : " + id);
   };
 
+  const onAddNew = () => {
+    navigate("/admin/createNew");
+  };
+
   return (
     <div className="">
       <hr />
       <h1 className="text-3xl font-bold text-center m-8">Noticias</h1>
+      <Button className="mb-4" onClick={onAddNew}>
+        Añadir noticia
+      </Button>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mb-8 ">
         {noticiasPaginadas.map((noticia) => (
           <div key={noticia.id} className="border p-4 flex flex-col rounded-md">
