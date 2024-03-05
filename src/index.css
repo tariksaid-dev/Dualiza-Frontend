@@ -84,8 +84,11 @@
   @apply border-none;
 }
 
-
 .btn-hidden {
   @apply invisible;
 }
 
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  @apply bg-gradient-to-bl from-primary via-orange-200 to-accent-foreground/50;
+}
