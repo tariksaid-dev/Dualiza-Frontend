@@ -18,7 +18,6 @@ const CreateNew = () => {
 
     createNew({ image, title, content, category });
     console.log("Noticia Añadida correctamente");
-    console.log({ image, title, content, category });
 
     setImage("");
     setTitle("");

@@ -1,79 +1,50 @@
 import StaticHeader from "@/components/ui/StaticHeader";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useEditNew } from "./useEditNew";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useNews } from "../news/useNews";
+import Spinner from "@/components/ui/Spinner";
 
 const EditNew = () => {
-  const news = [
-    {
-      id: 4,
-      created_at: "2024-03-03T18:34:08.347995+00:00",
-      title: "Titulo test 3",
-      content: "Contenido test 3",
-      image: "milei.jpg",
-      category: "virgen",
-    },
-    {
-      id: 5,
-      created_at: "2024-03-03T18:34:30.769989+00:00",
-      title: "Titulo test 4",
-      content: "Contenido test 4",
-      image: "milei.jpg",
-      category: "hlanz",
-    },
-    {
-      id: 18,
-      created_at: "2024-03-04T21:00:14.979142+00:00",
-      title: "asdf",
-      content: "asdf",
-      image:
-        "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/0.19511579584583494-20212251522_1.jpg",
-      category: null,
-    },
-    {
-      id: 19,
-      created_at: "2024-03-04T21:00:41.051573+00:00",
-      title: "qqqqqqqqqq",
-      content: "qqqqqqqqqqq",
-      image:
-        "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/0.03148123246255663-20212251522_1.jpg",
-      category: null,
-    },
-    {
-      id: 20,
-      created_at: "2024-03-04T21:26:51.906078+00:00",
-      title: "test",
-      content: "test",
-      image:
-        "https://yfaqdnylyulilftfycrf.supabase.co/storage/v1/object/public/news/0.019048630215854123-hJGNHPXo_400x400.jpg",
-      category: null,
-    },
-  ];
+  const { news, loading } = useNews();
   const { NewId } = useParams();
-  const noticiaConcreta = news.find((noticia) => {
-    return noticia.id + "" === NewId;
+  const [formData, setFormData] = useState({
+    image: "",
+    title: "",
+    content: "",
+    category: "",
   });
 
-  const [image, setImage] = useState(noticiaConcreta.image);
-  const [title, setTitle] = useState(noticiaConcreta.title);
-  const [content, setContent] = useState(noticiaConcreta.content);
-  const [category, setCategory] = useState(noticiaConcreta.category);
+  const navigate = useNavigate();
 
   const { editNew } = useEditNew();
 
+  useEffect(() => {
+    if (!loading && news) {
+      const noticiaConcreta = news.find((noticia) => noticia.id + "" === NewId);
+      if (noticiaConcreta) {
+        setFormData({
+          image: noticiaConcreta.image,
+          title: noticiaConcreta.title,
+          content: noticiaConcreta.content,
+          category: noticiaConcreta.category || "",
+        });
+      }
+    }
+  }, [loading, news, NewId]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log({ image, title, content, category });
-    const obj = { image, title, content, category };
+    const obj = { ...formData };
     editNew({ id: +NewId, noticia: obj });
     console.log("Noticia Editada correctamente");
-    // console.log({ image, title, content, category });
-    setImage("");
-    setTitle("");
-    setContent("");
-    setCategory("");
+    navigate("/admin");
   };
+
+  if (loading || !formData.image) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -86,11 +57,7 @@ const EditNew = () => {
           Editar noticia
         </h1>
 
-        <img
-          src={noticiaConcreta.image}
-          alt="imagen de la noticia"
-          className="w-32"
-        />
+        <img src={formData.image} alt="imagen de la noticia" className="w-32" />
 
         <div className="mb-4">
           <label htmlFor="titulo" className="block">
@@ -100,8 +67,10 @@ const EditNew = () => {
             className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 flex-1"
             id="message"
             placeholder="Escribe un titulo..."
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
+            value={formData.title}
           />
         </div>
         <div className="mb-4">
@@ -115,8 +84,10 @@ const EditNew = () => {
             id=":r3j:-form-item"
             aria-describedby=":r3j:-form-item-description"
             aria-invalid="false"
-            onChange={(e) => setContent(e.target.value)}
-            value={content}
+            onChange={(e) =>
+              setFormData({ ...formData, content: e.target.value })
+            }
+            value={formData.content}
           ></textarea>
         </div>
         {/* <div className="mb-4">
@@ -128,9 +99,11 @@ const EditNew = () => {
             name="font"
             id=":r6j:-form-item"
             aria-describedby=":r6j:-form-item-description"
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
             aria-invalid="false"
-            value={category}
+            value={formData.category}
           >
             <option value={null}>Sin categoria</option>
             <option value="hlanz">Hermenegildo Lanz</option>
@@ -145,7 +118,9 @@ const EditNew = () => {
           <input
             type="file"
             id="imagen"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) =>
+              setFormData({ ...formData, image: e.target.files[0] })
+            }
             className="mt-1 p-2 border rounded w-full"
           />
         </div>
