@@ -44,15 +44,40 @@ export async function createNew(noticia) {
 }
 
 export async function editNew(id, noticia) {
+  const hasImagePath = noticia.image?.startsWith?.(supabaseUrl);
+
+  const imageName = `${Math.random()}-${noticia.image?.name}`.replaceAll(
+    "/",
+    ""
+  );
+
+  const imagePath = hasImagePath
+    ? noticia.image
+    : `${supabaseUrl}/storage/v1/object/public/news/${imageName}`;
+
   const { data, error } = await supabaseAdmin
     .from("news")
-    .update({ ...noticia })
+    .update({ ...noticia, image: imagePath })
     .eq("id", id)
     .select();
 
   if (error) {
     console.error(error);
     throw new Error("News could not be edited");
+  }
+
+  if (hasImagePath) return data;
+
+  const { error: storageError } = await supabase.storage
+    .from("news")
+    .upload(imageName, noticia.image);
+
+  if (storageError) {
+    await supabase.from("news").delete().eq("id", data.id);
+    console.error(storageError);
+    throw new Error(
+      "New image could not be uploaded and the new was not created"
+    );
   }
 
   return data;
