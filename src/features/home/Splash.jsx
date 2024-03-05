@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
-
 import { ThemeProviderContext } from '@/context/DarkModeContext';
+
 import Bombilla from '@/components/ui/3d/bombilla/Bombilla';
 const widths = [450, 800];
 const sizes = "(min-width: 640px) 42vw, 67vw";
 function Splash() {
   const { theme } = useContext(ThemeProviderContext);
 
-
   const logoImagePath = theme === 'dark'
     ? "images/LOGOS_PROYECTO/Logo-negativo-(3).webp"
     : "images/LOGOS_PROYECTO/Logo-positivo-(1).webp";
   return (
-    <section className="relative h-screen max-w-7xl mx-auto pb-10">
+    <section className="relative h-screen  mx-auto pb-10">
+      <div className="absolute top-0 z-[-2] h-screen w-screen gradient-bg"></div>
       <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40">
       </div>
       <div className="relative grid h-full place-items-center sm:grid-cols-2">

@@ -48,7 +48,7 @@ import { useGetAllUsers } from "./useGetAllUsers";
 import { useUpdateUserRol } from "./useUpdateUserRol";
 
 export function DataTableDemo() {
-  const { users:userData,isLoading } = useGetAllUsers();
+  const { users: userData, isLoading } = useGetAllUsers();
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -81,15 +81,15 @@ export function DataTableDemo() {
           </Button>
         );
       },
-      cell: ({ row }) => (
-        <div className="">{row.getValue("email")}</div>
-      ),
+      cell: ({ row }) => <div className="">{row.getValue("email")}</div>,
     },
     {
       accessorKey: "role",
       header: () => <div className="text-right">Rol</div>,
       cell: ({ row }) => (
-        <div className="text-right font-medium">{findUserRolByEmail(row.getValue("email")) ?? "Sin rol" }</div>
+        <div className="text-right font-medium">
+          {findUserRolByEmail(row.getValue("email")) ?? "Sin rol"}
+        </div>
       ),
     },
     {
@@ -99,14 +99,14 @@ export function DataTableDemo() {
         const email = row.getValue("email");
         const id = findUserIdByEmail(email);
 
-        const { deleteUser } = useDeleteUser(); 
+        const { deleteUser } = useDeleteUser();
         const { updateUser } = useUpdateUserRol();
 
-        let rol = row.getValue("role");
+        let rol = findUserRolByEmail(email);
 
         const onSave = () => {
-          const newRole = rol;
-          updateUser({ id, newRole });
+          const userRole = findUserRolByEmail(email);
+          updateUser({ id, userRole });
           try {
             setTimeout(() => {
               setOpen(false);
@@ -115,8 +115,7 @@ export function DataTableDemo() {
             console.log(error);
           }
           console.log("Rol actualizado");
-        }; 
-        
+        };
 
         const onDelete = () => {
           deleteUser({ id });
@@ -124,7 +123,7 @@ export function DataTableDemo() {
         };
 
         return (
-          <Dialog  open={open} onOpenChange={setOpen} >
+          <Dialog open={open} onOpenChange={setOpen}>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-8 w-8 p-0">
@@ -136,15 +135,17 @@ export function DataTableDemo() {
                 <DialogTrigger asChild>
                   <DropdownMenuItem>Editar Usuario</DropdownMenuItem>
                 </DialogTrigger>
-                <DropdownMenuItem onClick={onDelete}>Eliminar Usuario</DropdownMenuItem>
+                <DropdownMenuItem onClick={onDelete}>
+                  Eliminar Usuario
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader >
+              <DialogHeader>
                 <DialogTitle>Editar Usuario</DialogTitle>
               </DialogHeader>
-               <div className="grid gap-4 py-4 ">
+              <div className="grid gap-4 py-4 ">
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="rol" className="text-right">
                     Rol
@@ -175,7 +176,7 @@ export function DataTableDemo() {
   ];
 
   const table = useReactTable({
-    data:userData,
+    data: userData,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -192,71 +193,73 @@ export function DataTableDemo() {
       rowSelection,
     },
   });
-  
-  return (
-    !isLoading ? (<div className="w-full ">
-    <h1 className="text-3xl font-bold text-center">Usuarios</h1>
-    <div className="flex items-center py-4 justify-between">
-      <Input
-        placeholder="Buscar por email..."
-        value={table.getColumn("email")?.getFilterValue() ?? ""}
-        onChange={(event) =>
-          table.getColumn("email")?.setFilterValue(event.target.value)
-        }
-        className="max-w-sm"
-      />
-      <DialogDemo></DialogDemo>
-    </div>
-    <div className="rounded-md border mb-10">
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {userData?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(
-                      cell.column.columnDef.cell,
-                      cell.getContext()
-                    )}
-                  </TableCell>
-                ))}
+
+  return !isLoading ? (
+    <div className="w-full ">
+      <h1 className="text-3xl font-bold text-center">Usuarios</h1>
+      <div className="flex items-center py-4 justify-between">
+        <Input
+          placeholder="Buscar por email..."
+          value={table.getColumn("email")?.getFilterValue() ?? ""}
+          onChange={(event) =>
+            table.getColumn("email")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+        <DialogDemo></DialogDemo>
+      </div>
+      <div className="rounded-md border mb-10">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell
-                colSpan={columns.length}
-                className="h-24 text-center"
-              >
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {userData?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
     </div>
-  </div>) : <Spinner />, 
+  ) : (
+    <Spinner />
   );
 }

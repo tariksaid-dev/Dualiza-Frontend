@@ -8,9 +8,8 @@ export function useEditNew() {
   const { mutate: editNew, isLoading: isEditing } = useMutation({
     mutationFn: ({ id, noticia }) => editNewApi(id, noticia),
     onSuccess: () => {
-      toast.np("Noticia editada correctamente");
+      toast.success("Noticia editada correctamente");
       queryClient.invalidateQueries({ queryKey: ["news"] });
-      console.log("traza");
     },
     onError: (err) => console.error(err.message),
   });
