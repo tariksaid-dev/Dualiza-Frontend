@@ -43,7 +43,7 @@ const NewContent = ({ NewId }) => {
             alt="Image"
             className="aspect-video overflow-hidden rounded-lg object-cover"
             height={375}
-            src={`${supabaseUrl}/storage/v1/object/public/news/${image}`}
+            src={image}
             width={900}
           />
           {contentParagraphs}
