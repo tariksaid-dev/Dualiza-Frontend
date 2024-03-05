@@ -1,9 +1,15 @@
-import { Suspense, useRef } from 'react';
-import { Canvas, useLoader, useFrame } from '@react-three/fiber';
+import { Suspense, useContext, useRef } from 'react';
+import { Canvas, useLoader, useFrame, useThree } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, SpotLight, useGLTF } from '@react-three/drei';
+import * as THREE from 'three';
+import { initialCamera } from './constants';
+import { getLightColor } from '@/utils/themeHelpers';
+import { ThemeProviderContext } from '@/context/DarkModeContext';
+
 
 function Model() {
+
   return (
     <Suspense fallback={null}>
       <ModelComponent />
@@ -13,13 +19,15 @@ function Model() {
 
 function ModelComponent() {
   const groupRef = useRef();
+  let { camera } = useThree();
 
-
-  useFrame((state, delta) => {
+  useFrame((state) => {
+    groupRef.current.rotation._w = 0
+    groupRef.current.up.y = 0
     const { clock } = state;
     const time = clock.getElapsedTime();
-    const y = Math.sin(time) * 0.5;
-    groupRef.current.position.y = y;
+    const rotation = time * 0.5;
+    groupRef.current.rotation.y = rotation;
   });
 
   const gltf = useLoader(GLTFLoader, 'public/3d-models/bombilla/bombilla.gltf');
@@ -37,7 +45,6 @@ function ModelComponent() {
 
   materials['bombilla-2'].color.setRGB(1, 1, 1);
 
-
   return (
     <group ref={groupRef} dispose={null}>
       <primitive object={gltf.scene} />
@@ -46,13 +53,13 @@ function ModelComponent() {
 }
 
 function Bombilla() {
-
+    const { theme } = useContext(ThemeProviderContext);
   return (
-    <Canvas camera={{fov:100}}>
+    <Canvas camera={initialCamera} style={{ width: '500px', height: '100vh', margin: '0 auto', display: 'flex' }}>
       <ambientLight intensity={0.8} />
       <directionalLight intensity={1} position={[1, 1, 1]} />
       <directionalLight intensity={10} position={[0, -1, 0]} />
-      
+      <SpotLight color={new THREE.Color(getLightColor(theme))} distance={10} anglePower={5} angle={.7} intensity={2} position={[0,5,0]}/>
       <Model />
     </Canvas>
   );

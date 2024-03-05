@@ -12,8 +12,8 @@ export const getTextColorSpan = (theme) => {
 
 export const getLogoHlanz = (theme) => {
   return theme === "light"
-    ? "public/images/IES_H_LANZ/logo-hlanz-claro.svg"
-    : "public/images/IES_H_LANZ/logo-hlanz-oscuro.svg";
+    ? "images/IES_H_LANZ/logo-hlanz-oscuro.svg"
+    : "images/IES_H_LANZ/logo-hlanz-claro.svg";
 };
 
 export const getLogoVirgenGracia = (theme) => {
@@ -57,4 +57,8 @@ export const getNewsCard = (theme) => {
 
 export const getSvgColor = (theme) => {
   return theme === "light" ? "black" : "white";
+}
+
+export const getLightColor = (theme) => { 
+  return theme === "light" ? 0x0a0532 : 0xffa500;
 }

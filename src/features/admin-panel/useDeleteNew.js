@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteNew as deleteNewApi } from "@/services/apiNews";
+import { toast } from "sonner";
 
 export function useDeleteNew() {
   const queryClient = useQueryClient();
@@ -7,7 +8,7 @@ export function useDeleteNew() {
   const { isLoading: isDeleting, mutate: deleteNew } = useMutation({
     mutationFn: deleteNewApi,
     onSuccess: () => {
-      console.log("New successfully deleted");
+      toast.success("Noticia borrada correctamente");
       queryClient.invalidateQueries({
         queryKey: ["news"],
       });
