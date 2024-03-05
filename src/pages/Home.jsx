@@ -1,5 +1,5 @@
+import HomeLayout from "@/components/layouts/HomeLayout";
 import DinamicHeader from "@/components/ui/DinamicHeader";
-import { ThemeProvider } from "@/context/DarkModeContext";
 import Contacto2 from "@/features/home/Contacto2";
 import FooterEmpresas from "@/features/home/FooterEmpresas";
 import MejoraTuCentro from "@/features/home/MejoraTuCentro";
@@ -12,21 +12,19 @@ import Splash from "@/features/home/Splash";
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-const Home = () => {
+function Home() {
   return (
-    <>
-        <DinamicHeader />
-        <Splash />
-        <Proyecto />
-        <ResultadoInstalacionFotovoltaica />
+    <HomeLayout>
+      <DinamicHeader />
+      <Splash />
+      <div className="space-y-24 px-8 py-32">
+        <Showcase />
         <ResultadoConsumosElectricos />
         <ResultadoInstalacionClimatizacion />
-        <MejoraTuCentro />
-        <Showcase />
-        <Contacto2 />
-        <FooterEmpresas />
-    </>
+        
+      </div>
+    </HomeLayout>
   );
-};
+}
 
 export default Home;

@@ -11,8 +11,10 @@ function Splash() {
     ? "images/LOGOS_PROYECTO/Logo-negativo-(3).webp"
     : "images/LOGOS_PROYECTO/Logo-positivo-(1).webp";
   return (
-    <section className="relative h-screen max-w-7xl mx-auto pb-10">
-      <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40">
+    // <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+
+    <section className="relative h-screen w-full mx-auto pb-10" style={{background: "radial-gradient(circle closest--var(bg-background) 0%, --var(bg-primary) 100%)"}}>
+      <div id="splash-bg-fallback" className="absolute inset-0 hidden opacity-40 ">
       </div>
       <div className="relative grid h-full place-items-center sm:grid-cols-2">
         <h2 className="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end">
