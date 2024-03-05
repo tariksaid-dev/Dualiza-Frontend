@@ -18,7 +18,7 @@ const UniqueSideNews = ({ item }) => {
                 alt="Image"
                 className="aspect-[16/9] overflow-hidden rounded-lg object-cover"
                 height={225}
-                src={`${supabaseUrl}/storage/v1/object/public/news/${image}`}
+                src={image}
                 width={400}
               />
             </Link>
