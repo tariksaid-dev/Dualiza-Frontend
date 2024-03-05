@@ -58,3 +58,7 @@ export const getNewsCard = (theme) => {
 export const getSvgColor = (theme) => {
   return theme === "light" ? "black" : "white";
 }
+
+export const getLightColor = (theme) => { 
+  return theme === "light" ? 0x0a0532 : 0xffa500;
+}

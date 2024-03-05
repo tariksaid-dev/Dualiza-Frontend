@@ -6,7 +6,7 @@ const NewsItem = ({ created_at, title, imageUrl }) => {
       <img
         alt="Image"
         className="object-cover w-full h-full"
-        src={`${supabaseUrl}/storage/v1/object/public/news/${imageUrl}`}
+        src={imageUrl}
         style={{
           aspectRatio: "400/225",
           objectFit: "cover",

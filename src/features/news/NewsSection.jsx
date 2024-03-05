@@ -15,7 +15,7 @@ const NewsSection = ({ id, created_at, title, imageUrl, content }) => {
         <img
           alt="Image"
           className="object-contain w-full h-72 md:h-56 lg:h-72"
-          src={`${supabaseUrl}/storage/v1/object/public/news/${imageUrl}`}
+          src={imageUrl}
         />
         <div className="p-4 max-h-52 min-h-52">
           <div

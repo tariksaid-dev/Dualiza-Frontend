@@ -1,15 +1,8 @@
 import React, { useContext } from 'react'
-import { ThemeProviderContext } from '@/context/DarkModeContext';
-
 import Bombilla from '@/components/ui/3d/bombilla/Bombilla';
-const widths = [450, 800];
-const sizes = "(min-width: 640px) 42vw, 67vw";
-function Splash() {
-  const { theme } = useContext(ThemeProviderContext);
 
-  const logoImagePath = theme === 'dark'
-    ? "images/LOGOS_PROYECTO/Logo-negativo-(3).webp"
-    : "images/LOGOS_PROYECTO/Logo-positivo-(1).webp";
+function Splash() {
+
   return (
     <section className="relative h-screen  mx-auto pb-10">
       <div className="absolute top-0 z-[-2] h-screen w-screen gradient-bg"></div>
@@ -24,12 +17,10 @@ function Splash() {
           </div>
         </h2>
 
-        <div
-          className="w-2/3 max-w-3xl flex sm:w-10/12 sm:self-auto sm:justify-self-start z-10"
-        >
+          <div id='bombilla' className='hidden sm:flex'>
           <Bombilla />
+          </div>
 
-        </div>
       </div>
 
     </section>
