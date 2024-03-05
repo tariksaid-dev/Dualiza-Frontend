@@ -35,7 +35,7 @@ const NewsContainer = () => {
         <BombillaLibro height={80} width={80} />
         <h1 className="text-center text-5xl font-bold p-4 mb-10">NOTICIAS DUALIZA</h1>
       </div>
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 h-full">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20 justify-center">
           <div className="grid sm:row-span-2 md:col-span-2 gap-4">
             {mainNew.map((item) => (
@@ -74,14 +74,13 @@ const NewsContainer = () => {
           ))}
         </div>
         
-        
         <div className="flex flex-col gap-12">
 
-          {hlanzNews ? '' : <CenterNews centro={'IES Hermenegildo Lanz'} news={hlanzNews}/>}
+          <CenterNews centro={'IES Hermenegildo Lanz'} news={hlanzNews}/>
 
-          { virgenNews ? '' : <CenterNews centro={'IES Virgen de Gracia'} news={virgenNews}/>}
+          <CenterNews centro={'IES Virgen de Gracia'} news={virgenNews}/>
 
-          { albaytarNews ? '' : <CenterNews centro={'IES Albaytar'} news={albaytarNews}/>}
+          <CenterNews centro={'IES Albaytar'} news={albaytarNews}/>
 
         </div>
       </div>

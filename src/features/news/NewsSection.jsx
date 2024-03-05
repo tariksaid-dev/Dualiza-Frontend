@@ -10,7 +10,7 @@ const NewsSection = ({ id, created_at, title, imageUrl, content }) => {
   return (
     <Link to={`${id}`}>
       <div
-        className='rounded-xl overflow-hidden max-w-96 border'
+        className='rounded-xl overflow-hidden max-w-96 border hover:border-white hover:shadow-xl transition-shadow transition-border duration-150 ease-in-out'
       >
         <img
           alt="Image"
@@ -19,7 +19,7 @@ const NewsSection = ({ id, created_at, title, imageUrl, content }) => {
         />
         <div className="p-4 max-h-52 min-h-52">
           <div
-            className={`text-sm font-semibold mb-1 ${getTextColorTitle(theme)}`}
+            className={`text-sm font-semibold mb-1 background`}
           >
             {created_at}
           </div>
