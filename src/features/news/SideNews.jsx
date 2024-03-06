@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SideNews = ({ id, created_at, title, imageUrl }) => {
   return (
-    <Link to={`${id}`} className="aspect-[16/9] rounded-xl overflow-hidden relative">
+    <Link to={`${id}`} className="aspect-[16/9] rounded-xl overflow-hidden relative hover:shadow-xl transition-shadow duration-150 ease-in-out">
       <img
         alt="Image"
         className="object-cover w-full h-full"
