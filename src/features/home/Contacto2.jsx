@@ -39,7 +39,7 @@ const Contacto2 = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-     const isEmailValid = validateEmail(email);
+    const isEmailValid = validateEmail(email);
     setError({ title: !title, email: !isEmailValid, selectedOption: !selectedOption, message: !message });
 
     if (!selectedOption || !title || !isEmailValid || !message) {
@@ -100,7 +100,7 @@ const Contacto2 = () => {
               value={email}
               onChange={handleEmailChange}
               autoComplete="off"
-               />
+            />
             <p id="title-email-user" className="text-[0.8rem] text-muted-foreground">Introduce tu email para que podamos responderte.
             </p>
           </div>
@@ -121,7 +121,6 @@ const Contacto2 = () => {
                   {options.map((option) => (
                     <li className='cursor-pointer' key={option.email} onClick={() => handleOptionClick(option.email)}>
                       <span className='font-bold'>{option.name}</span> - <span className='text-primary'>{option.person}</span>
-                      {/* <Input className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 font-bold cursor-pointer" placeholder={`${option.name} - ${option.email}`} id="email-select-form-item" aria-describedby="email-select-form-item-description" aria-invalid="false" name="username" required /> */}
                     </li>
                   ))}
                 </ul>
@@ -140,7 +139,7 @@ const Contacto2 = () => {
               aria-invalid="false"
               onChange={handleMessageChange}
               value={message}
-              >
+            >
 
             </textarea>
           </div>
