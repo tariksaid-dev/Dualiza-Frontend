@@ -4,9 +4,13 @@ import UniqueSideNews from "./UniqueSideNews";
 import Spinner from "@/components/ui/Spinner";
 import StaticHeader from "@/components/ui/StaticHeader";
 import FooterEmpresas from "../home/FooterEmpresas";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import GoBackArrow from "@/components/icons/GoBackArrow";
 
 const NewContent = ({ NewId }) => {
   const { isLoading, error, news } = useNews();
+  const navigate = useNavigate();
 
   if (isLoading) return <Spinner></Spinner>;
 
@@ -34,7 +38,11 @@ const NewContent = ({ NewId }) => {
   return (
     <>
     <StaticHeader/>
+    
       <div className="p-20 px-4 lg:px-24">
+      <Button variant="outline" size="icon" onClick={() => navigate(-1)}>
+        <GoBackArrow height={24} width={24}/>
+      </Button>
         <div className="grid gap-6 xl:grid-cols-[900px_1fr] xl:gap-8">
           <div className="grid gap-6">
             <div className="space-y-2">
