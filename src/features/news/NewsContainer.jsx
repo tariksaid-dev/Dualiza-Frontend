@@ -8,6 +8,7 @@ import CenterNews from "./CenterNews";
 import StaticHeader from "@/components/ui/StaticHeader";
 import BombillaLibro from "@/components/icons/BombillaLibro";
 import LetrasBombilla from "@/components/icons/LetrasBombilla";
+import FooterEmpresas from "../home/FooterEmpresas";
 
 
 const NewsContainer = () => {
@@ -76,15 +77,16 @@ const NewsContainer = () => {
         
         <div className="flex flex-col gap-12">
 
-          <CenterNews centro={'IES Hermenegildo Lanz'} news={hlanzNews}/>
+          { hlanzNews ? '' : <CenterNews centro={'IES Hermenegildo Lanz'} news={hlanzNews}/>}
 
-          <CenterNews centro={'IES Virgen de Gracia'} news={virgenNews}/>
+          { virgenNews ? '' : <CenterNews centro={'CIFP Virgen de Gracia'} news={virgenNews}/>}
 
-          <CenterNews centro={'IES Albaytar'} news={albaytarNews}/>
+          { albaytarNews ? '' : <CenterNews centro={'IES Albaytar'} news={albaytarNews}/>}
 
         </div>
       </div>
     </section>
+    <FooterEmpresas/>
     </>
 
   );
