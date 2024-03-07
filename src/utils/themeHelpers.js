@@ -62,3 +62,7 @@ export const getSvgColor = (theme) => {
 export const getLightColor = (theme) => { 
   return theme === "light" ? 0x0a0532 : 0xffa500;
 }
+
+export const getFooterColor = (theme) => {
+  return theme === "light" ? "bg-[#fafafa]" : "bg-[#0f0f0f]";
+}
