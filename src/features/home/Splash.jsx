@@ -1,24 +1,38 @@
 import React from "react";
+
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/500.css";
+
 import Bombilla from "@/components/ui/3d/bombilla/Bombilla";
+import { Button } from "@/components/ui/button";
 
 function Splash() {
   return (
-    <section className="relative h-screen w-full mx-auto pb-10">
-      <div className="absolute top-0 z-[-2] h-screen w-screen gradient-bg"></div>
-      <div className="relative grid h-full place-items-center sm:grid-cols-2">
-        <h2 className="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end pb-48">
-          <div className="gradient-text text-center font-extrabold tracking-tighter text-8xl">
-            <p className="gradient-text text-7xl md:text-8xl">
-              Dualiza
-              <br /> proyecto
-              <br /> Eco-Friendly!
-            </p>
-          </div>
-        </h2>
-        <div className="w-2/3 max-w-3xl ml-[-120px] self-start pb-16 sm:w-10/12 sm:self-auto sm:justify-self-start">
-          <Bombilla />
+    <section className="relative h-screen w-full mx-auto gradient-bg grid grid-cols-[60%,40%] grid-rows-1">
+      <aside className="flex flex-col justify-center pl-52">
+        <p
+          className="text-center gradient-text text-7xl md:text-9xl font-bold tracking-[-0.3rem] pb-8"
+          style={{ fontFamily: "Inter" }}
+        >
+          Dualiza
+          <br /> proyecto
+          <br /> eco friendly!
+        </p>
+        <p
+          className="text-center text-2xl font-medium pb-4 "
+          style={{ fontFamily: "Inter" }}
+        >
+          ¿Quieres saber más?
+        </p>
+
+        <div className="flex justify-center gap-8">
+          <Button variant="default">Noticias</Button>
+          <Button variant="outline">Noticias</Button>
         </div>
-      </div>
+      </aside>
+      <aside className="h-full w-full flex justify-start relative">
+        <Bombilla />
+      </aside>
     </section>
   );
 }

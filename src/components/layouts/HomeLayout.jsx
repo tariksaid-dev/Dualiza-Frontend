@@ -1,8 +1,11 @@
 function HomeLayout({ children }) {
   return (
-    <div className="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
+    <main
+      className="bg-default text-default text-base selection:bg-secondary selection:text-white snap-y snap-mandatory relative w-full h-screen overflow-auto"
+      id="main"
+    >
       {children}
-    </div>
+    </main>
   );
 }
 

@@ -1,14 +1,12 @@
-import { supabaseUrl } from '@/services/supabase';
-import React from 'react'
+import React from "react";
 
 const ShowCaseCard = ({ site }) => {
-
   return (
     <a className="group aspect-video hover:!text-default" href={site.url}>
       <figure className="relative h-full w-full overflow-hidden">
         <img
           className="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
-          src={`${supabaseUrl}/storage/v1/object/public/news/${site.image}`}
+          src={`${site.image}`}
           widths={[300, 600, 900, 1200, 1500, 2000]}
           alt={`A screenshot of ${site.url}`}
         />
@@ -23,6 +21,6 @@ const ShowCaseCard = ({ site }) => {
       </figure>
     </a>
   );
-}
+};
 
-export default ShowCaseCard
+export default ShowCaseCard;

@@ -5,14 +5,11 @@ import LetrasBombilla from "../icons/LetrasBombilla";
 import { Link } from "react-router-dom";
 
 function DinamicHeader() {
-  const sections = [
-    { title: "Noticias", url: "news" },
-    // { title: "Login", url: "login" },
-  ];
+  const sections = [{ title: "Noticias", url: "news" }];
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const page = document.documentElement;
+    document.querySelector("#main").addEventListener("scroll", () => {
+      const page = document.querySelector("#main");
       const header = document.querySelector("#header");
 
       const d = page.clientHeight - page.scrollTop - header.offsetHeight;
@@ -26,7 +23,7 @@ function DinamicHeader() {
   return (
     <header
       id="header"
-      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95"
     >
       <Link to="/" className="flex items-center gap-4 ">
         <BombillaLibro width="52" height="52" />
