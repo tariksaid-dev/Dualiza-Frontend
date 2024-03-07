@@ -114,7 +114,7 @@ const Contacto2 = () => {
                 event.preventDefault();
                 setIsOpen(!isOpen);
               }}>
-                <p className='text-muted-foreground'>{selectedOption || 'Selecciona el email del centro con el que quieres contactar'}</p>
+                <p className='text-muted-foreground'>{selectedOption || 'Clica aquí para seleccionar el email del centro con el que quieres contactar'}</p>
               </button>
               {isOpen && (
                 <ul>
