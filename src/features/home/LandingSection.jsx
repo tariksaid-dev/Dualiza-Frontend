@@ -1,6 +1,6 @@
-function LandingSection({ children, type }) {
+function LandingSection({ children }) {
   return (
-    <div className={`snap-center ${!type ? "pt-24" : ""}`}>{children}</div>
+    <div className="snap-center">{children}</div>
   );
 }
 

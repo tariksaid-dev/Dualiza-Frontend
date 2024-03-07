@@ -10,7 +10,7 @@ function Home() {
   return (
     <HomeLayout>
       <DinamicHeader />
-      <LandingSection type="splash">
+      <LandingSection>
         <Splash />
       </LandingSection>
 

@@ -1,19 +1,28 @@
-import React from 'react'
+import React from "react";
+import "@fontsource/inter";
 
 const ContentSection = ({ id, title, children }) => {
+  return (
+    <section
+      id={id}
+      className="flex flex-col items-center justify-center space-y-16 h-[100vh] relative"
+    >
+      <div className="flex flex-col items-center gap-12">
+        <h2
+          className="gradient-text text-center font-extrabold tracking-tight text-5xl sm:text-7xl md:text-8xl text-primary"
+          style={{ fontFamily: "Inter" }}
+        >
+          {title}
+        </h2>
+        <p className="text-3xl" style={{ fontFamily: "Inter" }}>
+          ¡No te pierdas lo último de la actualidad{" "}
+          <span className="text-primary">ecológica</span> y{" "}
+          <span className="text-primary">medioambiental</span>!
+        </p>
+      </div>
+      {children}
+    </section>
+  );
+};
 
-    return (
-        <section id={id} className="flex  flex-col items-center gap-6 space-y-8 h-full  justify-center py-5 p-5 max-w-7xl mx-auto">
-            <div className="flex flex-col items-center gap-4">
-
-                <h2 className="gradient-text text-center font-extrabold tracking-tight  text-3xl sm:text-4xl md:text-6xl text-primary">
-                    {title}
-                </h2>
-            </div>
-            <p className="max-w-xl text-center font-extrabold text-2xl"></p>
-            {children}
-        </section>
-    );
-}
-
-export default ContentSection
+export default ContentSection;
