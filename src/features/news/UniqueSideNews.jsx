@@ -6,7 +6,7 @@ const UniqueSideNews = ({ item }) => {
   return (
     <div className="grid md:grid-cols-2">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tight line-clamp-3">{title}</h2>
+              <h2 className="text-3xl font-bold tracking-tight line-clamp-3 w-44">{title}</h2>
               <p className="text-gray-500 dark:text-gray-400">Creado el {created_at.split("T")[0]}</p>
               <p className="line-clamp-3 text-sm text-muted-foreground">
                 {content.slice(0, 100)}...
