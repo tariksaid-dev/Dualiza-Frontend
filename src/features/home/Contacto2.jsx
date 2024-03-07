@@ -60,7 +60,7 @@ const Contacto2 = () => {
   return (
     <section className="flex flex-col items-center justify-center h-full p-10 max-w-7xl mx-auto">
 
-      <div className="space-y-6 border p-10 w-full">
+<div className="space-y-6 border p-10 w-full">
         <div>
           <h3 className="text-lg font-medium text-primary">
             Contacto
