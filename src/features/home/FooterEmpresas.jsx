@@ -1,3 +1,4 @@
+import LetrasBombilla from '@/components/icons/LetrasBombilla'
 import VirgenGracia from '@/components/icons/VirgenGracia'
 import { ThemeProviderContext } from '@/context/DarkModeContext'
 import { getFooterColor, getLogoCaixaBank, getLogoHlanz } from '@/utils/themeHelpers'
@@ -42,7 +43,7 @@ const FooterEmpresas = () => {
                 rel="noopener noreferrer"
               >
                 {" "}
-                <VirgenGracia width="150" height="150" fill='foreground' />
+                <VirgenGracia width="150" height="150" fill={theme === "light" ? "black" : "white"} />
               </a>
             </div>
           </div>
