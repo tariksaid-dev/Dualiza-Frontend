@@ -29,13 +29,15 @@ const Showcase = () => {
   return (
     <ContentSection title="Noticias" id="showcase">
       <div className="max-w-6xl space-y-2">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 place-items-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 ">
           {
             isLoading && <Spinner />
           }
           {
             news && news.filter((n, index) => isMobile ? index < 3 : index < 9).map((n) => (
-            <ShowCaseCard key={n.id} site={n} />
+              <div className="flex justify-center items-center">
+              <ShowCaseCard key={n.id} site={n} />
+            </div>
           ))
           }
           
