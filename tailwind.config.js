@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -28,9 +28,9 @@ module.exports = {
           foreground: "hsl(var(--primary-foreground))",
         },
         skin: {
-          'orange-lanze': 'var(--color-orange-lanze)',
-          'orange-ieshlanz': 'var(--color-orange-ieshlanz)',
-          'dark-blue': 'var(--color-dark-blue)',
+          "orange-lanze": "var(--color-orange-lanze)",
+          "orange-ieshlanz": "var(--color-orange-ieshlanz)",
+          "dark-blue": "var(--color-dark-blue)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -56,6 +56,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        title: {
+          DEFAULT: "hsl(243, 72%, 46%)",
+          primary: "hsl(243, 72%, 46%)",
+          secondary: "hsl(243, 64%, 21%)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -79,4 +84,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

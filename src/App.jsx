@@ -47,7 +47,6 @@ function App() {
               }
             ></Route>
             <Route index element={<Home />} />
-            {/* <Route path="admin/createNew" element={<CreateNew />} /> */}
             <Route path="admin/edit/:NewId" element={<EditNew />} />
             <Route path="news" element={<News />} />
             <Route path="news/:NewId" element={<NewsDetails />} />
@@ -55,13 +54,7 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
-        <Toaster
-          richColors={true}
-          closeButton={true}
-          // icons={{
-          //   success: <></>
-          // }}
-        />
+        <Toaster closeButton={true} />
       </QueryClientProvider>
     </ThemeProvider>
   );
