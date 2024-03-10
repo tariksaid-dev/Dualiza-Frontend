@@ -8,7 +8,7 @@ import CenterNews from "./CenterNews";
 import StaticHeader from "@/components/ui/StaticHeader";
 import BombillaLibro from "@/components/icons/BombillaLibro";
 import LetrasBombilla from "@/components/icons/LetrasBombilla";
-import FooterEmpresas from "../home/FooterEmpresas";
+import FooterEmpresas from "../home/Footer";
 
 
 const NewsContainer = () => {
