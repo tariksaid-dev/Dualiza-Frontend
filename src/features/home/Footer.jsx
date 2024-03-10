@@ -9,9 +9,30 @@ import React, { useContext } from "react";
 import "@fontsource/inter";
 import "@fontsource/inter/700.css";
 import FooterCollaboratorsContainer from "./FooterCollaboratorsContainer";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const { theme } = useContext(ThemeProviderContext);
+
+  const developers = [
+    {
+      name: "Tarik Said",
+      url: "https://github.com/tariksaid-dev",
+    },
+    {
+      name: "Pepe Rivera",
+      url: "https://github.com/PepeRivera04",
+    },
+    {
+      name: "Pedro Vílchez",
+      url: "https://github.com/NuMeRo-999",
+    },
+    {
+      name: "Rogelio Sánchez",
+      url: "https://github.com/RogerCiv",
+    },
+  ];
 
   // TEST // Usar esto en vez del contexto
   // const isDark = window.document.documentElement.classList.contains("dark")
@@ -20,8 +41,6 @@ function Footer() {
   // TODO
   // Componetizar logos para que cambien auto con el tema
   // Alt de svg? mejorar accesibilidad en svgs components
-  // Añadir componente Avatar con .png de github abajo izquierda
-
 
   return (
     <footer
@@ -93,48 +112,21 @@ function Footer() {
           </a>
         </FooterCollaboratorsContainer>
       </div>
-      <div className="flex items-center justify-center border-t border-border/60 pt-4">
+      <div className="flex items-center border-t justify-center border-border/60 pt-4 relative">
+        <div className="flex items-center space-x-2 absolute right-0 bottom-0 pb-[0.2rem]">
+          <p className="text-primary font-bold text-sm px-2">by...</p>
+          {developers.map((developer) => (
+            <Link key={developer.url} to={developer.url}>
+              <Avatar>
+                <AvatarImage
+                  src={developer.url + ".png"}
+                  alt={developer.name}
+                />
+              </Avatar>
+            </Link>
+          ))}
+        </div>
         <p className="text-sm mb-4 text-primary font-bold">2024 DUALIZA</p>
-        {/* <div className="flex space-x-4">
-          <p className="text-sm text-foreground">
-            <span className="font-bold text-primary">Creators: </span>
-            <a
-              className="hover:underline underline-offset-4 decoration-primary "
-              href="https://github.com/PepeRivera04"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Pepe Rivera
-            </a>
-            ,
-            <a
-              className="hover:underline underline-offset-4 decoration-primary"
-              href="https://github.com/NuMeRo-999"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Pedro Vilchez
-            </a>
-            ,{" "}
-            <a
-              className="hover:underline underline-offset-4 decoration-primary"
-              href="https://github.com/tariksaid-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Tarik Said
-            </a>
-            ,{" "}
-            <a
-              className="hover:underline underline-offset-4 decoration-primary"
-              href="https://github.com/RogerCiv"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Roger Civantos
-            </a>
-          </p>
-        </div> */}
       </div>
     </footer>
   );

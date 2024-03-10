@@ -94,7 +94,7 @@ const Contacto = () => {
                       <Input
                         placeholder="Escribe el asunto de tu consulta"
                         {...field}
-                        autocomplete="off"
+                        autoComplete="off"
                       />
                     </FormControl>
                     <FormMessage />
@@ -114,7 +114,7 @@ const Contacto = () => {
                       <Input
                         placeholder="ejemplo@email.com"
                         {...field}
-                        autocomplete="off"
+                        autoComplete="off"
                       />
                     </FormControl>
                     <FormMessage />
