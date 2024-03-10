@@ -116,7 +116,12 @@ function Footer() {
         <div className="flex items-center space-x-2 absolute right-0 bottom-0 pb-[0.2rem]">
           <p className="text-primary font-bold text-sm px-2">by...</p>
           {developers.map((developer) => (
-            <Link key={developer.url} to={developer.url}>
+            <Link
+              key={developer.url}
+              to={developer.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Avatar>
                 <AvatarImage
                   src={developer.url + ".png"}
