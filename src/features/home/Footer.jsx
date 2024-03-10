@@ -93,7 +93,7 @@ function Footer() {
           </a>
         </FooterCollaboratorsContainer>
       </div>
-      <div className="flex items-center justify-center border-t border-border pt-4">
+      <div className="flex items-center justify-center border-t border-border/60 pt-4">
         <p className="text-sm mb-4 text-primary font-bold">2024 DUALIZA</p>
         {/* <div className="flex space-x-4">
           <p className="text-sm text-foreground">
