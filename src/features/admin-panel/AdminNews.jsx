@@ -78,13 +78,20 @@ const AdminNews = () => {
 
   return (
     <>
-      <div className="grid grid-rows-[140px_1fr_80px] h-full">
+      <div className="grid grid-rows-[140px_1fr_80px] h-full space-y-8">
         <div
           className="flex flex-col space-y-6 relative w-full h-full max-h-full row-[1/2]"
           style={{ fontFamily: "Inter" }}
         >
           <div className="flex justify-center items-center h-full">
-            <div className="flex flex-col space-y-2 text-center flex-1 relative">
+
+            <div className="flex flex-col justify-end items-center h-full">
+              <Button size="lg" onClick={onAddNew}>
+                Añadir noticia
+              </Button>
+            </div>
+
+            <div className="flex flex-col space-y-2 text-center flex-[0_0_70%] w-full relative">
               <h1 className="text-5xl font-bold gradient-text pt-8">
                 Noticias
               </h1>
@@ -92,12 +99,8 @@ const AdminNews = () => {
                 Aquí podrás crear, modificar, y eliminar las noticias de la web.
               </p>
             </div>
-            <div className="absolute left-[1.5rem] pt-24">
-              <Button size="lg" onClick={onAddNew}>
-                Añadir noticia
-              </Button>
-            </div>
-            <div className="absolute right-20 pt-8">
+
+            <div className="flex flex-col justify-end  items-center h-full">
               <Avatar>
                 <AvatarImage
                   className="size-16"
@@ -106,15 +109,17 @@ const AdminNews = () => {
                 />
               </Avatar>
             </div>
+
           </div>
-          {/* <Separator /> */}
+          <Separator/>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 px-6 space-x-8 row-[2/3] max-h-[300px]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 px-6 space-x-8 row-[2/3] h-full">
           {noticiasPaginadas.map((noticia) => (
             <div
               key={noticia.id}
-              className="flex flex-col max-h-full space-y-4"
+              // max-h-fit
+              className="flex flex-col space-y-4"
             >
               <Card className="p-6 max-h-[500px] h-full">
                 <CardContent
@@ -146,7 +151,7 @@ const AdminNews = () => {
           ))}
         </div>
       </div>
-      <div>
+      <div className="flex">
         <Pagination>
           <PaginationContent>
             <PaginationItem>
