@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useLogin } from "./useLogin";
 
-import { Input } from "@/components/ui/input";
 import StaticHeader from "@/components/ui/StaticHeader";
 import LogoCompleto from "@/components/icons/LogoCompleto";
 import {
@@ -16,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 function LoginForm() {
   const { login, isLoading } = useLogin();
