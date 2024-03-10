@@ -5,6 +5,9 @@ import DinamicHeader from "@/components/ui/DinamicHeader";
 import Splash from "@/features/home/Splash";
 import Showcase from "@/features/home/Showcase";
 import LandingSection from "@/features/home/LandingSection";
+import FooterEmpresas from "@/features/home/Footer";
+import Contacto from "@/features/home/Contacto";
+import FooterSection from "@/features/home/FooterSection";
 
 function Home() {
   return (
@@ -19,11 +22,7 @@ function Home() {
       </LandingSection>
 
       <LandingSection>
-        <Showcase />
-      </LandingSection>
-
-      <LandingSection>
-        <Showcase />
+        <FooterSection />
       </LandingSection>
     </HomeLayout>
   );
