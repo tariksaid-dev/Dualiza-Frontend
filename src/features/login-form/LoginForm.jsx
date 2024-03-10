@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 function LoginForm() {
   const { login, isLoading } = useLogin();
+  const [showPassword, setShowPassword] = useState(false);
 
   const sections = [
     { title: "Home", url: "/" },
@@ -92,15 +94,33 @@ function LoginForm() {
                   control={form.control}
                   name="password"
                   render={({ field }) => (
-                    <FormItem className="w-full">
+                    <FormItem className="w-full relative">
                       <FormLabel>Contraseña</FormLabel>
                       <FormControl>
-                        <Input
-                          type="password"
-                          placeholder="Introduzca su contraseña"
-                          {...field}
-                          autoComplete="off"
-                        />
+                        <>
+                          <Input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Introduzca su contraseña"
+                            {...field}
+                            autoComplete="off"
+                            className="pr-10"
+                          />
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="absolute right-0 h-full top-2 px-3 hover:bg-transparent m-0"
+                            onClick={() => setShowPassword((prev) => !prev)}
+                          >
+                            <>
+                              {showPassword ? (
+                                <EyeIcon className="size-4" />
+                              ) : (
+                                <EyeOffIcon className="size-4" />
+                              )}
+                            </>
+                          </Button>
+                        </>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
