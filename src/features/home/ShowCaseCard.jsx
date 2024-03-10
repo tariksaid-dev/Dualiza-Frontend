@@ -1,25 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ShowCaseCard = ({ site }) => {
+  const category = site.category ? site.category : "No category";
   return (
-    <a className="group aspect-video hover:!text-default" href={site.url}>
-      <figure className="relative h-full w-full overflow-hidden">
-        <img
-          className="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
-          src={`${site.image}`}
-          widths={[300, 600, 900, 1200, 1500, 2000]}
-          alt={`A screenshot of ${site.url}`}
-        />
-        <figcaption className="absolute inset-0">
-          <div className="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
-            <h3 className="text-center font-extrabold uppercase text-xl">
-              {site.title}
-            </h3>
-            <p className="border border-current px-4 py-2">{site.title}</p>
-          </div>
-        </figcaption>
-      </figure>
-    </a>
+    <div className="rounded-lg  max-w-xs bg-card border p-2 flex flex-col justify-center items-center hover:border-primary/30">
+      <div className="relative overflow-hidden bg-cover bg-no-repeat">
+        <img className="rounded-t-lg w-52 md:w-full" src={site.image} alt="" />
+        <Link to={`news/${site.id}`}>
+          <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </Link>
+      </div>
+      <div className="p-6 flex-grow">
+        <h5 className="mb-2 text-base md:text-lg font-medium leading-tight text-foreground text-balance">{site.title}</h5>
+      </div>
+      <div className="flex justify-center items-center">
+        <small className="text-sm text-muted-foreground">{category}</small>
+      </div>
+    </div>
   );
 };
 

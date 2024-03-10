@@ -29,15 +29,15 @@ const Showcase = () => {
       title="Noticias"
       id="showcase"
       subtitle={
-        <p className="text-3xl" style={{ fontFamily: "Inter" }}>
+        <p className="md:text-2xl lg:text-3xl" style={{ fontFamily: "Inter" }}>
           ¡No te pierdas lo último de la actualidad{" "}
           <span className="text-primary">ecológica</span> y{" "}
           <span className="text-primary">medioambiental</span>!
         </p>
       }
     >
-      <div className="max-w-6xl space-y-6">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="max-w-6xl flex flex-col gap-2 ">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 px-4">
           {isLoading && <Spinner />}
           {news &&
             news
