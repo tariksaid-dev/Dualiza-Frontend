@@ -23,7 +23,7 @@ function DinamicHeader() {
   return (
     <header
       id="header"
-      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95"
+      className="absolute bottom-0 z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/70 bg-background/95"
     >
       <Link to="/" className="flex items-center gap-4 ">
         <BombillaLibro width="52" height="52" />

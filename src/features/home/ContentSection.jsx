@@ -1,7 +1,7 @@
 import React from "react";
 import "@fontsource/inter";
 
-const ContentSection = ({ id, title, children }) => {
+function ContentSection({ id, title, subtitle, children }) {
   return (
     <section
       id={id}
@@ -14,15 +14,11 @@ const ContentSection = ({ id, title, children }) => {
         >
           {title}
         </h2>
-        <p className="text-3xl" style={{ fontFamily: "Inter" }}>
-          ¡No te pierdas lo último de la actualidad{" "}
-          <span className="text-primary">ecológica</span> y{" "}
-          <span className="text-primary">medioambiental</span>!
-        </p>
+        {subtitle}
       </div>
       {children}
     </section>
   );
-};
+}
 
 export default ContentSection;

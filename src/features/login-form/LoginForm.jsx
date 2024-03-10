@@ -1,101 +1,145 @@
-import React, { useState } from 'react'
-import { useLogin } from './useLogin';
-import { Input } from '@/components/ui/input';
-import BombillaLibro from '@/components/icons/BombillaLibro';
-import StaticHeader from '@/components/ui/StaticHeader';
-import LetrasBombilla from '@/components/icons/LetrasBombilla';
-import LogoCompleto from '@/components/icons/LogoCompleto';
+import React, { useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useLogin } from "./useLogin";
 
+import StaticHeader from "@/components/ui/StaticHeader";
+import LogoCompleto from "@/components/icons/LogoCompleto";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
-const LoginForm = () => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { login, isLoading, error } = useLogin();
+function LoginForm() {
+  const { login, isLoading } = useLogin();
+  const [showPassword, setShowPassword] = useState(false);
 
   const sections = [
-    { title: 'Home', url: '/' }
-  ]
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    { title: "Home", url: "/" },
+    { title: "Noticias", url: "/news" },
+  ];
+
+  const errors = {
+    required: "Este campo no puede estar vacío",
+    minPasswordLength: "La contraseña es muy corta",
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const formSchema = z.object({
+    email: z
+      .string()
+      .email("Introduce un email válido")
+      .min(1, { message: errors.required }),
+    password: z.string().min(4, { message: errors.minPasswordLength }),
+  });
 
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try {
-      login({ email, password })
-
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  function onSubmit({ email, password }) {
+    login({ email, password });
+  }
 
   return (
     <>
       <StaticHeader sections={sections} />
-      <section className='p-10'>
+      <section className="my-auto">
+        <div className="h-[80vh] rounded-[0.5rem] border border-border bg-background shadow-md md:shadow-xl w-full grid grid-cols-2 lg:max-w-none lg:grid-cols-2 lg:px-0">
+          <div className="hidden sm:p-10 lg:flex justify-center items-center dark:border-r bg-zinc-900 inset-0">
+            <LogoCompleto width="400" height="400" />
+          </div>
 
-        <div className=" rounded-[0.5rem] border border-border bg-background shadow-md md:shadow-xl">
-
-          <div className="container relative h-[80vh] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div className="relative hidden h-full flex-col sm:p-10 text-white lg:flex dark:border-r">
-              <div className="absolute inset-0 bg-zinc-900">
-              </div>
-              <div className="relative z-20 mt-auto">
-                <div className='pb-24'>
-
-                  <LogoCompleto width='400' height='400'/>
-                </div>
-                
-              </div>
+          <div className="relative flex flex-col h-full justify-center max-w-[70%] mx-auto space-y-6 sm:w-[350px] items-center">
+            <div className="flex flex-col space-y-2 text-center">
+              <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
+              <p className="text-sm text-muted-foreground">
+                Introduce tu email y contraseña para acceder a tu cuenta
+              </p>
             </div>
-
-            <div className="lg:p-8 py-64 md:py-0">
-              <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-                <div className="flex flex-col space-y-2 text-center">
-                  <h1 className="text-2xl font-semibold tracking-tight">
-                    Login
-                  </h1>
-                  <p className="text-sm text-muted-foreground">
-                    Introduce tu email y contraseña para acceder a tu cuenta
-                  </p>
-                </div>
-                <div className="grid gap-6">
-                  <form onSubmit={handleSubmit}>
-                    <div className="grid gap-2">
-                      <div className="grid gap-1">
-                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only" htmlFor="email">
-                          Email
-                        </label>
-                        <Input className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="name@example.com" autoCapitalize="none" autoComplete="email" autoCorrect="off" type="email" value={email}
-                          onChange={handleEmailChange} />
-                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only" htmlFor="password">
-                          Password
-                        </label>
-                        <Input className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" id="password" placeholder="password" autoCapitalize="none" autoComplete="password" autoCorrect="off" type="password"
-                          value={password}
-                          onChange={handlePasswordChange} />
-                      </div>
-                      <button type='submit' className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
-                        Login with Email
-                      </button>
-                    </div>
-                  </form>
-
-                </div>
-              </div>
-            </div>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex flex-col space-y-4"
+              >
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="w-full ">
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="ejemplo@email.com"
+                          {...field}
+                          autoComplete="off"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem className="w-full relative">
+                      <FormLabel>Contraseña</FormLabel>
+                      <FormControl>
+                        <>
+                          <Input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Introduzca su contraseña"
+                            {...field}
+                            autoComplete="off"
+                            className="pr-10"
+                          />
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="absolute right-0 h-full top-2 px-3 hover:bg-transparent m-0"
+                            onClick={() => setShowPassword((prev) => !prev)}
+                          >
+                            <>
+                              {showPassword ? (
+                                <EyeIcon className="size-4" />
+                              ) : (
+                                <EyeOffIcon className="size-4" />
+                              )}
+                            </>
+                          </Button>
+                        </>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button
+                  type="submit"
+                  className="max-w-[50%] w-full"
+                  disabled={isLoading}
+                >
+                  Login
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default LoginForm
+export default LoginForm;

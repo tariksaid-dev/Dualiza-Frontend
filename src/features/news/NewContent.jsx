@@ -1,12 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { useNews } from "./useNews";
-import { supabaseUrl } from "@/services/supabase";
-import UniqueSideNews from "./UniqueSideNews";
+
+import { Button } from "@/components/ui/button";
 import Spinner from "@/components/ui/Spinner";
 import StaticHeader from "@/components/ui/StaticHeader";
-import FooterEmpresas from "../home/FooterEmpresas";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import GoBackArrow from "@/components/icons/GoBackArrow";
+import UniqueSideNews from "./UniqueSideNews";
+import Footer from "../home/Footer";
 
 const NewContent = ({ NewId }) => {
   const { isLoading, error, news } = useNews();
@@ -70,7 +70,7 @@ const NewContent = ({ NewId }) => {
           </div>
         </div>
       </div>
-      <FooterEmpresas/>
+      <Footer/>
     </>
   );
 };
