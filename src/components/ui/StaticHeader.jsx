@@ -7,7 +7,7 @@ function StaticHeader({ sections = [] }) {
   return (
     <header
       id="header"
-      className="z-20 flex container h-14 max-w-[100vw] items-center justify-between border-y border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed-header"
+      className="z-20 flex container h-14 max-w-[100vw] items-center justify-between border-b border-border/70 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed-header"
     >
       <Link to="/" className="flex items-center gap-4 ">
         <BombillaLibro width="52" height="52" />
