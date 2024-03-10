@@ -69,27 +69,33 @@ const Contacto = () => {
   });
 
   return (
-    <div className="space-y-6 border-border border rounded-lg py-4 px-8">
-      <h3 className="text-lg font-medium text-primary">Contacto</h3>
+    <div className="space-y-6 border-border border rounded-lg p-8">
+      <h3 className="text-2xl font-medium text-primary text-center">
+        Contacto
+      </h3>
       <div className="shrink-0 bg-border h-[1px] w-full"></div>
 
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 flex flex-col items-center"
+          className="flex flex-col items-center"
         >
-          <div className="flex space-x-6">
-            <div className="flex flex-col space-y-6">
+          <div className="flex space-x-7">
+            <div className="flex flex-col gap-6">
               <FormField
                 control={form.control}
                 name="asunto"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col gap-2">
+                  <FormItem className="flex flex-col space-y-2">
                     <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       Asunto
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="Escribe el asunto de tu consulta" {...field} />
+                      <Input
+                        placeholder="Escribe el asunto de tu consulta"
+                        {...field}
+                        autocomplete="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -100,12 +106,16 @@ const Contacto = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col gap-2">
+                  <FormItem className="flex flex-col space-y-2">
                     <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                       Email
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="ejemplo@email.com" {...field} />
+                      <Input
+                        placeholder="ejemplo@email.com"
+                        {...field}
+                        autocomplete="off"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -117,7 +127,7 @@ const Contacto = () => {
                 name="items"
                 render={() => (
                   <FormItem className="flex flex-col space-y-3">
-                    <FormLabel className="mb-1">
+                    <FormLabel className="mb-2">
                       Selecciona destinatario:
                     </FormLabel>
                     <ContactCheckBoxes options={options} form={form} />
