@@ -53,7 +53,7 @@ const Consumo = () => {
   };
   
   return (
-    <div className="relative w-full md:h-72 lg:h-96 xl:h-[420px] py-10">
+    <div className="relative w-96 md:h-72 lg:h-96 xl:h-[420px] py-10">
       <Pie data={data} options={options} />
     </div>
   );
