@@ -1,6 +1,6 @@
 import AdminNews from "@/features/admin-panel/AdminNews";
 import AdminPanelLayout from "@/components/layouts/AdminPanelLayout";
-import { DataTableDemo } from "@/features/admin-panel/AdminUsers";
+import { AdminUsers } from "@/features/admin-panel/AdminUsers";
 import React from "react";
 import AdminPanelHeader from "@/features/admin-panel/AdminPanelHeader";
 import AdminPanelCard from "@/features/admin-panel/AdminPanelCard";
@@ -14,7 +14,7 @@ function Admin() {
       <AdminPanelHeader />
       <AdminPanelCard>
         {searchParams.get("page") === "news" && <AdminNews />}
-        {/* {searchParams ==="users" && <AdminUsers />} */}
+        {searchParams.get("page") ==="users" && <AdminUsers />}
         {/* {searchParams ==="emails" && <AdminEmails />} */}
       </AdminPanelCard>
       {/* <AdminTabsContainer /> */}

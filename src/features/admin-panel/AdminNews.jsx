@@ -86,7 +86,7 @@ const AdminNews = () => {
         <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
           <h1 className="text-5xl font-bold gradient-text">Noticias</h1>
           <p className="text-muted-foreground text-2xl">
-            Aquí podrás crear, modificar, y eliminar las noticias de la web.
+            Aquí podrás crear, modificar, y eliminar las noticias de la web
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center">
