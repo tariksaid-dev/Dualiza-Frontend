@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
-import { ThemeToggle } from "./ThemeToggle";
-import BombillaLibro from "../icons/BombillaLibro";
-import LetrasBombilla from "../icons/LetrasBombilla";
+import { Link, useSearchParams } from "react-router-dom";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import BombillaLibro from "@/components/icons/BombillaLibro";
+import LetrasBombilla from "@/components/icons/LetrasBombilla";
+import AdminTabsContainer from "./AdminTabsContainer";
 
-function StaticHeader({ sections = [] }) {
+function AdminPanelHeader() {
+  const sections = [{ title: "Home", url: "/" }];
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function handleChange(e) {
+    setSearchParams({ "page": e });
+  }
+
   return (
     <header
       id="header"
@@ -15,7 +23,8 @@ function StaticHeader({ sections = [] }) {
       </Link>
       <div>
         <div className="flex items-center gap-6">
-          <nav className="hidden sm:block">
+          <nav className="hidden sm:flex md:flex space-x-20">
+            <AdminTabsContainer onValueChange={(e) => handleChange(e)} />
             <ul className="flex items-center gap-6">
               {sections.map(({ title, url }) => (
                 <li key={title}>
@@ -28,6 +37,7 @@ function StaticHeader({ sections = [] }) {
             </ul>
           </nav>
 
+          {/* Tofix */}
           <button
             id="open-nav-button"
             type="button"
@@ -45,4 +55,4 @@ function StaticHeader({ sections = [] }) {
   );
 }
 
-export default StaticHeader;
+export default AdminPanelHeader;
