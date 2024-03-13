@@ -23,7 +23,7 @@ function Home() {
       </LandingSection>
 
       <LandingSection>
-        <ResultadoConsumosElectricos/>
+        <ResultadoConsumosElectricos />
       </LandingSection>
 
       <LandingSection>
