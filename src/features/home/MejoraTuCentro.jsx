@@ -11,6 +11,23 @@ import { Button } from '@/components/ui/button'
 
 const MejoraTuCentro = () => {
 
+  const handleClickDownloadPowerPoint = async () => {
+    const url = "https://ruta-archivo.pptx";
+
+
+    const response = await fetch(url);
+    const data = await response.blob();
+
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(data);
+    link.download = "archivo.pptx"; 
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+  };
   const handleClickVisit = () => {
     window.open("https://www.ieshlanz.es/documentos/", "_blank")
   }
@@ -34,7 +51,7 @@ const MejoraTuCentro = () => {
                   Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
 
                   Para más información descargar el documento.
-                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
+                  <Button variant="default" size="sm" onClick={handleClickDownloadPowerPoint} className="w-26"> Descargar</Button>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
