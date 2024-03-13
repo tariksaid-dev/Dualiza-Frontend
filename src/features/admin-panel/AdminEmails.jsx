@@ -11,7 +11,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import AdminInboxTabsContainer from "./AdminInboxTabsContainer";
 import AdminEmailInboxCard from "./AdminEmailInboxCard";
 
-import { Inbox, Mail, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  Inbox,
+  Mail,
+  ArrowLeft,
+  ArrowRight,
+  MailWarning,
+  Mails,
+  Archive,
+  Trash2,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -86,7 +97,7 @@ function AdminEmails() {
             <Mail size={"36px"} />
           </div>
           <p className="text-muted-foreground text-2xl">
-            Lee los mensajes que dejan los visitantes de la web
+            Lee las distintas sugerencias y opiniones de los visitantes
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center">
@@ -99,7 +110,10 @@ function AdminEmails() {
       <ResizablePanelGroup direction="horizontal" className="row-span-2">
         <ResizablePanel>
           <header className="h-[8%] flex justify-between items-center border-b">
-            <span className="px-4 font-bold text-xl">Inbox</span>
+            <span className="px-4 font-bold text-xl inline-flex items-center">
+              Inbox
+              <Inbox className="ml-3" />
+            </span>
             <AdminInboxTabsContainer onValueChange={(e) => handleChange(e)} />
           </header>
           <div className="flex flex-col mt-4 px-6 space-y-4 h-full">
@@ -119,8 +133,21 @@ function AdminEmails() {
         <ResizableHandle withHandle />
         <ResizablePanel>
           <header className="h-[8%] flex justify-between items-center border-b">
-            <span className="px-4 font-bold text-xl">Inbox</span>
-            <AdminInboxTabsContainer onValueChange={(e) => handleChange(e)} />
+            <div className="flex items-center mx-2 h-full space-x-3">
+              <Button variant="outline" size="icon">
+                <Mails />
+              </Button>
+              <Button variant="outline" size="icon">
+                <MailWarning />
+              </Button>
+              <Button variant="outline" size="icon">
+                <Archive />
+              </Button>
+              <Button variant="outline" size="icon">
+                <Trash2 />
+              </Button>
+              <Separator orientation="vertical" className="h-3/5 ml-6" />
+            </div>
           </header>
         </ResizablePanel>
       </ResizablePanelGroup>
