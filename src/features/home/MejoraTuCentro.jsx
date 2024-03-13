@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   Accordion,
@@ -6,28 +6,52 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 import { Button } from '@/components/ui/button'
 
 
 const MejoraTuCentro = () => {
 
-  const handleClickDownloadPowerPoint = async () => {
-    const url = "https://ruta-archivo.pptx";
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
+  const handleClickOpenAlert = () => {
+    setIsAlertOpen(true);
+  };
+
+  const handleConfirmDownload = async () => {
+    const url = "https://ruta-archivo.pptx";
 
     const response = await fetch(url);
     const data = await response.blob();
 
-
     const link = document.createElement("a");
     link.href = URL.createObjectURL(data);
-    link.download = "archivo.pptx"; 
+    link.download = "archivo.pptx";
 
     document.body.appendChild(link);
     link.click();
 
     document.body.removeChild(link);
+
+    setIsAlertOpen(false);
   };
+
+  const handleCancelDownload = () => {
+    setIsAlertOpen(false);
+  };
+
+
   const handleClickVisit = () => {
     window.open("https://www.ieshlanz.es/documentos/", "_blank")
   }
@@ -51,7 +75,21 @@ const MejoraTuCentro = () => {
                   Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
 
                   Para más información descargar el documento.
-                  <Button variant="default" size="sm" onClick={handleClickDownloadPowerPoint} className="w-26"> Descargar</Button>
+                  <AlertDialog isOpen={isAlertOpen}>
+                    <AlertDialogTrigger className='p-2 bg-primary rounded-md text-foreground'>Descargar</AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                       Si pulsas en continuar, se descargará el archivo powerpoint con la guía de buenas prácticas. Pulsa en cancelar si no estás seguro.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel onClick={handleCancelDownload}>Cancelar</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleConfirmDownload}>Descargar</AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
