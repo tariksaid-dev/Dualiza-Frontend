@@ -57,7 +57,7 @@ const Contacto = () => {
         message: "El mensaje no puede ser más largo de 200 carácteres",
       }),
   });
-
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {

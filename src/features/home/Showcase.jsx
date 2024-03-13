@@ -45,7 +45,7 @@ const Showcase = () => {
               .map((n) => <ShowCaseCard key={n.id} site={n} />)}
         </div>
         <div className="flex flex-1 justify-end">
-          <Button variant="default" size="sm">
+          <Button  variant="default" size="sm">
             Ver más noticias
           </Button>
         </div>
