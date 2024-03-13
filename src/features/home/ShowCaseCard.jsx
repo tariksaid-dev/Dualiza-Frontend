@@ -11,7 +11,7 @@ const ShowCaseCard = ({ site }) => {
           <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
         </Link>
       </div>
-      <div className="p-6 flex-grow">
+      <div className="p-6 flex-grow w-60 md:w-full">
         <h5 className="mb-2 text-base md:text-lg font-medium leading-tight text-foreground text-balance">{site.title}</h5>
       </div>
       <div className="flex justify-center items-center">
