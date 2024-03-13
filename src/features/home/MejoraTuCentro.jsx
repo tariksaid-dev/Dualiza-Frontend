@@ -1,5 +1,6 @@
 import React from 'react'
 import CustomButton from './CustomButton'
+import { Button } from "@/components/ui/button";
 
 
 const MejoraTuCentro = () => {
@@ -9,8 +10,8 @@ const MejoraTuCentro = () => {
   }
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 max-w-7xl mx-auto h-full">
-      <div className="container px-4 md:px-6">
+    <section className="flex flex-col items-center justify-between space-y-4 h-screen relative pt-24">
+      <div className="container px-4 md:px-6 p">
         <div className="space-y-8 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Mejora tu centro</h2>
@@ -18,64 +19,15 @@ const MejoraTuCentro = () => {
               Accede a los recursos que te ayudarán a mejorar la calidad de tu centro educativo.
             </p>
           </div>
-          <div className="grid max-w-sm gap-4 mx-auto lg:max-w-none lg:grid-cols-3">
-            <div className="border border-border  p-4 rounded-lg transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10 text-destructive">
-              <div className={"space-y-2"}>
-                <h3 className="text-xl font-bold text-destructive ">Guía de buenas prácticas</h3>
-                <p className="text-sm text-foreground">
-                  Descarga la guía para implementar buenas prácticas en tu centro.
-                </p>
-                <img
-                  alt="Guía de buenas prácticas"
-                  className="mx-auto my-4"
-                  height={250}
-                  src="images/BuenasPracticas.webp"
-                  style={{
-                    aspectRatio: "200/150",
-                    objectFit: "cover",
-                  }}
-                  width={300}
-                />
-                <CustomButton text="Descargar" />
+          <div class="space-y-3 w-[250px]">
+            <span data-state="closed">
+              <div class="overflow-hidden rounded-md">
+                <img alt="React Rendezvous" loading="lazy" width="250" height="330" decoding="async" data-nimg="1" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]" srcset="/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1611348586804-61bf6c080437%3Fw%3D300%26dpr%3D2%26q%3D80&amp;w=256&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1611348586804-61bf6c080437%3Fw%3D300%26dpr%3D2%26q%3D80&amp;w=640&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1611348586804-61bf6c080437%3Fw%3D300%26dpr%3D2%26q%3D80&amp;w=640&amp;q=75" />
               </div>
-            </div>
-            <div className="border border-border p-4 rounded-lg  transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-destructive">Documentos de interés</h3>
-                <p className="text-sm text-foreground">
-                  Encuentra documentos útiles para la gestión escolar.
-                </p>
-                <img
-                  alt="Documentos de interés"
-                  className="mx-auto my-4"
-                  height={150}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "200/150",
-                    objectFit: "cover",
-                  }}
-                  width={200}
-                />
-                <CustomButton className={'w-20'} onClick={handleClickVisit} text="Visitar" />
-              </div>
-            </div>
-            <div className="border border-border p-4 rounded-lg  transition-colors hover:bg-skin-dark-blue hover:bg-opacity-10">
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-destructive">Enlaces</h3>
-                <p className="text-sm text-foreground">Accede a recursos educativos en línea.</p>
-                <img
-                  alt="Enlaces"
-                  className="mx-auto my-4"
-                  height={150}
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "200/150",
-                    objectFit: "cover",
-                  }}
-                  width={200}
-                />
-                <CustomButton className={'w-20'} onClick={handleClickVisit} text="Visitar" />
-              </div>
+            </span>
+            <div class="space-y-1 text-sm">
+              <h3 class="font-medium leading-none">React Rendezvous</h3>
+              <p class="text-xs text-muted-foreground">Ethan Byte</p>
             </div>
           </div>
         </div>

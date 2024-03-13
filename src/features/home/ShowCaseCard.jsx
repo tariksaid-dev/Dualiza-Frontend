@@ -5,17 +5,18 @@ const ShowCaseCard = ({ site }) => {
   const category = site.category ? site.category : "General";
   return (
     <div className="rounded-lg  max-w-xs bg-card border p-2 flex flex-col justify-center items-center hover:border-primary/30">
-      <div className="relative overflow-hidden bg-cover bg-no-repeat">
-        <img className="rounded-t-lg w-52 md:w-full" src={site.image} alt="" />
-        <Link to={`news/${site.id}`}>
-          <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
-        </Link>
-      </div>
-      <div className="p-6 flex-grow w-60 md:w-full">
-        <h5 className="mb-2 text-base md:text-lg font-medium leading-tight text-foreground text-balance">{site.title}</h5>
-      </div>
-      <div className="flex justify-center items-center">
-        <small className="text-sm text-muted-foreground"><span className="text-primary/80">Tag:</span> {category}</small>
+      <div class="space-y-3 w-[250px] h-96 md:h-full">
+        <span data-state="closed">
+          <Link to={`news/${site.id}`}>
+            <div class="overflow-hidden rounded-md">
+              <img alt="React Rendezvous" loading="lazy" width="250" height="330" decoding="async" data-nimg="1" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]" src={site.image} />
+            </div>
+          </Link>
+        </span>
+        <div class="space-y-1 text-sm">
+          <h3 class="font-medium leading-none text-foreground">{site.title}</h3>
+          <p class="text-xs text-muted-foreground pt-1"><span className="text-primary/80">Tag: </span>{category}</p>
+        </div>
       </div>
     </div>
   );
