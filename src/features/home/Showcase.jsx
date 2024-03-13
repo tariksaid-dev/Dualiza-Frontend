@@ -41,7 +41,7 @@ const Showcase = () => {
           {isLoading && <Spinner />}
           {news &&
             news
-              .filter((_, index) => (isMobile ? index < 3 : index < 9))
+              .filter((_, index) => (isMobile ? index < 3 : index < 6))
               .map((n) => <ShowCaseCard key={n.id} site={n} />)}
         </div>
         <div className="flex flex-1 justify-end">
