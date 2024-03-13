@@ -8,15 +8,18 @@ function DinamicHeader() {
   const sections = [{ title: "Noticias", url: "news" }];
 
   useEffect(() => {
-    document.querySelector("#main").addEventListener("scroll", () => {
-      const page = document.querySelector("#main");
-      const header = document.querySelector("#header");
+    const page = document.querySelector("#main");
 
+    function handleScroll() {
+      const header = document.querySelector("#header");
       const d = page.clientHeight - page.scrollTop - header.offsetHeight;
       header.classList.toggle("fixed-header", d < 0);
-    });
+    }
+
+    page.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener("scroll", () => {});
+      page.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
