@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import {
   ResizableHandle,
@@ -10,6 +10,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import AdminInboxTabsContainer from "./AdminInboxTabsContainer";
 import AdminEmailInboxCard from "./AdminEmailInboxCard";
+
+import { Inbox, Mail, ArrowLeft, ArrowRight } from "lucide-react";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -73,20 +75,23 @@ function AdminEmails() {
   return (
     <>
       <div className="flex border-b-border border-b-[1px]">
-        <div className="flex-1"></div>
+        <div className="flex-1 flex justify-center items-center">
+          <Avatar className="justify-center items-center">
+            <ArrowLeft size={"42px"} />
+          </Avatar>
+        </div>
         <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
-          <h1 className="text-5xl font-bold gradient-text">Mensajes</h1>
+          <div className="flex items-end justify-center space-x-8">
+            <h1 className="text-5xl font-bold gradient-text">Mensajes</h1>
+            <Mail size={"36px"} />
+          </div>
           <p className="text-muted-foreground text-2xl">
             Lee los mensajes que dejan los visitantes de la web
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center">
-          <Avatar>
-            <AvatarImage
-              className="size-16"
-              src={"/icon.svg"}
-              alt="Generic logo"
-            />
+          <Avatar className="justify-center items-center">
+            <ArrowRight size={"42px"} />
           </Avatar>
         </div>
       </div>

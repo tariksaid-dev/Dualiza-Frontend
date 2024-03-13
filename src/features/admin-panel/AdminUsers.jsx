@@ -46,7 +46,9 @@ import Spinner from "@/components/ui/Spinner";
 import { useDeleteUser } from "./useDeleteUser";
 import { useGetAllUsers } from "./useGetAllUsers";
 import { useUpdateUserRol } from "./useUpdateUserRol";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
+
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export function AdminUsers() {
   const { users: userData, isLoading } = useGetAllUsers();
@@ -198,7 +200,11 @@ export function AdminUsers() {
   return !isLoading ? (
     <>
       <div className="flex border-b-border border-b-[1px]">
-        <div className="flex-1"></div>
+        <div className="flex-1 flex justify-center items-center">
+          <Avatar className="justify-center items-center">
+            <ArrowLeft size={"42px"} />
+          </Avatar>
+        </div>
         <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
           <h1 className="text-5xl font-bold gradient-text">Usuarios</h1>
           <p className="text-muted-foreground text-2xl">
@@ -206,12 +212,8 @@ export function AdminUsers() {
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center">
-          <Avatar>
-            <AvatarImage
-              className="size-16"
-              src={"/icon.svg"}
-              alt="Generic logo"
-            />
+          <Avatar className="justify-center items-center">
+            <ArrowRight size={"42px"} />
           </Avatar>
         </div>
       </div>

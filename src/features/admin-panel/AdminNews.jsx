@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import "@fontsource/inter/700.css";
 import { Avatar } from "@/components/ui/avatar";
-import { AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
   CardDescription,
@@ -24,6 +23,7 @@ import {
 } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ArrowRight } from "lucide-react";
 
 const noticiasPorPagina = 4;
 
@@ -90,12 +90,8 @@ const AdminNews = () => {
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center">
-          <Avatar>
-            <AvatarImage
-              className="size-16"
-              src={"/icon.svg"}
-              alt="Generic logo"
-            />
+          <Avatar className="justify-center items-center">
+            <ArrowRight size={"42px"} />
           </Avatar>
         </div>
       </div>
