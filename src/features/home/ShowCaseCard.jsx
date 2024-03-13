@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ShowCaseCard = ({ site }) => {
-  const category = site.category ? site.category : "No category";
+  const category = site.category ? site.category : "General";
   return (
     <div className="rounded-lg  max-w-xs bg-card border p-2 flex flex-col justify-center items-center hover:border-primary/30">
       <div className="relative overflow-hidden bg-cover bg-no-repeat">
@@ -15,7 +15,7 @@ const ShowCaseCard = ({ site }) => {
         <h5 className="mb-2 text-base md:text-lg font-medium leading-tight text-foreground text-balance">{site.title}</h5>
       </div>
       <div className="flex justify-center items-center">
-        <small className="text-sm text-muted-foreground">{category}</small>
+        <small className="text-sm text-muted-foreground"><span className="text-primary/80">Tag:</span> {category}</small>
       </div>
     </div>
   );
