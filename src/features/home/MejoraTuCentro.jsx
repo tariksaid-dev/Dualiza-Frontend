@@ -25,35 +25,38 @@ const MejoraTuCentro = () => {
               Accede a los recursos que te ayudarán a mejorar la calidad de tu centro educativo.
             </p>
           </div>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
-              Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa 
+          <div className='px-10 pt-12 max-w-6xl mx-auto'>
 
-              Para más información descargar el documento.
-              <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
-              Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa 
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
+                  Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
 
-              Para más información descargar el documento.
-              <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
-              Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa 
+                  Para más información descargar el documento.
+                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
+                  Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
 
-              Para más información descargar el documento.
-              <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+                  Para más información descargar el documento.
+                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
+                  Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
+
+                  Para más información descargar el documento.
+                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
 
         </div>
       </div>
