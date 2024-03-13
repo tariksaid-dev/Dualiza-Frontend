@@ -9,7 +9,7 @@ function AdminHeaderTabsContainer({ onValueChange }) {
 
   return (
     <Tabs defaultValue="news" onValueChange={onValueChange}>
-      <TabsList className="grid w-full grid-cols-3">
+      <TabsList>
         {data.map((el) => (
           <TabsTrigger value={el.value} key={el.value}>
             {el.label}
