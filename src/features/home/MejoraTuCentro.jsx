@@ -81,13 +81,12 @@ const MejoraTuCentro = () => {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                         <AlertDialogDescription>
-                          This action cannot be undone. This will permanently delete your account
-                          and remove your data from our servers.
+                       Si pulsas en continuar, se descargará el archivo powerpoint con la guía de buenas prácticas. Pulsa en cancelar si no estás seguro.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel onClick={handleCancelDownload}>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={handleConfirmDownload}>Continue</AlertDialogAction>
+                        <AlertDialogCancel onClick={handleCancelDownload}>Cancelar</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleConfirmDownload}>Descargar</AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
