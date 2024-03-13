@@ -15,7 +15,7 @@ const ShowCaseCard = ({ site }) => {
         </span>
         <div className="space-y-1 text-sm">
           <h3 className="font-medium leading-none text-foreground">{site.title}</h3>
-          <p className="text-xs text-muted-foreground pt-1"><span className="text-primary/80">Tag: </span>{category}</p>
+          <p className="text-xs text-muted-foreground pt-2"><span className="text-primary/80">Tag: </span>{category}</p>
         </div>
       </div>
     </div>
