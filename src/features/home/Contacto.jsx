@@ -2,7 +2,6 @@ import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import {
   Form,
   FormControl,
@@ -15,6 +14,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import ContactCheckBoxes from "./ContactCheckboxes";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { TooltipTrigger } from "@radix-ui/react-tooltip";
+import { Info } from "lucide-react";
 
 const options = [
   {
@@ -106,9 +112,19 @@ const Contacto = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col space-y-2">
-                    <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      Email
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex space-x-2">
+                      <span>Email</span>
+                      <TooltipProvider delayDuration={400}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                              <Info className="size-[14px] hover:cursor-pointer"/>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            Deja tu email para que podamos responderte
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </FormLabel>
                     <FormControl>
                       <Input

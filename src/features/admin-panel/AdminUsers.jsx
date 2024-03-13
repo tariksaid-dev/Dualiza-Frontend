@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
   flexRender,
@@ -41,13 +41,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DialogDemo } from "./AdminAddUserModal";
+import { AdminAddUserModalButton } from "./AdminAddUserModalButton";
 import Spinner from "@/components/ui/Spinner";
 import { useDeleteUser } from "./useDeleteUser";
 import { useGetAllUsers } from "./useGetAllUsers";
 import { useUpdateUserRol } from "./useUpdateUserRol";
+import { Avatar } from "@/components/ui/avatar";
 
-export function DataTableDemo() {
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+export function AdminUsers() {
   const { users: userData, isLoading } = useGetAllUsers();
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
@@ -195,70 +198,91 @@ export function DataTableDemo() {
   });
 
   return !isLoading ? (
-    <div className="w-full ">
-      <h1 className="text-3xl font-bold text-center">Usuarios</h1>
-      <div className="flex items-center py-4 justify-between">
-        <Input
-          placeholder="Buscar por email..."
-          value={table.getColumn("email")?.getFilterValue() ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-        <DialogDemo></DialogDemo>
+    <>
+      <div className="flex border-b-border border-b-[1px]">
+        <div className="flex-1 flex justify-center items-center">
+          <Avatar className="justify-center items-center">
+            <ArrowLeft size={"42px"} />
+          </Avatar>
+        </div>
+        <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
+          <h1 className="text-5xl font-bold gradient-text">Usuarios</h1>
+          <p className="text-muted-foreground text-2xl">
+            Añade y elimina usuarios, y cambia sus roles desde aquí
+          </p>
+        </div>
+        <div className="flex-1 flex justify-center items-center">
+          <Avatar className="justify-center items-center">
+            <ArrowRight size={"42px"} />
+          </Avatar>
+        </div>
       </div>
-      <div className="rounded-md border mb-10">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {userData?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+
+      <div className="flex flex-col items-center justify-center flex-1">
+        <div className="flex flex-col w-3/4 space-y-4">
+          <Input
+            placeholder="Buscar por email..."
+            value={table.getColumn("email")?.getFilterValue() ?? ""}
+            onChange={(event) =>
+              table.getColumn("email")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+
+          <Table className="rounded-md border-border border">
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id}>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    );
+                  })}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {userData?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No hay usuarios.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+          <div className="self-end">
+            <AdminAddUserModalButton />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   ) : (
     <Spinner />
   );

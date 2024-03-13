@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+#main {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#main::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
 @layer base {
   :root {
     --color-orange-lanze: #e75129;

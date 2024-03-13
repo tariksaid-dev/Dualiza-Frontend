@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { supabaseUrl } from "@/services/supabase";
+import React, { useState } from "react";
 import {
   Pagination,
   PaginationContent,
@@ -15,19 +14,16 @@ import Spinner from "@/components/ui/Spinner";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import "@fontsource/inter/700.css";
-import { Separator } from "@/components/ui/separator";
-import { Avatar } from "@radix-ui/react-avatar";
-import BombillaLibro from "@/components/icons/BombillaLibro";
-import { AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ArrowRight } from "lucide-react";
 
 const noticiasPorPagina = 4;
 
@@ -38,7 +34,7 @@ const AdminNews = () => {
 
   const navigate = useNavigate();
 
-  if (isLoading) return <Spinner></Spinner>;
+  if (isLoading) return <Spinner />;
 
   const sortedNews = [...news].sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
@@ -78,80 +74,63 @@ const AdminNews = () => {
 
   return (
     <>
-      <div className="grid grid-rows-[140px_1fr_80px] h-full space-y-8">
-        <div
-          className="flex flex-col space-y-6 relative w-full h-full max-h-full row-[1/2]"
-          style={{ fontFamily: "Inter" }}
-        >
-          <div className="flex justify-center items-center h-full">
-
-            <div className="flex flex-col justify-end items-center h-full">
-              <Button size="lg" onClick={onAddNew}>
-                Añadir noticia
-              </Button>
-            </div>
-
-            <div className="flex flex-col space-y-2 text-center flex-[0_0_70%] w-full relative">
-              <h1 className="text-5xl font-bold gradient-text pt-8">
-                Noticias
-              </h1>
-              <p className="text-muted-foreground text-2xl">
-                Aquí podrás crear, modificar, y eliminar las noticias de la web.
-              </p>
-            </div>
-
-            <div className="flex flex-col justify-end  items-center h-full">
-              <Avatar>
-                <AvatarImage
-                  className="size-16"
-                  src={"/icon.svg"}
-                  alt="Generic logo"
-                />
-              </Avatar>
-            </div>
-
+      <div className="flex border-b-border border-b-[1px]">
+        <div className="flex-1 flex items-end">
+          <div className="mb-4 ml-12">
+            <Button size="lg" onClick={onAddNew}>
+              Añadir noticia
+            </Button>
           </div>
-          <Separator/>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 px-6 space-x-8 row-[2/3] h-full">
-          {noticiasPaginadas.map((noticia) => (
-            <div
-              key={noticia.id}
-              // max-h-fit
-              className="flex flex-col space-y-4"
-            >
-              <Card className="p-6 max-h-[500px] h-full">
-                <CardContent
-                  className="h-full max-h-full overflow-y-auto scrollbar-thumb-foreground scrollbar-track-border hover:scrollbar-thumb-background/50 active:scrollbar-thumb-background scrollbar-thin
-                "
-                >
-                  <AspectRatio ratio={16 / 9}>
-                    <img
-                      src={noticia.image}
-                      alt={noticia.title}
-                      // className="object-cover"
-                    />
-                  </AspectRatio>
-                  <CardHeader className="font-bold text-xl">
-                    {noticia.title}
-                  </CardHeader>
-                  <CardDescription>{noticia.content}</CardDescription>
-                </CardContent>
-              </Card>
-              <div className="row-[3/4] flex justify-end items-center space-x-6">
-                <Button variant="default" size="sm">
-                  Editar
-                </Button>
-                <Button variant="destructive" size="sm">
-                  Eliminar
-                </Button>
-              </div>
-            </div>
-          ))}
+        <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
+          <h1 className="text-5xl font-bold gradient-text">Noticias</h1>
+          <p className="text-muted-foreground text-2xl">
+            Aquí podrás crear, modificar, y eliminar las noticias de la web
+          </p>
+        </div>
+        <div className="flex-1 flex justify-center items-center">
+          <Avatar className="justify-center items-center">
+            <ArrowRight size={"42px"} />
+          </Avatar>
         </div>
       </div>
-      <div className="flex">
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-1 max-h-full h-full space-x-4 p-6">
+        {noticiasPaginadas.map((noticia) => (
+          <div
+            key={noticia.id}
+            className="flex flex-col space-y-4 h-full max-h-full"
+          >
+            <Card className="flex-1 flex flex-col h-3/4 pr-2">
+              <ScrollArea type="always">
+                <CardHeader>
+                  <div className="pb-2">
+                    <AspectRatio ratio={16 / 9}>
+                      <img src={noticia.image} alt={noticia.title} />
+                    </AspectRatio>
+                  </div>
+                  <CardTitle>{noticia.title}</CardTitle>
+                </CardHeader>
+                <CardDescription className="px-5 mb-3">
+                  {noticia.content}
+                </CardDescription>
+              </ScrollArea>
+            </Card>
+
+            <div className="flex justify-end items-center space-x-4 mr-3">
+              <Button variant="default" size="sm">
+                Editar
+              </Button>
+              <Button variant="destructive" size="sm">
+                Eliminar
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex border-t-border border-t-[1px]">
         <Pagination>
           <PaginationContent>
             <PaginationItem>

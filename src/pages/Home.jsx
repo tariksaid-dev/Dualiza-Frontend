@@ -8,6 +8,7 @@ import LandingSection from "@/features/home/LandingSection";
 import FooterEmpresas from "@/features/home/Footer";
 import Contacto from "@/features/home/Contacto";
 import FooterSection from "@/features/home/FooterSection";
+import ResultadoConsumosElectricos from "@/features/home/ResultadoConsumosElectricos";
 
 function Home() {
   return (
@@ -19,6 +20,10 @@ function Home() {
 
       <LandingSection>
         <Showcase />
+      </LandingSection>
+
+      <LandingSection>
+        <ResultadoConsumosElectricos />
       </LandingSection>
 
       <LandingSection>

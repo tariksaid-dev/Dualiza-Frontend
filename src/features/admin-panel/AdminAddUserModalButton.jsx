@@ -21,7 +21,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useSignup } from "./useSignup";
 
-export function DialogDemo() {
+export function AdminAddUserModalButton() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -100,7 +100,7 @@ export function DialogDemo() {
           </div>
         </div>
         <DialogFooter>
-          <Button type="button" onClick={handleGuardar}>
+          <Button size="lg" onClick={handleGuardar}>
             Guardar
           </Button>
         </DialogFooter>
