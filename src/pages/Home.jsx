@@ -5,10 +5,9 @@ import DinamicHeader from "@/components/ui/DinamicHeader";
 import Splash from "@/features/home/Splash";
 import Showcase from "@/features/home/Showcase";
 import LandingSection from "@/features/home/LandingSection";
-import FooterEmpresas from "@/features/home/Footer";
-import Contacto from "@/features/home/Contacto";
 import FooterSection from "@/features/home/FooterSection";
 import ResultadoConsumosElectricos from "@/features/home/ResultadoConsumosElectricos";
+import MejoraTuCentro from "@/features/home/MejoraTuCentro";
 
 function Home() {
   return (
@@ -21,10 +20,17 @@ function Home() {
       <LandingSection>
         <Showcase />
       </LandingSection>
+      
+      <LandingSection>
+        <MejoraTuCentro />
+      </LandingSection>
+
 
       <LandingSection>
         <ResultadoConsumosElectricos />
       </LandingSection>
+
+
 
       <LandingSection>
         <FooterSection />

@@ -1,25 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ShowCaseCard = ({ site }) => {
+  const category = site.category ? site.category : "General";
   return (
-    <a className="group aspect-video hover:!text-default" href={site.url}>
-      <figure className="relative h-full w-full overflow-hidden">
-        <img
-          className="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
-          src={`${site.image}`}
-          widths={[300, 600, 900, 1200, 1500, 2000]}
-          alt={`A screenshot of ${site.url}`}
-        />
-        <figcaption className="absolute inset-0">
-          <div className="flex h-full flex-col items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus:opacity-100">
-            <h3 className="text-center font-extrabold uppercase text-xl">
-              {site.title}
-            </h3>
-            <p className="border border-current px-4 py-2">{site.title}</p>
-          </div>
-        </figcaption>
-      </figure>
-    </a>
+    <div className="rounded-lg  max-w-xs bg-card border p-2 flex flex-col justify-center items-center hover:border-primary/30">
+      <div class="space-y-3 w-[250px] h-96 md:h-full">
+        <span data-state="closed">
+          <Link to={`news/${site.id}`}>
+            <div class="overflow-hidden rounded-md">
+              <img alt="React Rendezvous" loading="lazy" width="250" height="330" decoding="async" data-nimg="1" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]" src={site.image} />
+            </div>
+          </Link>
+        </span>
+        <div class="space-y-1 text-sm">
+          <h3 class="font-medium leading-none text-foreground">{site.title}</h3>
+          <p class="text-xs text-muted-foreground pt-1"><span className="text-primary/80">Tag: </span>{category}</p>
+        </div>
+      </div>
+    </div>
   );
 };
 

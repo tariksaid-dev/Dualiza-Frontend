@@ -63,7 +63,7 @@ const Contacto = () => {
         message: "El mensaje no puede ser más largo de 200 carácteres",
       }),
   });
-
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -86,7 +86,7 @@ const Contacto = () => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col items-center"
         >
-          <div className="flex space-x-7">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0  sm:space-x-7">
             <div className="flex flex-col gap-6">
               <FormField
                 control={form.control}
