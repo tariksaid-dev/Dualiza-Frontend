@@ -81,7 +81,7 @@ const MejoraTuCentro = () => {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                         <AlertDialogDescription>
-                       Si pulsas en continuar, se descargará el archivo powerpoint con la guía de buenas prácticas. Pulsa en cancelar si no estás seguro.
+                          Si pulsas en continuar, se descargará el archivo powerpoint con la guía de buenas prácticas. Pulsa en cancelar si no estás seguro.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
@@ -93,21 +93,17 @@ const MejoraTuCentro = () => {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
+                <AccordionTrigger className="text-foreground">Quiero obtener más documentos de interés sobre el proyecto Dualiza</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
-                  Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
-
-                  Para más información descargar el documento.
-                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
+                  Para obtener más documentos de interés sobre el proyecto Dualiza, puedes acceder a la sección de documentos de la web del IES Hermenegildo Lanz.
+                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Visitar</Button>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger className="text-foreground">Guía de buenas prácticas para mejorar la eficiencia energética de tu centro educativo</AccordionTrigger>
+                <AccordionTrigger className="text-foreground">¿Dónde puedo ver más información sobre los proyectos del centro?</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground flex flex-col items-center gap-4">
-                  Proyecto seleccionado en la VI edición de la Convocatoria de Ayudas Dualiza de CaixaBank Dualiza y la Asociación de Centros de Formación Profesional FPEmpresa
-
-                  Para más información descargar el documento.
-                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Descargar</Button>
+                  Para obtener más información sobre los proyectos del centro, puedes acceder a la sección de documentos de la web del IES Hermenegildo Lanz.
+                  <Button variant="default" size="sm" onClick={handleClickVisit} className="w-26"> Visitar</Button>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
