@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ShowCaseCard = ({ site }) => {
   const category = site.category ? site.category : "General";
   return (
-    <div className="rounded-lg  max-w-xs bg-card border p-2 flex flex-col justify-center items-center hover:border-primary/30">
+    <div className="rounded-lg  max-w-xs md:min-w-96 bg-card border p-2 flex flex-col justify-center items-center hover:border-primary/30">
       <div className="space-y-3 w-[250px] h-96 md:h-full">
         <span data-state="closed">
           <Link to={`news/${site.id}`}>

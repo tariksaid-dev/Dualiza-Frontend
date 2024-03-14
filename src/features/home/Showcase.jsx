@@ -37,7 +37,7 @@ const Showcase = () => {
       }
     >
       <div className="max-w-6xl flex flex-col gap-2 ">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 px-4">
+        <div className="grid grid-cols-1 gap-4 md:gap-16 md:grid-cols-2 lg:grid-cols-3 px-4">
           {isLoading && <Spinner />}
           {news &&
             news
