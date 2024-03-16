@@ -49,6 +49,7 @@ import { useUpdateUserRol } from "./useUpdateUserRol";
 import { Avatar } from "@/components/ui/avatar";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import AdminPanelCardHeader from "./AdminPanelCardHeader";
 
 export function AdminUsers() {
   const { users: userData, isLoading } = useGetAllUsers();
@@ -199,24 +200,24 @@ export function AdminUsers() {
 
   return !isLoading ? (
     <>
-      <div className="flex border-b-border border-b-[1px]">
-        <div className="flex-1 flex justify-center items-center">
-          <Avatar className="justify-center items-center">
-            <ArrowLeft size={"42px"} />
-          </Avatar>
-        </div>
-        <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
-          <h1 className="text-5xl font-bold gradient-text">Usuarios</h1>
-          <p className="text-muted-foreground text-2xl">
-            Añade y elimina usuarios, y cambia sus roles desde aquí
-          </p>
-        </div>
-        <div className="flex-1 flex justify-center items-center">
-          <Avatar className="justify-center items-center">
-            <ArrowRight size={"42px"} />
-          </Avatar>
-        </div>
-      </div>
+      <AdminPanelCardHeader
+        leftComponent={
+          <div className="flex-1 flex justify-center items-center">
+            <Avatar className="justify-center items-center">
+              <ArrowLeft size={"42px"} />
+            </Avatar>
+          </div>
+        }
+        rightComponent={
+          <div className="flex-1 flex justify-center items-center">
+            <Avatar className="justify-center items-center">
+              <ArrowRight size={"42px"} />
+            </Avatar>
+          </div>
+        }
+        title={"Usuarios"}
+        description={"Añade y elimina usuarios, y cambia sus roles desde aquí"}
+      />
 
       <div className="flex flex-col items-center justify-center flex-1">
         <div className="flex flex-col w-3/4 space-y-4">

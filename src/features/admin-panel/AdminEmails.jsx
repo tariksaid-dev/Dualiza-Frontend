@@ -28,6 +28,7 @@ import EllipsisVertical from "@/components/icons/EllipsisVertical";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import AdminPanelCardHeader from "./AdminPanelCardHeader";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -90,27 +91,26 @@ function AdminEmails() {
 
   return (
     <>
-      <div className="flex border-b-border border-b-[1px]">
-        <div className="flex-1 flex justify-center items-center">
-          <Avatar className="justify-center items-center">
-            <ArrowLeft size={"42px"} />
-          </Avatar>
-        </div>
-        <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
-          <div className="flex items-end justify-center space-x-8">
-            <h1 className="text-5xl font-bold gradient-text">Mensajes</h1>
-            <Mail size={"36px"} />
+      <AdminPanelCardHeader
+        leftComponent={
+          <div className="flex-1 flex justify-center items-center">
+            <Avatar className="justify-center items-center">
+              <ArrowLeft size={"42px"} />
+            </Avatar>
           </div>
-          <p className="text-muted-foreground text-2xl">
-            Lee las distintas sugerencias y opiniones de los visitantes
-          </p>
-        </div>
-        <div className="flex-1 flex justify-center items-center">
-          <Avatar className="justify-center items-center">
-            <ArrowRight size={"42px"} />
-          </Avatar>
-        </div>
-      </div>
+        }
+        rightComponent={
+          <div className="flex-1 flex justify-center items-center">
+            <Avatar className="justify-center items-center">
+              <ArrowRight size={"42px"} />
+            </Avatar>
+          </div>
+        }
+        title={"Mensajes"}
+        description={
+          "Lee las distintas sugerencias y opiniones de los visitantes"
+        }
+      />
 
       <ResizablePanelGroup direction="horizontal" className="row-span-2">
         <ResizablePanel>

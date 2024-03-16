@@ -24,6 +24,7 @@ import {
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowRight } from "lucide-react";
+import AdminPanelCardHeader from "./AdminPanelCardHeader";
 
 const noticiasPorPagina = 4;
 
@@ -74,27 +75,28 @@ const AdminNews = () => {
 
   return (
     <>
-      <div className="flex border-b-border border-b-[1px]">
-        <div className="flex-1 flex items-end">
-          <div className="mb-4 ml-12">
-            <Button size="lg" onClick={onAddNew}>
-              Añadir noticia
-            </Button>
+      <AdminPanelCardHeader
+        leftComponent={
+          <div className="flex-1 flex items-end">
+            <div className="mb-4 ml-12">
+              <Button size="lg" onClick={onAddNew}>
+                Añadir noticia
+              </Button>
+            </div>
           </div>
-        </div>
-
-        <div className="flex-[2] flex flex-col space-y-2 items-center justify-center">
-          <h1 className="text-5xl font-bold gradient-text">Noticias</h1>
-          <p className="text-muted-foreground text-2xl">
-            Aquí podrás crear, modificar, y eliminar las noticias de la web
-          </p>
-        </div>
-        <div className="flex-1 flex justify-center items-center">
-          <Avatar className="justify-center items-center">
-            <ArrowRight size={"42px"} />
-          </Avatar>
-        </div>
-      </div>
+        }
+        rightComponent={
+          <div className="flex-1 flex justify-center items-center">
+            <Avatar className="justify-center items-center">
+              <ArrowRight size={"42px"} />
+            </Avatar>
+          </div>
+        }
+        title={"Noticias"}
+        description={
+          "Aquí podrás crear, modificar, y eliminar las noticias de la web"
+        }
+      />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-1 max-h-full h-full space-x-4 p-6">
         {noticiasPaginadas.map((noticia) => (
