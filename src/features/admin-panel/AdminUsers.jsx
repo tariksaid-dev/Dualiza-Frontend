@@ -203,16 +203,16 @@ export function AdminUsers() {
       <AdminPanelCardHeader
         leftComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Avatar className="justify-center items-center">
-              <ArrowLeft size={"42px"} />
-            </Avatar>
+            <Button variant="outlinePrimary" size="buttonSpace">
+              <ArrowLeft size={42} />
+            </Button>
           </div>
         }
         rightComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Avatar className="justify-center items-center">
-              <ArrowRight size={"42px"} />
-            </Avatar>
+            <Button variant="outlinePrimary" size="buttonSpace">
+              <ArrowRight size={42} />
+            </Button>
           </div>
         }
         title={"Usuarios"}
