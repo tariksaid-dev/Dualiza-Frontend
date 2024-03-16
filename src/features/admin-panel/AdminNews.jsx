@@ -105,16 +105,14 @@ const AdminNews = () => {
             className="flex flex-col space-y-4 h-full max-h-full"
           >
             <Card className="flex-1 flex flex-col h-3/4 pr-2">
-              <ScrollArea type="always">
-                <CardHeader>
-                  <div className="pb-2">
-                    <AspectRatio ratio={16 / 9}>
-                      <img src={noticia.image} alt={noticia.title} />
-                    </AspectRatio>
-                  </div>
+              <ScrollArea type="always" className="mt-6">
+                <CardHeader className="pt-0 pb-4 space-y-3">
+                  <AspectRatio ratio={16 / 9}>
+                    <img src={noticia.image} alt={noticia.title} />
+                  </AspectRatio>
                   <CardTitle>{noticia.title}</CardTitle>
                 </CardHeader>
-                <CardDescription className="px-5 mb-3">
+                <CardDescription className="px-5">
                   {noticia.content}
                 </CardDescription>
               </ScrollArea>
