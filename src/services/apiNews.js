@@ -76,7 +76,7 @@ export async function editNew(id, noticia) {
     await supabase.from("news").delete().eq("id", data.id);
     console.error(storageError);
     throw new Error(
-      "New image could not be uploaded and the new was not created"
+      "New image could not be uploaded and the new was not edited"
     );
   }
 
