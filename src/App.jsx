@@ -12,8 +12,8 @@ import NewsDetails from "./pages/NewsDetails";
 
 import { ThemeProvider } from "@/context/DarkModeContext";
 import { Toaster } from "./components/ui/sonner";
-import CreateNew from "./features/admin-panel/CreateNew";
-import EditNew from "./features/admin-panel/EditNew";
+import CreateNew from "./features/admin-panel/body-card/news/CreateNew";
+import EditNew from "./features/admin-panel/body-card/news/EditNew";
 
 const queryClient = new QueryClient({
   defaultOptions: {
