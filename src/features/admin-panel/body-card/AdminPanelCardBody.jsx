@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 const bodyVariants = cva("", {
   variants: {
     variant: {
-      default: "flex",
+      default: "flex max-h-full h-full row-[2/4] px-6 pb-4",
       news: "grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-1 max-h-full h-full space-x-4 p-6 pb-4",
       newsEdit: "grid grid-cols-[30%_70%] grid-rows-1 max-h-full h-full space-x-4 p-6 pb-4 row-[2/4]",
     },
