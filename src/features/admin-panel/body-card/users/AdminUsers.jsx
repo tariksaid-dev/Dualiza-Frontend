@@ -48,7 +48,7 @@ import { useGetAllUsers } from "../../useGetAllUsers";
 import { useUpdateUserRol } from "../../useUpdateUserRol";
 import { Avatar } from "@/components/ui/avatar";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Users, KeyRound } from "lucide-react";
 import AdminPanelCardHeader from "../AdminPanelCardHeader";
 
 function AdminUsers() {
@@ -203,16 +203,12 @@ function AdminUsers() {
       <AdminPanelCardHeader
         leftComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Button variant="outlinePrimary" size="buttonSpace">
-              <ArrowLeft size={42} />
-            </Button>
+            <Users size={42} />
           </div>
         }
         rightComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Button variant="outlinePrimary" size="buttonSpace">
-              <ArrowRight size={42} />
-            </Button>
+            <KeyRound size={42} />
           </div>
         }
         title={"Usuarios"}

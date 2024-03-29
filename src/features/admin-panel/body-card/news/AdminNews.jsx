@@ -4,7 +4,7 @@ import Spinner from "@/components/ui/Spinner";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import "@fontsource/inter/700.css";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Rss } from "lucide-react";
 import AdminPanelCardHeader from "../AdminPanelCardHeader";
 import AdminPanelCardPagination from "../AdminPanelCardPagination";
 import AdminPanelCardBody from "../AdminPanelCardBody";
@@ -80,9 +80,7 @@ const AdminNews = () => {
         }
         rightComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Button variant="outlinePrimary" size="buttonSpace">
-              <ArrowRight size={42} />
-            </Button>
+            <Rss size={42} />
           </div>
         }
         title={"Noticias"}
@@ -130,7 +128,11 @@ const AdminNews = () => {
       ) : (
         <>
           <AdminPanelCardBody variant="newsEdit">
-            <NewsEditMode originalValue={displayedNews?.find((el) => el.id === +searchParams.get("edit"))} />
+            <NewsEditMode
+              originalValue={displayedNews?.find(
+                (el) => el.id === +searchParams.get("edit")
+              )}
+            />
           </AdminPanelCardBody>
         </>
       )}

@@ -21,6 +21,7 @@ import {
   Trash2,
   CornerDownRight,
   CornerDownLeft,
+  Mailbox,
 } from "lucide-react";
 
 import EllipsisVertical from "@/components/icons/EllipsisVertical";
@@ -93,14 +94,12 @@ function AdminEmails() {
       <AdminPanelCardHeader
         leftComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Button variant="outlinePrimary" size="buttonSpace">
-              <ArrowLeft size={42} />
-            </Button>
+            <Mail size={42} />
           </div>
         }
         rightComponent={
           <div className="flex-1 flex justify-center items-center">
-            <Mail size={42} />
+            <Mailbox size={42} />
           </div>
         }
         title={"Mensajes"}
