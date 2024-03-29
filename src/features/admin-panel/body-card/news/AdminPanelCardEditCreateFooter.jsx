@@ -1,8 +1,9 @@
 import AlertTriggerButton from "@/components/ui/AlertTriggerButton";
 import { useNavigate } from "react-router-dom";
 
-function AdminPanelCardEditModeFooter({ onModalConfirmation }) {
+function AdminPanelCardEditCreateFooter({ onModalConfirmation, mode }) {
   const navigate = useNavigate();
+  const action = mode === "create" ? "Crear" : "Editar";
 
   return (
     <div className="flex ml-auto pr-6 items-center space-x-6">
@@ -18,7 +19,7 @@ function AdminPanelCardEditModeFooter({ onModalConfirmation }) {
         variant="default"
         size="lg"
         onClick={onModalConfirmation}
-        buttonText="Editar noticia"
+        buttonText={`${action} noticia`}
         alertDialogTitle="¿Seguro que deseas guardar los cambios?"
         alertDialogDescription="Esta acción no se puede deshacer. El cambio será permanente y el contenido cambiado o eliminado no se podrá recuperar."
       />
@@ -26,4 +27,4 @@ function AdminPanelCardEditModeFooter({ onModalConfirmation }) {
   );
 }
 
-export default AdminPanelCardEditModeFooter;
+export default AdminPanelCardEditCreateFooter;

@@ -23,7 +23,7 @@ import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { Info } from "lucide-react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Spinner from "@/components/ui/Spinner";
-import AdminPanelCardEditModeFooter from "./AdminPanelCardEditModeFooter";
+import AdminPanelCardEditCreateFooter from "./AdminPanelCardEditCreateFooter";
 import { useEditNew } from "../../useEditNew";
 
 function EditNewForm({ originalValue }) {
@@ -132,7 +132,7 @@ function EditNewForm({ originalValue }) {
               </FormItem>
             )}
           />
-          <AdminPanelCardEditModeFooter
+          <AdminPanelCardEditCreateFooter
             onModalConfirmation={form.handleSubmit(onSubmit)}
           />
         </form>
