@@ -13,6 +13,8 @@ import { useDeleteNew } from "../../useDeleteNew";
 import AlertTriggerButton from "@/components/ui/AlertTriggerButton";
 import NewsEditMode from "./NewsEditMode";
 import AdminPanelCardEditModeFooter from "./AdminPanelCardEditModeFooter";
+import AdminNewsDisplay from "./AdminNewsDisplay";
+import AdminNewsEdit from "./AdminNewsEdit";
 
 const AdminNews = () => {
   const { news, isLoading } = useNews();
@@ -85,51 +87,22 @@ const AdminNews = () => {
       />
 
       {mode === null && (
-        <>
-          <AdminPanelCardBody variant="news">
-            {displayedNews.map((noticia) => (
-              <div
-                className="flex flex-col space-y-4 h-full max-h-full"
-                key={noticia.id}
-              >
-                <SingleNewCard {...noticia} />
-                <div className="flex justify-end items-center space-x-4 pr-2">
-                  <Button
-                    variant="default"
-                    size="sm"
-                    onClick={() => onEdit(noticia.id)}
-                  >
-                    Editar
-                  </Button>
-                  <AlertTriggerButton
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => onDelete(noticia.id)}
-                    buttonText="Borrar"
-                    alertDialogTitle="¿Seguro que desea eliminar esta noticia?"
-                    alertDialogDescription="Esta acción no se puede deshacer. El borrado será permanente y se eliminará la noticia de nuestros servidores."
-                  />
-                </div>
-              </div>
-            ))}
-          </AdminPanelCardBody>
-          <AdminPanelCardPagination
-            items={sortedNews}
-            itemsPerPage={itemsPerPage}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </>
+        <AdminNewsDisplay
+          displayedNews={displayedNews}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          sortedNews={sortedNews}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       )}
 
       {mode === "edit" && (
-        <AdminPanelCardBody variant="newsEdit">
-          <NewsEditMode
-            originalValue={displayedNews?.find(
-              (el) => el.id === +searchParams.get("edit")
-            )}
-          />
-        </AdminPanelCardBody>
+        <AdminNewsEdit
+          displayedNews={displayedNews}
+          searchParams={searchParams}
+        />
       )}
 
       {mode === "create" && <h1>Hola modo crear</h1>}
