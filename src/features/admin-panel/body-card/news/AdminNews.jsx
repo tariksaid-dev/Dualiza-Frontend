@@ -1,20 +1,18 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useNews } from "../../../news/useNews";
-import Spinner from "@/components/ui/Spinner";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
+import { useNews } from "@/features/news/useNews";
+import { useDeleteNew } from "@/features/admin-panel/useDeleteNew";
+
+import AdminPanelCardHeader from "@/features/admin-panel/body-card/AdminPanelCardHeader";
+import AdminNewsDisplay from "@/features/admin-panel/body-card/news/AdminNewsDisplay";
+import AdminNewsEdit from "@/features/admin-panel/body-card/news/AdminNewsEdit";
+import AdminNewsCreate from "@/features/admin-panel/body-card/news/AdminNewsCreate";
 import { Button } from "@/components/ui/button";
+
+import { Rss } from "lucide-react";
+import Spinner from "@/components/ui/Spinner";
 import "@fontsource/inter/700.css";
-import { ArrowRight, Rss } from "lucide-react";
-import AdminPanelCardHeader from "../AdminPanelCardHeader";
-import AdminPanelCardPagination from "../AdminPanelCardPagination";
-import AdminPanelCardBody from "../AdminPanelCardBody";
-import SingleNewCard from "./SingleNewCard";
-import { useDeleteNew } from "../../useDeleteNew";
-import AlertTriggerButton from "@/components/ui/AlertTriggerButton";
-import NewsEditMode from "./NewsEditMode";
-import AdminPanelCardEditModeFooter from "./AdminPanelCardEditModeFooter";
-import AdminNewsDisplay from "./AdminNewsDisplay";
-import AdminNewsEdit from "./AdminNewsEdit";
 
 const AdminNews = () => {
   const { news, isLoading } = useNews();
@@ -69,9 +67,11 @@ const AdminNews = () => {
         leftComponent={
           <div className="flex-1 flex items-end">
             <div className="mb-4 ml-12">
-              <Button size="lg" onClick={onCreate}>
-                Añadir noticia
-              </Button>
+              {mode === null && (
+                <Button size="lg" onClick={onCreate}>
+                  Añadir noticia
+                </Button>
+              )}
             </div>
           </div>
         }
@@ -105,7 +105,7 @@ const AdminNews = () => {
         />
       )}
 
-      {mode === "create" && <h1>Hola modo crear</h1>}
+      {mode === "create" && <AdminNewsCreate />}
     </>
   );
 };
