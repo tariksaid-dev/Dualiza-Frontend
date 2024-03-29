@@ -1,12 +1,11 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import BombillaLibro from "@/components/icons/BombillaLibro";
 import LetrasBombilla from "@/components/icons/LetrasBombilla";
 import AdminHeaderTabsContainer from "./AdminHeaderTabsContainer";
 
-function AdminPanelHeader() {
+function AdminPanelHeader({ setSearchParams }) {
   const sections = [{ title: "Home", url: "/" }];
-  const [searchParams, setSearchParams] = useSearchParams();
 
   function handleChange(e) {
     setSearchParams({ page: e });
