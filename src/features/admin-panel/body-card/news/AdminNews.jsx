@@ -16,13 +16,10 @@ import AdminPanelCardEditModeFooter from "./AdminPanelCardEditModeFooter";
 
 const AdminNews = () => {
   const { news, isLoading } = useNews();
-  const navigate = useNavigate();
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const [currentPage, setCurrentPage] = useState(1);
-
   const { deleteNew, isDeleting } = useDeleteNew();
+  const [mode, setMode] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 4;
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -38,9 +35,10 @@ const AdminNews = () => {
 
   const displayedNews = sortedNews.slice(startIndex, endIndex);
 
-  const onAddNew = () => {
-    navigate("/admin/createNew");
-  };
+  function onCreate() {
+    searchParams.set("create", true);
+    setSearchParams(searchParams);
+  }
 
   function onEdit(id) {
     searchParams.set("edit", id);
@@ -51,16 +49,13 @@ const AdminNews = () => {
     deleteNew(id);
   }
 
-  function findNewById() {
-    return displayedNews.find((el) => el.id === +searchParams.get("edit"));
-  }
-
   useEffect(() => {
     if (searchParams.has("edit")) {
-      setIsEditMode(true);
-      console.log();
+      setMode("edit");
+    } else if (searchParams.has("create")) {
+      setMode("create");
     } else {
-      setIsEditMode(false);
+      setMode(null);
     }
   }, [searchParams, news]);
 
@@ -72,7 +67,7 @@ const AdminNews = () => {
         leftComponent={
           <div className="flex-1 flex items-end">
             <div className="mb-4 ml-12">
-              <Button size="lg" onClick={onAddNew}>
+              <Button size="lg" onClick={onCreate}>
                 Añadir noticia
               </Button>
             </div>
@@ -89,7 +84,7 @@ const AdminNews = () => {
         }
       />
 
-      {!isEditMode ? (
+      {mode === null && (
         <>
           <AdminPanelCardBody variant="news">
             {displayedNews.map((noticia) => (
@@ -125,17 +120,19 @@ const AdminNews = () => {
             setCurrentPage={setCurrentPage}
           />
         </>
-      ) : (
-        <>
-          <AdminPanelCardBody variant="newsEdit">
-            <NewsEditMode
-              originalValue={displayedNews?.find(
-                (el) => el.id === +searchParams.get("edit")
-              )}
-            />
-          </AdminPanelCardBody>
-        </>
       )}
+
+      {mode === "edit" && (
+        <AdminPanelCardBody variant="newsEdit">
+          <NewsEditMode
+            originalValue={displayedNews?.find(
+              (el) => el.id === +searchParams.get("edit")
+            )}
+          />
+        </AdminPanelCardBody>
+      )}
+
+      {mode === "create" && <h1>Hola modo crear</h1>}
     </>
   );
 };
