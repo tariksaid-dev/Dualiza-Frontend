@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Pencil } from "lucide-react";
-import React, { useEffect } from "react";
+import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -29,43 +28,33 @@ import { useEditNew } from "../../useEditNew";
 function EditNewForm({ originalValue }) {
   const { editNew, isEditing } = useEditNew();
 
-  useEffect(() => {
-    console.log(isEditing);
-  }, [isEditing]);
-
   const formSchema = z.object({
     title: z
       .string()
       .min(5, { message: "El título debe tener al menos 5 carácteres" }),
-    content: z.string().min(20, {
+    content: z.string().min(2, {
       message: "La noticia debe tener al menos 20 carácteres",
     }),
-    image: z.custom().refine((files) => {
-      console.log(files);
-      return Array.from(files ?? []).length !== 0;
-    }, "Se necesita una imagen"),
-    // .refine((files) => {
-    //   return Array.from(files ?? []).every(
-    //     (file) => file.size / (1024 * 1024) <= 10
-    //   );
-    // }, "El tamaño máximo para los archivos es de 10MB")
-    // .refine((files) => {
-    //   return Array.from(files ?? []).every((file) =>
-    //     ["image/png", "image/jpg", "image/jpeg"].includes(file.type)
-    //   );
-    // }, "La extensión del archivo no está soportada"),
+    image: z
+      .any()
+      .refine((file) => file[0]?.size <= 5000000, `Max file size is 5MB.`),
   });
 
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       title: originalValue?.title,
       content: originalValue?.content,
+      image: undefined,
     },
+    resolver: zodResolver(formSchema),
+    mode: "onChange",
   });
 
   function onSubmit(data) {
-    editNew({ id: originalValue.id, noticia: data });
+    editNew({
+      id: originalValue.id,
+      noticia: {...data, image: data.image[0]},
+    });
   }
 
   if (isEditing) return <Spinner />;
@@ -109,7 +98,10 @@ function EditNewForm({ originalValue }) {
                 <FormItem>
                   <FormLabel>Imagen</FormLabel>
                   <FormControl>
-                    <Input {...field} type="file"></Input>
+                    <Input
+                      type="file"
+                      {...form.register("image")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
