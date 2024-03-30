@@ -35,25 +35,27 @@ function EditNewForm({ originalValue }) {
     content: z.string().min(2, {
       message: "La noticia debe tener al menos 20 carácteres",
     }),
-    image: z
-      .any()
-      .refine((file) => file[0]?.size <= 5000000, `Max file size is 5MB.`),
+    image: z.any().optional(),
+    // .refine((file) => file[0]?.size <= 5000000, `Max file size is 5MB.`)
+    // .or(z.literal(test)),
   });
 
   const form = useForm({
     defaultValues: {
       title: originalValue?.title,
       content: originalValue?.content,
-      image: undefined,
+      image: originalValue?.image,
     },
     resolver: zodResolver(formSchema),
-    mode: "onChange",
   });
 
   function onSubmit(data) {
+    const img =
+      data.image instanceof FileList ? data.image[0] : originalValue.image;
+
     editNew({
       id: originalValue.id,
-      noticia: { ...data, image: data.image[0] },
+      noticia: { ...data, image: img },
     });
   }
 
