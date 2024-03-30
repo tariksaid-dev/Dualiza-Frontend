@@ -53,7 +53,7 @@ function EditNewForm({ originalValue }) {
   function onSubmit(data) {
     editNew({
       id: originalValue.id,
-      noticia: {...data, image: data.image[0]},
+      noticia: { ...data, image: data.image[0] },
     });
   }
 
@@ -69,10 +69,7 @@ function EditNewForm({ originalValue }) {
       </header>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col items-center flex-1 w-full h-full space-y-6"
-        >
+        <form className="flex flex-col items-center flex-1 w-full h-full space-y-6">
           <div className="flex justify-center items-center w-full space-x-4">
             <FormField
               control={form.control}
@@ -98,10 +95,7 @@ function EditNewForm({ originalValue }) {
                 <FormItem>
                   <FormLabel>Imagen</FormLabel>
                   <FormControl>
-                    <Input
-                      type="file"
-                      {...form.register("image")}
-                    />
+                    <Input type="file" {...form.register("image")} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
