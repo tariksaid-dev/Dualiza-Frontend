@@ -19,7 +19,7 @@ function Admin() {
 
   return (
     <AdminPanelLayout>
-      <AdminPanelHeader />
+      <AdminPanelHeader setSearchParams={setSearchParams}/>
       <AdminPanelCard>
         {searchParams.get("page") === "news" && <AdminNews />}
         {searchParams.get("page") === "users" && <AdminUsers />}
