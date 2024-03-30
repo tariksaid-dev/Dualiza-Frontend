@@ -13,7 +13,7 @@ function SingleNewCard({ image, title, content }) {
       <ScrollArea type="always" className="mt-6">
         <CardHeader className="pt-0 pb-4 space-y-3">
           <AspectRatio ratio={16 / 9}>
-            <img src={image} alt={title} />
+            <img src={image} alt={title} className="object-cover h-[200px]" />
           </AspectRatio>
           <CardTitle>{title}</CardTitle>
         </CardHeader>
