@@ -27,9 +27,9 @@ function ModelComponent() {
     groupRef.current.rotation.y = rotation;
   });
 
-  const gltf = useLoader(GLTFLoader, "public/3d-models/bombilla/bombilla.gltf");
+  const gltf = useLoader(GLTFLoader, "/3d-models/bombilla/bombilla.gltf");
   const { nodes, materials } = useGLTF(
-    "public/3d-models/bombilla/bombilla.gltf"
+    "/3d-models/bombilla/bombilla.gltf"
   );
 
   nodes.Icosphere.material.color.setRGB(204 / 255, 204 / 255, 153 / 255);
