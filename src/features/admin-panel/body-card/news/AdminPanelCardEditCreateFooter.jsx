@@ -18,7 +18,10 @@ function AdminPanelCardEditCreateFooter({ onModalConfirmation, mode }) {
       <AlertTriggerButton
         variant="default"
         size="lg"
-        onClick={onModalConfirmation}
+        onClick={() => {
+          onModalConfirmation();
+          navigate("/admin?page=news");
+        }}
         buttonText={`${action} noticia`}
         alertDialogTitle="¿Seguro que deseas guardar los cambios?"
         alertDialogDescription="Esta acción no se puede deshacer. El cambio será permanente y el contenido cambiado o eliminado no se podrá recuperar."
