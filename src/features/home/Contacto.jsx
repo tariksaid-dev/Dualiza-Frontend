@@ -71,8 +71,8 @@ const Contacto = () => {
       .min(1, {
         message: "Debes escribir algo antes de enviar",
       })
-      .max(200, {
-        message: "El mensaje no puede ser más largo de 200 carácteres",
+      .max(500, {
+        message: "El mensaje no puede ser más largo de 500 carácteres",
       }),
   });
 
