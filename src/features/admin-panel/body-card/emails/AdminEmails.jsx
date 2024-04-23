@@ -13,8 +13,6 @@ import AdminEmailInboxCard from "./AdminEmailInboxCard";
 import {
   Inbox,
   Mail,
-  ArrowLeft,
-  ArrowRight,
   MailWarning,
   Mails,
   Archive,
@@ -29,65 +27,19 @@ import EllipsisVertical from "@/components/icons/EllipsisVertical";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import AdminPanelCardHeader from "../AdminPanelCardHeader";
+import { useEmails } from "../../useEmails";
+import Spinner from "@/components/ui/Spinner";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { emails, isLoading } = useEmails();
 
   function handleChange(e) {
     searchParams.set("inbox", e);
     setSearchParams(searchParams);
   }
 
-  const data = [
-    {
-      id: 1,
-      message:
-        "Hi, let's have a meeting tomorrow to discuss the project. I've beenr reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the projects  success. Please come prepared with any questions or insights you may have. Looking forward to to our meeting! Best regards, William",
-      email: "william@smith.com",
-      date: "5 month ago",
-      title: "Meeting Tomorrow",
-    },
-    {
-      id: 2,
-      message:
-        "Hi, let's have a meeting tomorrow to discuss the project. I've beenr reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the projects  success. Please come prepared with any questions or insights you may have. Looking forward to to our meeting! Best regards, William",
-      email: "william@smith.com",
-      date: "5 month ago",
-      title: "Meeting Tomorrow",
-    },
-    {
-      id: 3,
-      message:
-        "Hi, let's have a meeting tomorrow to discuss the project. I've beenr reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the projects  success. Please come prepared with any questions or insights you may have. Looking forward to to our meeting! Best regards, William",
-      email: "william@smith.com",
-      date: "5 month ago",
-      title: "Meeting Tomorrow",
-    },
-    {
-      id: 4,
-      message:
-        "Hi, let's have a meeting tomorrow to discuss the project. I've beenr reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the projects  success. Please come prepared with any questions or insights you may have. Looking forward to to our meeting! Best regards, William",
-      email: "william@smith.com",
-      date: "5 month ago",
-      title: "Meeting Tomorrow",
-    },
-    {
-      id: 5,
-      message:
-        "Hi, let's have a meeting tomorrow to discuss the project. I've beenr reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the projects  success. Please come prepared with any questions or insights you may have. Looking forward to to our meeting! Best regards, William",
-      email: "william@smith.com",
-      date: "5 month ago",
-      title: "Meeting Tomorrow",
-    },
-    {
-      id: 6,
-      message:
-        "Hi, let's have a meeting tomorrow to discuss the project. I've beenr reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the projects  success. Please come prepared with any questions or insights you may have. Looking forward to to our meeting! Best regards, William",
-      email: "william@smith.com",
-      date: "5 month ago",
-      title: "Meeting Tomorrow",
-    },
-  ];
+  if (isLoading) return <Spinner />;
 
   return (
     <>
@@ -123,8 +75,8 @@ function AdminEmails() {
             <div className="flex flex-1 h-full">
               <ScrollArea type="always">
                 <div className="flex flex-col gap-2 pr-4 pt-0">
-                  {data.map((message) => (
-                    <AdminEmailInboxCard {...message} key={message.id} />
+                  {emails.map((email) => (
+                    <AdminEmailInboxCard {...email} key={email.id} />
                   ))}
                 </div>
               </ScrollArea>
