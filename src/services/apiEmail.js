@@ -1,4 +1,4 @@
-import supabase, { supabaseAdmin, supabaseUrl } from "./supabase";
+import supabase from "./supabase";
 
 export async function getEmails() {
   const { data, error } = await supabase.from("message").select("*");
@@ -12,8 +12,6 @@ export async function getEmails() {
 }
 
 export async function createEmail(email) {
-  console.log(email)
-
   const { data, error } = await supabase.from("message").insert(email).select();
 
   if (error) {
