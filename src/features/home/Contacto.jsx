@@ -21,35 +21,47 @@ import {
 } from "@/components/ui/tooltip";
 import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { Info } from "lucide-react";
+import { useCreateEmail } from "../admin-panel/useCreateEmail";
 
 const options = [
   {
     id: "1",
-    name: "IES HLANZ",
-    person: "María Dolores Sáenz Pajares",
-    email: "msaepaj412@g.educaand.es",
+    name: "Contacto",
   },
   {
     id: "2",
-    name: "IES AL-BAYTAR",
-    person: "David Racero",
-    email: "dracpat976@g.educaand.es",
+    name: "Sugerencia",
   },
   {
     id: "3",
-    name: "CIFP VIRGEN DE GRACIA",
-    person: "Raúl Morales Ocaña",
-    email: "rmo14@educastillalamancha.es",
+    name: "Opinión",
   },
 ];
 
 const Contacto = () => {
+  const { isCreating, createEmail } = useCreateEmail();
+
+  function tagMapper(obj) {
+    const tagMap = {
+      1: "contacto",
+      2: "sugerencia",
+      3: "opinion",
+    };
+
+    return {
+      subject: obj.subject,
+      email: obj.email,
+      content: obj.content,
+      tag: tagMap[obj.items[0]],
+    };
+  }
+
   function onSubmit(data) {
-    console.log(data);
+    createEmail(tagMapper(data));
   }
 
   const formSchema = z.object({
-    asunto: z.string().min(2, { message: "Al menos 2 carácteres de asunto" }),
+    subject: z.string().min(2, { message: "Al menos 2 carácteres de asunto" }),
     email: z.string().optional(),
     items: z.array(z.string()).refine((value) => value.some((item) => item), {
       message: "Necesitas elegir al menos uno",
@@ -63,11 +75,11 @@ const Contacto = () => {
         message: "El mensaje no puede ser más largo de 200 carácteres",
       }),
   });
-  
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      asunto: "",
+      subject: "",
       email: "",
       items: [],
       content: "",
@@ -90,7 +102,7 @@ const Contacto = () => {
             <div className="flex flex-col gap-6">
               <FormField
                 control={form.control}
-                name="asunto"
+                name="subject"
                 render={({ field }) => (
                   <FormItem className="flex flex-col space-y-2">
                     <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -118,7 +130,7 @@ const Contacto = () => {
                       <TooltipProvider delayDuration={400}>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                              <Info className="size-[14px] hover:cursor-pointer"/>
+                            <Info className="size-[14px] hover:cursor-pointer" />
                           </TooltipTrigger>
                           <TooltipContent>
                             Deja tu email para que podamos responderte
@@ -144,7 +156,7 @@ const Contacto = () => {
                 render={() => (
                   <FormItem className="flex flex-col space-y-3">
                     <FormLabel className="mb-2">
-                      Selecciona destinatario:
+                      Selecciona el motivo de tu mensaje:
                     </FormLabel>
                     <ContactCheckBoxes options={options} form={form} />
                     <FormMessage />
