@@ -49,7 +49,7 @@ const Contacto = () => {
     };
 
     return {
-      subject: obj.subject,
+      name: obj.name,
       email: obj.email,
       content: obj.content,
       tag: tagMap[obj.items[0]],
@@ -61,7 +61,9 @@ const Contacto = () => {
   }
 
   const formSchema = z.object({
-    subject: z.string().min(2, { message: "Al menos 2 carácteres de asunto" }),
+    name: z
+      .string()
+      .min(3, { message: "Tu nombre debe tener un mínimo de 3 letras" }),
     email: z.string().optional(),
     items: z.array(z.string()).refine((value) => value.some((item) => item), {
       message: "Necesitas elegir al menos uno",
@@ -79,7 +81,7 @@ const Contacto = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      subject: "",
+      name: "",
       email: "",
       items: [],
       content: "",
@@ -102,15 +104,15 @@ const Contacto = () => {
             <div className="flex flex-col gap-6">
               <FormField
                 control={form.control}
-                name="subject"
+                name="name"
                 render={({ field }) => (
                   <FormItem className="flex flex-col space-y-2">
                     <FormLabel className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                      Asunto
+                      Nombre
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Escribe el asunto de tu consulta"
+                        placeholder="Escribe tu nombre"
                         {...field}
                         autoComplete="off"
                       />
