@@ -77,7 +77,7 @@ function AdminEmails() {
             </span>
             <AdminInboxTabsContainer onValueChange={(e) => handleChange(e)} />
           </header>
-          <div className="flex flex-col mt-4 px-6 space-y-4 h-full">
+          <div className="flex flex-col mt-4 px-6 space-y-4 h-[80%]">
             <Input placeholder="Buscar..." autoComplete="off" />
 
             <div className="flex flex-1 h-full">
