@@ -3,7 +3,7 @@
 La imagen corre por defecto en el puerto 8080 en dev mode.
 
 ```bash
-docker build -t dualiza-dev /path/to/dockerfile
+docker build -t dualiza-dev /path/with/dockerfile
 docker container run -p hostPort:8080 dualiza-dev
 ```
 
