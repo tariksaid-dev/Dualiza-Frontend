@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Input } from "@/components/ui/input";
@@ -29,10 +30,12 @@ import { Separator } from "@/components/ui/separator";
 import AdminPanelCardHeader from "../AdminPanelCardHeader";
 import { useEmails } from "../../useEmails";
 import Spinner from "@/components/ui/Spinner";
+import AdminEmailReader from "./AdminEmailReader";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { emails, isLoading } = useEmails();
+  const [ selectedEmail, setSelectedEmail ] = useState({});
 
   function handleChange(e) {
     searchParams.set("inbox", e);
@@ -81,7 +84,7 @@ function AdminEmails() {
               <ScrollArea type="always">
                 <div className="flex flex-col gap-2 pr-4 pt-0">
                   {filterEmails(emails).map((email) => (
-                    <AdminEmailInboxCard {...email} key={email.id} />
+                    <AdminEmailInboxCard {...email} key={email.id} setSelectedEmail={setSelectedEmail}/>
                   ))}
                 </div>
               </ScrollArea>
@@ -120,46 +123,7 @@ function AdminEmails() {
             </div>
           </header>
 
-          <div className="flex flex-1 flex-col">
-            <div className="flex items-start p-4">
-              <div className="flex gap-4 text-sm items-center">
-                <span className="relative flex h-16 w-16 shrink-0 overflow-hidden rounded-full">
-                  <span className="flex h-full w-full items-center justify-center rounded-full bg-muted text-2xl">
-                    WS
-                  </span>
-                </span>
-                <div className="grid space-y-1">
-                  <div className="font-semibold text-xl text-primary">
-                    William Smith
-                  </div>
-                  <div className="line-clamp-1 text-lg">Meeting Tomorrow</div>
-                  <div className="line-clamp-1">
-                    Email:{" "}
-                    <span className="font-medium">
-                      williamsmith@example.com
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="ml-auto text-muted-foreground">
-                Oct 22, 2023, 9:00:00 AM
-              </div>
-            </div>
-            <Separator />
-            <div className="flex-1 whitespace-pre-wrap p-4 text-xl">
-              Hi, lets have a meeting tomorrow to discuss the project. Ive been
-              reviewing the project details and have some ideas Id like to
-              share. Its crucial that we align on our next steps to ensure the
-              projects success. Please come prepared with any questions or
-              insights you may have. Looking forward to our meeting! Best
-              regards, William
-            </div>
-            <div
-              data-orientation="horizontal"
-              role="none"
-              className="shrink-0 bg-border h-[1px] w-full mt-auto"
-            ></div>
-          </div>
+          <AdminEmailReader {...selectedEmail} />
         </ResizablePanel>
       </ResizablePanelGroup>
     </>
