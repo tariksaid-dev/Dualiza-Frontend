@@ -5,7 +5,7 @@ function AdminInboxTabsContainer({ onValueChange }) {
     { label: "Todos", value: "all" },
     { label: "No leídos", value: "unread" },
     { label: "Archivados", value: "archived" },
-    { label: "Papelera", value: "bin" },
+    { label: "Papelera", value: "deleted" },
   ];
 
   return (

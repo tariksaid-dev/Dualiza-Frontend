@@ -39,6 +39,11 @@ function AdminEmails() {
     setSearchParams(searchParams);
   }
 
+  function filterEmails(emails) {
+    if (!searchParams.get("inbox") || searchParams.get("inbox") === "all") return emails;
+    return emails.filter((email) => email.state === searchParams.get("inbox"));
+  }
+
   if (isLoading) return <Spinner />;
 
   return (
@@ -75,7 +80,7 @@ function AdminEmails() {
             <div className="flex flex-1 h-full">
               <ScrollArea type="always">
                 <div className="flex flex-col gap-2 pr-4 pt-0">
-                  {emails.map((email) => (
+                  {filterEmails(emails).map((email) => (
                     <AdminEmailInboxCard {...email} key={email.id} />
                   ))}
                 </div>

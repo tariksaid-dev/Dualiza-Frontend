@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 
-function AdminEmailInboxCard({ email, created_at, subject, content, tag }) {
+function AdminEmailInboxCard({ email, created_at, subject, content, tag, state }) {
   function dateFormatter(date) {
     return new Date(date).toISOString().split("T")[0];
   }
