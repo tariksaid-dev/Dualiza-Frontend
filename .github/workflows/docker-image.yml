@@ -42,5 +42,5 @@ jobs:
         script: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
           docker pull tariksaid/dualiza:latest
-          docker container run -p 80:8080 tariksaid/dualiza
+          docker container run -p 8080:8080 tariksaid/dualiza
           
