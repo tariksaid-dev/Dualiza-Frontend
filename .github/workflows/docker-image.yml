@@ -42,5 +42,7 @@ jobs:
         script: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
           docker pull tariksaid/dualiza:latest
-          docker container run -dp 8080:8080 tariksaid/dualiza
+          docker stop dualiza || true
+          docker rm dualiza || true
+          docker container run --name dualiza -dp 8080:8080 tariksaid/dualiza:latest
           
