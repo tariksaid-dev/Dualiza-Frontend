@@ -21,13 +21,13 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
-    - name: Build Docker Image
-      run: |
-        docker build -t tariksaid/dualiza:latest .
+    # - name: Build Docker Image
+    #   run: |
+    #     docker build -t tariksaid/dualiza:latest .
         
-    - name: Push Docker Image
-      run: |
-        docker push tariksaid/dualiza:latest
+    # - name: Push Docker Image
+    #   run: |
+    #     docker push tariksaid/dualiza:latest
 
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v1.0.3
