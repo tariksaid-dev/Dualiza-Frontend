@@ -41,7 +41,9 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           pwd
-          # docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          # docker pull tariksaid/dualiza:latest
-          # docker-compose up -d
+
+          
+        # docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        # docker pull tariksaid/dualiza:latest
+        # docker-compose up -d
           
