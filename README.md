@@ -1,10 +1,10 @@
-# Docker
+# Docker prod build
 
-La imagen corre por defecto en el puerto 8080 en dev mode.
+La imagen corre por defecto en el puerto 8080.
 
 ```bash
-docker build -t dualiza-dev /path/with/dockerfile
-docker container run -p hostPort:8080 dualiza-dev
+docker build -t dualiza-prod /path/with/dockerfile
+docker container run -p hostPort:8080 dualiza-prod
 ```
 
 # Estructura de carpetas
