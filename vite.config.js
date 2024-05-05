@@ -10,14 +10,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  preview: {
-    port: 8080,
-    strictPort: false,
-  },
-  server: {
-    port: 8080,
-    strictPort: false,
-    host: true,
-    origin: "http://0.0.0.0:8080",
-  },
+  // preview: {
+  //   port: 8080,
+  //   strictPort: false,
+  // },
+  // server: {
+  //   port: 8080,
+  //   strictPort: false,
+  //   host: true,
+  //   origin: "http://0.0.0.0:8080",
+  // },
 });
