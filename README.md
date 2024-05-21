@@ -1,6 +1,6 @@
 # Docker prod build
 
-La imagen corre por defecto en el puerto 8080.
+La imagen corre por defecto en el puerto 8080. 
 
 ```bash
 docker build -t dualiza-prod /path/with/dockerfile
