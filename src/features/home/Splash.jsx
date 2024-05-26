@@ -30,7 +30,7 @@ function Splash() {
 
         <div className="flex justify-center gap-8">
           <Button variant="default" onClick={() => navigate("/login")}>Login</Button>
-          <Button variant="outline">Noticias</Button>
+          <Button variant="outline" onClick={() => navigate("/news")}>Noticias</Button>
         </div>
       </aside>
       <aside className="h-full w-full flex justify-start relative">
