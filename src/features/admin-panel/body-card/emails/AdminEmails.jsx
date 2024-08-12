@@ -21,6 +21,7 @@ import {
   CornerDownRight,
   CornerDownLeft,
   Mailbox,
+  Search,
 } from "lucide-react";
 
 import EllipsisVertical from "@/components/icons/EllipsisVertical";
@@ -35,7 +36,7 @@ import AdminEmailReader from "./AdminEmailReader";
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { emails, isLoading } = useEmails();
-  const [ selectedEmail, setSelectedEmail ] = useState({});
+  const [selectedEmail, setSelectedEmail] = useState({});
 
   function handleChange(e) {
     searchParams.set("inbox", e);
@@ -43,7 +44,8 @@ function AdminEmails() {
   }
 
   function filterEmails(emails) {
-    if (!searchParams.get("inbox") || searchParams.get("inbox") === "all") return emails;
+    if (!searchParams.get("inbox") || searchParams.get("inbox") === "all")
+      return emails;
     return emails.filter((email) => email.state === searchParams.get("inbox"));
   }
 
@@ -78,13 +80,24 @@ function AdminEmails() {
             <AdminInboxTabsContainer onValueChange={(e) => handleChange(e)} />
           </header>
           <div className="flex flex-col mt-4 px-6 space-y-4 h-[80%]">
-            <Input placeholder="Buscar..." autoComplete="off" />
+            <div className="relative">
+              <Search className="size-4 bottom-3 left-2 absolute" />
+              <Input
+                placeholder="Buscar..."
+                autoComplete="off"
+                className="pl-8"
+              />
+            </div>
 
             <div className="flex flex-1 h-full">
-              <ScrollArea type="always">
+              <ScrollArea type="always" className="w-full">
                 <div className="flex flex-col gap-2 pr-4 pt-0">
                   {filterEmails(emails).map((email) => (
-                    <AdminEmailInboxCard {...email} key={email.id} setSelectedEmail={setSelectedEmail}/>
+                    <AdminEmailInboxCard
+                      {...email}
+                      key={email.id}
+                      setSelectedEmail={setSelectedEmail}
+                    />
                   ))}
                 </div>
               </ScrollArea>

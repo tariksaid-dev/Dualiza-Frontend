@@ -24,7 +24,7 @@ function AdminEmailInboxCard({
 
   return (
     <button
-      className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-muted min-w-[400px]"
+      className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-muted"
       onClick={handleClick}
     >
       <div className="flex w-full flex-col gap-1">
