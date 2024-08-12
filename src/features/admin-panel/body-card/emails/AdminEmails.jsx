@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Input } from "@/components/ui/input";
@@ -37,17 +37,26 @@ function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { emails, isLoading } = useEmails();
   const [selectedEmail, setSelectedEmail] = useState({});
+  const [query, setQuery] = useState("");
 
   function handleChange(e) {
     searchParams.set("inbox", e);
     setSearchParams(searchParams);
   }
 
-  function filterEmails(emails) {
-    if (!searchParams.get("inbox") || searchParams.get("inbox") === "all")
-      return emails;
-    return emails.filter((email) => email.state === searchParams.get("inbox"));
+  function filterEmails(emails, query) {
+    const inbox = searchParams.get("inbox");
+    return emails.filter((email) => {
+      if (inbox && inbox !== "all" && email.state !== inbox) return false;
+      if (query && !email.content.includes(query)) return false;
+      return true;
+    });
   }
+
+  const filteredEmails = useMemo(
+    () => filterEmails(emails, query),
+    [emails, query, searchParams]
+  );
 
   if (isLoading) return <Spinner />;
 
@@ -86,13 +95,14 @@ function AdminEmails() {
                 placeholder="Buscar..."
                 autoComplete="off"
                 className="pl-8"
+                onChange={(e) => setQuery(e.target.value)}
               />
             </div>
 
             <div className="flex flex-1 h-full">
               <ScrollArea type="always" className="w-full">
                 <div className="flex flex-col gap-2 pr-4 pt-0">
-                  {filterEmails(emails).map((email) => (
+                  {filteredEmails.map((email) => (
                     <AdminEmailInboxCard
                       {...email}
                       key={email.id}
