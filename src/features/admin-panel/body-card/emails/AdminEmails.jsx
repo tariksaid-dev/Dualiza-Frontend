@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Input } from "@/components/ui/input";
@@ -53,11 +53,6 @@ function AdminEmails() {
     });
   }
 
-  const filteredEmails = useMemo(
-    () => filterEmails(emails, query),
-    [emails, query, searchParams]
-  );
-
   if (isLoading) return <Spinner />;
 
   return (
@@ -102,7 +97,7 @@ function AdminEmails() {
             <div className="flex flex-1 h-full">
               <ScrollArea type="always" className="w-full">
                 <div className="flex flex-col gap-2 pr-4 pt-0">
-                  {filteredEmails.map((email) => (
+                  {filterEmails(emails, query).map((email) => (
                     <AdminEmailInboxCard
                       {...email}
                       key={email.id}
