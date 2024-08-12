@@ -1,4 +1,4 @@
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 
 function AdminEmailReader({ email, created_at, name, content, tag, state }) {
   function getInitials(str) {
@@ -38,11 +38,6 @@ function AdminEmailReader({ email, created_at, name, content, tag, state }) {
       </div>
       <Separator />
       <div className="flex-1 whitespace-pre-wrap p-4 text-xl">{content}</div>
-      <div
-        data-orientation="horizontal"
-        role="none"
-        className="shrink-0 bg-border h-[1px] w-full mt-auto"
-      ></div>
     </div>
   );
 }
