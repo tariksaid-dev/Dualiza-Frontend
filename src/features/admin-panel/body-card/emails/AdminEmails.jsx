@@ -121,53 +121,36 @@ function AdminEmails() {
             <div className="flex items-center mx-2 h-full space-x-3">
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger asChild>
                     <Button variant="outline" size="icon">
-                      <Mails />
+                      <MailWarning />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    Guardar
+                  <TooltipContent align="start">
+                    Marcar como no leído
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
 
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger asChild>
                     <Button variant="outline" size="icon">
-                    <MailWarning />
+                      <Archive />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    Guardar
-                  </TooltipContent>
+                  <TooltipContent align="start">Archivar</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
 
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger asChild>
                     <Button variant="outline" size="icon">
-                    <Archive />
+                      <Trash2 />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    Guardar
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <TooltipProvider delayDuration={400}>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Button variant="outline" size="icon">
-                    <Trash2 />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    Guardar
-                  </TooltipContent>
+                  <TooltipContent align="start">Eliminar</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
 
