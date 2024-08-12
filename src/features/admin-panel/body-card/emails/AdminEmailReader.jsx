@@ -26,7 +26,6 @@ function AdminEmailReader({ email, created_at, name, content, tag, state }) {
           </span>
           <div className="grid space-y-1">
             <div className="font-semibold text-xl text-primary">{name}</div>
-            <div className="line-clamp-1 text-lg">Meeting Tomorrow</div>
             <div className="line-clamp-1">
               Email: <span className="font-medium">{email || "Sin email"}</span>
             </div>

@@ -32,6 +32,12 @@ import AdminPanelCardHeader from "../AdminPanelCardHeader";
 import { useEmails } from "../../useEmails";
 import Spinner from "@/components/ui/Spinner";
 import AdminEmailReader from "./AdminEmailReader";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -113,18 +119,58 @@ function AdminEmails() {
         <ResizablePanel>
           <header className="h-[8%] flex justify-between items-center border-b">
             <div className="flex items-center mx-2 h-full space-x-3">
-              <Button variant="outline" size="icon">
-                <Mails />
-              </Button>
-              <Button variant="outline" size="icon">
-                <MailWarning />
-              </Button>
-              <Button variant="outline" size="icon">
-                <Archive />
-              </Button>
-              <Button variant="outline" size="icon">
-                <Trash2 />
-              </Button>
+              <TooltipProvider delayDuration={400}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button variant="outline" size="icon">
+                      <Mails />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Guardar
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider delayDuration={400}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button variant="outline" size="icon">
+                    <MailWarning />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Guardar
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider delayDuration={400}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button variant="outline" size="icon">
+                    <Archive />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Guardar
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider delayDuration={400}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button variant="outline" size="icon">
+                    <Trash2 />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Guardar
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
               <Separator orientation="vertical" className="h-3/5 ml-6" />
             </div>
             <div className="flex items-center mx-2 mr-4 h-full space-x-2">
