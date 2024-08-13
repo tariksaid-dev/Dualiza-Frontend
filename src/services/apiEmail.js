@@ -21,3 +21,18 @@ export async function createEmail(email) {
 
   return data;
 }
+
+export async function editEmailState(id, newState) {
+  const { data, error } = await supabase
+    .from("message")
+    .update({ state: newState })
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Email state could not be updated");
+  }
+
+  return data;
+}

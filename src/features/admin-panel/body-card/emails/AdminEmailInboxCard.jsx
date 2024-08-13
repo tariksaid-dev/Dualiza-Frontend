@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge";
+import { useEditEmailState } from "../../useEditEmailState";
 
 function AdminEmailInboxCard({
+  id,
   email,
   created_at,
   name,
@@ -9,6 +11,8 @@ function AdminEmailInboxCard({
   state,
   setSelectedEmail,
 }) {
+  const { editEmailState, isEditingEmailState } = useEditEmailState();
+
   function dateFormatter(date) {
     if (!date) return;
     return new Date(date).toISOString().split("T")[0];
@@ -20,11 +24,14 @@ function AdminEmailInboxCard({
 
   function handleClick() {
     setSelectedEmail({ email, created_at, name, content, tag, state });
+    editEmailState({ id, state: "read" });
   }
 
   return (
     <button
-      className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent bg-muted"
+      className={`flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent ${
+        state !== "unread" ? "" : "bg-muted"
+      }`}
       onClick={handleClick}
     >
       <div className="flex w-full flex-col gap-1">
