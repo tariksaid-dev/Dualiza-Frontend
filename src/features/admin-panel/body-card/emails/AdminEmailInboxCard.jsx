@@ -23,7 +23,7 @@ function AdminEmailInboxCard({
   }
 
   function handleClick() {
-    setSelectedEmail({ email, created_at, name, content, tag, state });
+    setSelectedEmail({ id, email, created_at, name, content, tag, state });
     editEmailState({ id, state: "read" });
   }
 

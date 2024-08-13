@@ -15,7 +15,6 @@ import {
   Inbox,
   Mail,
   MailWarning,
-  Mails,
   Archive,
   Trash2,
   CornerDownRight,
@@ -38,12 +37,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useEditEmailState } from "../../useEditEmailState";
 
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { emails, isLoading } = useEmails();
   const [selectedEmail, setSelectedEmail] = useState({});
   const [query, setQuery] = useState("");
+  const { editEmailState, isEditingEmailState } = useEditEmailState();
 
   function handleChange(e) {
     searchParams.set("inbox", e);
@@ -57,6 +58,18 @@ function AdminEmails() {
       if (query && !email.content.includes(query)) return false;
       return true;
     });
+  }
+
+  function setUnreadState() {
+    editEmailState({ id: selectedEmail.id, state: "unread" });
+  }
+
+  function setArchivedState() {
+    editEmailState({ id: selectedEmail.id, state: "archived" });
+  }
+
+  function setDeletedState() {
+    editEmailState({ id: selectedEmail.id, state: "deleted" });
   }
 
   if (isLoading) return <Spinner />;
@@ -122,7 +135,11 @@ function AdminEmails() {
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={setUnreadState}
+                    >
                       <MailWarning />
                     </Button>
                   </TooltipTrigger>
@@ -135,7 +152,11 @@ function AdminEmails() {
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={setArchivedState}
+                    >
                       <Archive />
                     </Button>
                   </TooltipTrigger>
@@ -146,7 +167,11 @@ function AdminEmails() {
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={setDeletedState}
+                    >
                       <Trash2 />
                     </Button>
                   </TooltipTrigger>
