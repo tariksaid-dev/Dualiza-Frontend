@@ -21,6 +21,7 @@ import {
   CornerDownLeft,
   Mailbox,
   Search,
+  MailOpen,
 } from "lucide-react";
 
 import EllipsisVertical from "@/components/icons/EllipsisVertical";
@@ -42,9 +43,9 @@ import { useEditEmailState } from "../../useEditEmailState";
 function AdminEmails() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { emails, isLoading } = useEmails();
+  const { editEmailState, isEditingEmailState } = useEditEmailState();
   const [selectedEmail, setSelectedEmail] = useState({});
   const [query, setQuery] = useState("");
-  const { editEmailState, isEditingEmailState } = useEditEmailState();
 
   function handleChange(e) {
     searchParams.set("inbox", e);
@@ -53,15 +54,21 @@ function AdminEmails() {
 
   function filterEmails(emails, query) {
     const inbox = searchParams.get("inbox");
-    return emails.filter((email) => {
-      if (inbox && inbox !== "all" && email.state !== inbox) return false;
-      if (query && !email.content.includes(query)) return false;
-      return true;
-    });
+    return emails
+      .filter((email) => {
+        if (inbox && inbox !== "all" && email.state !== inbox) return false;
+        if (query && !email.content.includes(query)) return false;
+        return true;
+      })
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   }
 
   function setUnreadState() {
     editEmailState({ id: selectedEmail.id, state: "unread" });
+  }
+
+  function setReadState() {
+    editEmailState({ id: selectedEmail.id, state: "read" });
   }
 
   function setArchivedState() {
@@ -132,6 +139,23 @@ function AdminEmails() {
         <ResizablePanel>
           <header className="h-[8%] flex justify-between items-center border-b">
             <div className="flex items-center mx-2 h-full space-x-3">
+              <TooltipProvider delayDuration={400}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={setReadState}
+                    >
+                      <MailOpen />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent align="start">
+                    Marcar como leído
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
               <TooltipProvider delayDuration={400}>
                 <Tooltip>
                   <TooltipTrigger asChild>

@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { useEditEmailState } from "../../useEditEmailState";
+import { useSearchParams } from "react-router-dom";
 
 function AdminEmailInboxCard({
   id,
@@ -12,6 +13,7 @@ function AdminEmailInboxCard({
   setSelectedEmail,
 }) {
   const { editEmailState, isEditingEmailState } = useEditEmailState();
+  const [searchParams] = useSearchParams();
 
   function dateFormatter(date) {
     if (!date) return;
@@ -24,7 +26,9 @@ function AdminEmailInboxCard({
 
   function handleClick() {
     setSelectedEmail({ id, email, created_at, name, content, tag, state });
-    editEmailState({ id, state: "read" });
+    if (searchParams.get("inbox") === "all") {
+      editEmailState({ id, state: "read" });
+    }
   }
 
   return (
